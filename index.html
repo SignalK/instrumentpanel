@@ -1,0 +1,153 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="/bower_components/gridster/dist/jquery.gridster.min.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="dist/default.css">
+
+  <script src='/bower_components/jquery/dist/jquery.min.js'></script>
+  <script src='/bower_components/gridster/dist/jquery.gridster.js'></script>
+  <style>
+  .gridster li {
+    background: #CCC;
+    cursor: pointer;
+    -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
+
+ul {
+  list-style-type: none;
+}
+
+body {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  background: #000;
+}
+
+  </style>
+</head>
+<body>
+
+<div class="gridster">
+    <ul style="position:absolute">
+    </ul>
+</div>
+</body>
+<script>
+
+var gridster;
+var widgets = {};
+
+$(function() {
+
+  $(".gridster ul").gridster({
+    widget_margins: [5, 5],
+    widget_base_dimensions: [70, 35],
+    serialize_params: function($w, wgd) {
+      return {
+        data_id: $w.find('svg').attr('data-id'),
+        col: wgd.col,
+        row: wgd.row,
+        size_x: wgd.size_x,
+        size_y: wgd.size_y
+      }
+    },
+    draggable: {
+      stop: function(e, ui, $widget) {
+        changed()
+      }
+    },
+    resize: {
+      enabled: true,
+      stop: function(e, ui, $widget) {
+        changed()
+      }
+    }
+  });
+  gridster = $(".gridster ul").gridster().data('gridster');
+  if (window.localStorage['signalkGrid']) {
+    JSON.parse(window.localStorage['signalkGrid']).forEach(function(item) {
+      widgets[item.data_id] = createWidget(item.data_id, item.size_x, item.size_y, item.col, item.row);
+    });
+  }
+  connectWs(window.location.host, dispatch)
+});
+
+function changed() {
+  window.localStorage['signalkGrid'] = JSON.stringify(gridster.serialize());  
+}
+
+
+var pathValues = {
+  'navigation.position': function(value) {
+    return value.latitude + " " + value.longitude;
+  }
+}
+
+function valueToText(updateValue) {
+  var pathValueFunction = pathValues[updateValue.path] || function(value) { return value;};
+  return pathValueFunction(updateValue.value);
+}
+
+function dispatch(delta) {
+  delta.updates.forEach(function(update) {
+    update.values.forEach(function(value) {
+      if (value.path ==='navigation.position') {
+        console.log(JSON.stringify(value.value))
+      }
+      var widget = widgets[value.path];
+      if (!widget) {
+        widget = createWidget(value.path, 3, 2);
+        widgets[value.path] = widget;
+      }
+      widget.find('text[data-id="label"]').text(value.path);
+      widget.find('text[data-id="value"]').text(valueToText(value));
+
+    });
+  });
+}
+
+function createWidget(path, widthInCells, heightInCells, xCell, yCell) {
+  var svg = '';
+  svg += '<svg height="100%" width="100%" viewBox="0 0 20 40" data-id="' + path + '">';
+  svg += '<text data-id="value" x="10" y="24" text-anchor="middle" font-size="22" dominant-baseline="middle"></text>'
+  svg += '<text data-id="label" x="10" y="4" text-anchor="middle" font-size="5" dominant-baseline="middle"></text>'
+  svg += '</svg>'
+  gridster.add_widget('<li class="new">' + svg + '</li>', widthInCells, heightInCells, xCell, yCell);
+  return $('svg[data-id="'+ path + '"]');
+}
+
+
+function connectWs(hostname, callback) {
+  var url = "ws://" + hostname + "/signalk/stream?stream=delta";
+  if (typeof Primus != 'undefined') {
+    var signalKStream = Primus.connect(url, {
+      reconnect: {
+        maxDelay: 15000,
+        minDelay: 500,
+        retries: Infinity
+      }
+    });
+    signalKStream.on('data', callback);
+  } else {
+    connection = new WebSocket(url);
+    connection.onopen = function(msg) {
+      console.log("open:" + msg);
+    };
+
+    connection.onerror = function(error) {
+      console.log("error:" + msg);
+    };
+    connection.onmessage = function(msg) {
+      callback(JSON.parse(msg.data));
+    };
+  }
+}
+
+
+</script>
+</html>
