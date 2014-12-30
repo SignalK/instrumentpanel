@@ -1,0 +1,26 @@
+{
+  "name": "instrumentpanel",
+  "version": "0.0.1",
+  "description": "SignalK HTML5 Instrumentpanel",
+  "main": "widgetdemo.js",
+  "dependencies": {
+    "baconjs": "^0.7.35",
+    "d3": "^3.5.2"
+  },
+  "devDependencies": {
+    "watchify": "^2.2.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SignalK/instrumentpanel.git"
+  },
+  "author": "teppo.kurki@iki.fi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SignalK/instrumentpanel/issues"
+  },
+  "homepage": "https://github.com/SignalK/instrumentpanel"
+}

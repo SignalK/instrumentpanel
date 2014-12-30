@@ -5,51 +5,57 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="/bower_components/gridster/dist/jquery.gridster.min.css" rel="stylesheet">
-
-
-<link rel="stylesheet" href="dist/default.css">
-
+  <script src='/bower_components/d3/d3.min.js'></script>
+  <script src='dist/widgets.js'></script>
   <script src='/bower_components/jquery/dist/jquery.min.js'></script>
   <script src='/bower_components/gridster/dist/jquery.gridster.js'></script>
+
   <style>
   .gridster li {
     background: #CCC;
     cursor: pointer;
     -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.3);
     box-shadow: 0 0 5px rgba(0,0,0,0.3);
-}
+  }
 
-ul {
-  list-style-type: none;
-}
+  ul {
+    list-style-type: none;
+  }
 
-body {
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-  background: #000;
-}
+  body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    background: #000;
+  }
 
   </style>
 </head>
 <body>
-
-<div class="gridster">
+  <div class="gridster">
     <ul style="position:absolute">
     </ul>
-</div>
+  </div>
 </body>
 <script>
 
+String.prototype.replaceAll = function(target, replacement) {
+  return this.split(target).join(replacement);
+};
+
 var gridster;
-var widgets = {};
+var gridWidgets = {};
+var widgetFactories = {
+  'navigation_courseOverGroundTrue': widgets.Compass,
+  'environment_wind_angleApparent': widgets.WindMeter
+}
+var svgWidgets = {};
 
 $(function() {
-
   $(".gridster ul").gridster({
     widget_margins: [5, 5],
     widget_base_dimensions: [70, 35],
     serialize_params: function($w, wgd) {
       return {
-        data_id: $w.find('svg').attr('data-id'),
+        id: $w.attr('id'),
         col: wgd.col,
         row: wgd.row,
         size_x: wgd.size_x,
@@ -58,26 +64,26 @@ $(function() {
     },
     draggable: {
       stop: function(e, ui, $widget) {
-        changed()
+        saveToLocalStorage();
       }
     },
     resize: {
       enabled: true,
       stop: function(e, ui, $widget) {
-        changed()
+        saveToLocalStorage();
       }
     }
   });
   gridster = $(".gridster ul").gridster().data('gridster');
   if (window.localStorage['signalkGrid']) {
     JSON.parse(window.localStorage['signalkGrid']).forEach(function(item) {
-      widgets[item.data_id] = createWidget(item.data_id, item.size_x, item.size_y, item.col, item.row);
+      gridWidgets[item.id] = createWidget(item.id, item.size_x, item.size_y, item.col, item.row);
     });
   }
   connectWs(window.location.host, dispatch)
 });
 
-function changed() {
+function saveToLocalStorage() {
   window.localStorage['signalkGrid'] = JSON.stringify(gridster.serialize());  
 }
 
@@ -96,34 +102,34 @@ function valueToText(updateValue) {
 function dispatch(delta) {
   delta.updates.forEach(function(update) {
     update.values.forEach(function(value) {
-      if (value.path ==='navigation.position') {
-        console.log(JSON.stringify(value.value))
-      }
-      var widget = widgets[value.path];
+      var id = getIdFor(value.path)
+      var widget = gridWidgets[id];
       if (!widget) {
         widget = createWidget(value.path, 3, 2);
-        widgets[value.path] = widget;
+        gridWidgets[id] = widget;
       }
-      widget.find('text[data-id="label"]').text(value.path);
-      widget.find('text[data-id="value"]').text(valueToText(value));
-
+      widget.setLabel(value.path);
+      widget.setValue(valueToText(value));
     });
   });
 }
 
+
+function getIdFor(path) {
+  return path.replaceAll('.', '_')
+}
+
 function createWidget(path, widthInCells, heightInCells, xCell, yCell) {
-  var svg = '';
-  svg += '<svg height="100%" width="100%" viewBox="0 0 20 40" data-id="' + path + '">';
-  svg += '<text data-id="value" x="10" y="24" text-anchor="middle" font-size="22" dominant-baseline="middle"></text>'
-  svg += '<text data-id="label" x="10" y="4" text-anchor="middle" font-size="5" dominant-baseline="middle"></text>'
-  svg += '</svg>'
-  gridster.add_widget('<li class="new">' + svg + '</li>', widthInCells, heightInCells, xCell, yCell);
-  return $('svg[data-id="'+ path + '"]');
+  var id = getIdFor(path);
+  gridster.add_widget('<li class="new" id="' + id + '"></li>', widthInCells, heightInCells, xCell, yCell);
+  var widgetCreator = widgetFactories[id] || widgets.Digital;
+  var result = svgWidgets[path] = new widgetCreator('#' + id);
+  return result;
 }
 
 
 function connectWs(hostname, callback) {
-  var url = "ws://" + hostname + "/signalk/stream?stream=delta";
+  var url = "ws://" + hostname + "/signalk/stream?stream=delta&context=self ";
   if (typeof Primus != 'undefined') {
     var signalKStream = Primus.connect(url, {
       reconnect: {
