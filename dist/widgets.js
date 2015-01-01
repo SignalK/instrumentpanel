@@ -19251,12 +19251,29 @@ function WindMeter(selector) {
     .attr('stroke', 'black')
   drawTicks(this.ticks);
 
-  this.value = svg.append('text')
+  this.hand = svg.append('path')
+    .attr('d', 'M ' + half + ',0 l 10,' + half + 'l -20,0 L ' + half + ',0')
+    .attr('style', 'fill:black; stroke:black; stroke-width:1')
+
+
+  var valueBoxWidth = 100;
+  var valueBoxHeight = 50;
+  var valueBox = svg.append('g');
+  valueBox.append('rect')
+    .attr('width', valueBoxWidth)
+    .attr('height', valueBoxHeight)
+    .attr('x', half - (valueBoxWidth / 2))
+    .attr('y', half * 0.8 - (valueBoxHeight / 2))
+    .attr('rx', 5)
+    .attr('ry', 5)
+    .attr('style', 'fill:white; opacity:0.8');
+
+  this.value = valueBox.append('text')
     .attr('x', half)
-    .attr('y', half * 0.9)
+    .attr('y', half * 0.8)
     .attr('text-anchor', 'middle')
     .attr('font-size', 38)
-    .attr('dominan-baseline', 'middle')
+    .attr('dominant-baseline', 'middle')
     .text('000');
 
   this.label = svg.append('text')
@@ -19264,12 +19281,10 @@ function WindMeter(selector) {
     .attr('y', 10)
     .attr('text-anchor', 'middle')
     .attr('font-size', 12)
-    .attr('dominan-baseline', 'middle')
+    .attr('dominant-baseline', 'middle')
     .text('-');
 
-  this.hand = svg.append('path')
-    .attr('d', 'M ' + half + ',0 l 10,' + half + 'l -20,0 L ' + half + ',0')
-    .attr('style', 'fill:black; stroke:black; stroke-width:1')
+
 
 }
 
@@ -19278,7 +19293,7 @@ WindMeter.prototype.setLabel = function(value) {
 }
 
 WindMeter.prototype.setValue = function(value) {
-  this.value.text(value);
+  this.value.text(value + '\u00b0');
   this.hand.attr('transform', centerRotate(value));
 }
 module.exports = WindMeter;
