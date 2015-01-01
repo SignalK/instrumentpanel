@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/bower_components/leaflet/dist/leaflet.css">
   <link href="/bower_components/gridster/dist/jquery.gridster.min.css" rel="stylesheet">
   <script src='/bower_components/d3/d3.min.js'></script>
   <script src='dist/widgets.js'></script>
@@ -45,14 +46,24 @@ var gridster;
 var gridWidgets = {};
 var widgetFactories = {
   'navigation_courseOverGroundTrue': widgets.Compass,
-  'environment_wind_angleApparent': widgets.WindMeter
+  'environment_wind_angleApparent': widgets.WindMeter,
+  'navigation_position': widgets.LeafletMap
 }
 var svgWidgets = {};
 
+var xDim = 70;
+var yDim = 35;
+var xMargin = 5;
+var yMargin = 5;
+
+function yPixels(ySize) {
+  return ySize * yDim + (ySize <= 1 ? 0 : (ySize -1) * yMargin * 2);
+}
+
 $(function() {
   $(".gridster ul").gridster({
-    widget_margins: [5, 5],
-    widget_base_dimensions: [70, 35],
+    widget_margins: [xMargin, yMargin],
+    widget_base_dimensions: [xDim, yDim],
     serialize_params: function($w, wgd) {
       return {
         id: $w.attr('id'),
@@ -70,6 +81,7 @@ $(function() {
     resize: {
       enabled: true,
       stop: function(e, ui, $widget) {
+        $widget.children('div').height(yPixels($widget.attr('data-sizey')));
         saveToLocalStorage();
       }
     }
@@ -88,12 +100,12 @@ function saveToLocalStorage() {
 }
 
 
-var pathValues = {
-  'navigation.position': function(value) {
+var pathValues = {}
+/*  'navigation.position': function(value) {
     return value.latitude + " " + value.longitude;
   }
 }
-
+*/
 function valueToText(updateValue) {
   var pathValueFunction = pathValues[updateValue.path] || function(value) { return value;};
   return pathValueFunction(updateValue.value);
