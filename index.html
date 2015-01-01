@@ -64,6 +64,10 @@ function yPixels(ySize) {
   return ySize * yDim + (ySize <= 1 ? 0 : (ySize -1) * yMargin * 2);
 }
 
+function xPixels(xSize) {
+  return xSize * xDim + (xSize <= 1 ? 0 : (xSize -1) * xMargin * 2);
+}
+
 function toggleLockState(event) {
   $('#lock').toggleClass('fa-lock fa-unlock');
   if (locked) {
@@ -110,6 +114,9 @@ $(function() {
       enabled: true,
       stop: function(e, ui, $widget) {
         $widget.children('div').height(yPixels($widget.attr('data-sizey')));
+        if(typeof svgWidgets[$widget.attr('id')].resize === 'function') {
+          svgWidgets[$widget.attr('id')].resize(xPixels($widget.attr('data-sizex')), yPixels($widget.attr('data-sizey')))
+        }
         saveToLocalStorage();
       }
     }
@@ -161,9 +168,13 @@ function getIdFor(path) {
 
 function createWidget(path, widthInCells, heightInCells, xCell, yCell) {
   var id = getIdFor(path);
-  gridster.add_widget('<li class="new" id="' + id + '"></li>', widthInCells, heightInCells, xCell, yCell);
+  var cell = gridster.add_widget('<li class="new" id="' + id + '"></li>', widthInCells, heightInCells, xCell, yCell);
   var widgetCreator = widgetFactories[id] || widgets.Digital;
   var result = svgWidgets[path] = new widgetCreator('#' + id, context);
+  cell.children('div').height(yPixels(cell.attr('data-sizey')));
+  if (typeof svgWidgets[id].resize === 'function') {
+    svgWidgets[id].resize(xPixels(cell.attr('data-sizex')), yPixels(cell.attr('data-sizey')))
+  }
   return result;
 }
 

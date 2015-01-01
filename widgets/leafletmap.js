@@ -38,7 +38,10 @@ LeafletMap.prototype.setValue = function(value) {
   this.map.panTo(new L.LatLng(value.latitude, value.longitude));
 }
 
-LeafletMap.prototype.setLabel = function(label) {
+LeafletMap.prototype.setLabel = function(label) {}
+
+LeafletMap.prototype.resize = function(width, height) {
+  this.map.invalidateSize();
 }
 
 
