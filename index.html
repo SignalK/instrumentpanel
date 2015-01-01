@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="/bower_components/leaflet/dist/leaflet.css">
   <link href="/bower_components/gridster/dist/jquery.gridster.min.css" rel="stylesheet">
+  <link href="/bower_components/components-font-awesome/css/font-awesome.css" rel="stylesheet">
   <script src='/bower_components/d3/d3.min.js'></script>
   <script src='dist/widgets.js'></script>
   <script src='/bower_components/jquery/dist/jquery.min.js'></script>
@@ -13,7 +14,7 @@
 
   <style>
   .gridster li {
-    background: #CCC;
+    background: #EEE;
     cursor: pointer;
     -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.3);
     box-shadow: 0 0 5px rgba(0,0,0,0.3);
@@ -25,12 +26,13 @@
 
   body {
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    background: #000;
+    background: #fff;
   }
 
   </style>
 </head>
 <body>
+  <i class="fa fa-unlock" id="lock" style="font-size:25px"></i>
   <div class="gridster">
     <ul style="position:absolute">
     </ul>
@@ -55,12 +57,38 @@ var xDim = 70;
 var yDim = 35;
 var xMargin = 5;
 var yMargin = 5;
+var context = new EventEmitter();
+var locked = false;
 
 function yPixels(ySize) {
   return ySize * yDim + (ySize <= 1 ? 0 : (ySize -1) * yMargin * 2);
 }
 
+function toggleLockState(event) {
+  $('#lock').toggleClass('fa-lock fa-unlock');
+  if (locked) {
+    context.emit('unlock');
+  } else {
+    context.emit('lock');
+  }
+  locked = !locked;
+}
+
+context.on('unlock', function() {
+  gridster.enable();
+  gridster.resize_api.enable();
+});
+context.on('lock', function() {
+  gridster.disable();
+  gridster.resize_api.disable();
+});
+
 $(function() {
+
+  $('#lock').click(function(event) {
+    toggleLockState();
+  });
+
   $(".gridster ul").gridster({
     widget_margins: [xMargin, yMargin],
     widget_base_dimensions: [xDim, yDim],
@@ -135,7 +163,7 @@ function createWidget(path, widthInCells, heightInCells, xCell, yCell) {
   var id = getIdFor(path);
   gridster.add_widget('<li class="new" id="' + id + '"></li>', widthInCells, heightInCells, xCell, yCell);
   var widgetCreator = widgetFactories[id] || widgets.Digital;
-  var result = svgWidgets[path] = new widgetCreator('#' + id);
+  var result = svgWidgets[path] = new widgetCreator('#' + id, context);
   return result;
 }
 

@@ -6,7 +6,8 @@
   "dependencies": {
     "baconjs": "^0.7.35",
     "d3": "^3.5.2",
-    "leaflet": "^0.7.3"
+    "leaflet": "^0.7.3",
+    "node-event-emitter": "0.0.1"
   },
   "devDependencies": {
     "watchify": "^2.2.1"

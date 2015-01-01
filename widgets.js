@@ -6,3 +6,5 @@ widgets = {
 }
 
 L = require('leaflet');
+
+EventEmitter = require('node-event-emitter')
