@@ -1,37 +1,87 @@
 function LeafletMap(selector, context) {
   d3.select(selector).append('div')
-   .attr('id', 'map')
-   .attr('style','height:200px');
+    .attr('id', 'map')
+    .attr('style', 'height:200px');
   this.map = new L.Map("map", {
     center: [37.8, -96.9],
     zoom: 4,
     zoomControl: false,
     attributionControl: false
   });
-  this.map.setView([60.1, 24.8], 10);  
+  this.map.setView([60.1, 24.8], 10);
+  var map = this.map;
 
-  L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(this.map);
-/* L.tileLayer.wms("http://kartta.liikennevirasto.fi/meriliikenne//dgds/wms_ip/merikartta", {
+
+  var finNautic = L.tileLayer.wms("http://kartta.liikennevirasto.fi/meriliikenne//dgds/wms_ip/merikartta", {
       layers: 'cells',
       styles: 'style-id-203',
       format: 'image/png',
       transparent: true
-    }).addTo(this.map); */
+    });
+  var baseMaps = {
+    "Fin Nautic": finNautic,
+    "OpenStreepMap": L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png')
+  };
+  finNautic.addTo(map);
 
-  var map = this.map;
+  var OpenWeatherMap_Clouds = L.tileLayer('http://{s}.tile.openweathermap.org/map/clouds/{z}/{x}/{y}.png', {
+    attribution: 'Map data &copy; <a href="http://openweathermap.org">OpenWeatherMap</a>',
+    opacity: 0.5
+  });
+  var OpenWeatherMap_Precipitation = L.tileLayer('http://{s}.tile.openweathermap.org/map/precipitation/{z}/{x}/{y}.png', {
+    attribution: 'Map data &copy; <a href="http://openweathermap.org">OpenWeatherMap</a>',
+    opacity: 0.5
+  });
+  var OpenWeatherMap_Rain = L.tileLayer('http://{s}.tile.openweathermap.org/map/rain/{z}/{x}/{y}.png', {
+    attribution: 'Map data &copy; <a href="http://openweathermap.org">OpenWeatherMap</a>',
+    opacity: 0.5
+  });
+  var OpenWeatherMap_Pressure = L.tileLayer('http://{s}.tile.openweathermap.org/map/pressure/{z}/{x}/{y}.png', {
+    attribution: 'Map data &copy; <a href="http://openweathermap.org">OpenWeatherMap</a>',
+    opacity: 0.5
+  });
+  var OpenWeatherMap_PressureContour = L.tileLayer('http://{s}.tile.openweathermap.org/map/pressure_cntr/{z}/{x}/{y}.png', {
+    attribution: 'Map data &copy; <a href="http://openweathermap.org">OpenWeatherMap</a>',
+    opacity: 0.5
+  });
+  var OpenWeatherMap_Wind = L.tileLayer('http://{s}.tile.openweathermap.org/map/wind/{z}/{x}/{y}.png', {
+    attribution: 'Map data &copy; <a href="http://openweathermap.org">OpenWeatherMap</a>',
+    opacity: 0.5
+  });
+  var OpenWeatherMap_Temperature = L.tileLayer('http://{s}.tile.openweathermap.org/map/temp/{z}/{x}/{y}.png', {
+    attribution: 'Map data &copy; <a href="http://openweathermap.org">OpenWeatherMap</a>',
+    opacity: 0.5
+  });
+
+  var overlayMaps = {
+    "Clouds": OpenWeatherMap_Clouds,
+    "Precipitation": OpenWeatherMap_Precipitation,
+    "Rain": OpenWeatherMap_Rain,
+    "Pressure": OpenWeatherMap_Pressure,
+    "Pressure Countours": OpenWeatherMap_PressureContour,
+    "Wind": OpenWeatherMap_Wind,
+    "Temperature": OpenWeatherMap_Temperature
+  };
+
+  L.control.layers(baseMaps, overlayMaps).addTo(map);
+
+
+  function unlock() {
+    map.dragging.disable();
+    map.touchZoom.disable();
+    map.doubleClickZoom.disable();
+    map.scrollWheelZoom.disable();
+  }
+  unlock();
   context.on('lock', function() {
     map.dragging.enable();
     map.touchZoom.enable();
     map.doubleClickZoom.enable();
     map.scrollWheelZoom.enable();
   });
-  context.on('unlock', function() {
-    map.dragging.disable();
-    map.touchZoom.disable();
-    map.doubleClickZoom.disable();
-    map.scrollWheelZoom.disable();
-  });
+  context.on('unlock', unlock);
 }
+
 
 
 LeafletMap.prototype.setValue = function(value) {
