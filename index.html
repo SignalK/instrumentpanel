@@ -170,7 +170,7 @@ function createWidget(path, widthInCells, heightInCells, xCell, yCell) {
   var id = getIdFor(path);
   var cell = gridster.add_widget('<li class="new" id="' + id + '"></li>', widthInCells, heightInCells, xCell, yCell);
   var widgetCreator = widgetFactories[id] || widgets.Digital;
-  var result = svgWidgets[path] = new widgetCreator('#' + id, context);
+  var result = svgWidgets[id] = new widgetCreator('#' + id, context);
   cell.children('div').height(yPixels(cell.attr('data-sizey')));
   if (typeof svgWidgets[id].resize === 'function') {
     svgWidgets[id].resize(xPixels(cell.attr('data-sizex')), yPixels(cell.attr('data-sizey')))
