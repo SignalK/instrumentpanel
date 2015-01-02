@@ -6,9 +6,9 @@ function Digital(selector) {
 
   this.value = svg.append('text')
     .attr('x', 10)
-    .attr('y', 24)
+    .attr('y', 30)
     .attr('text-anchor', 'middle')
-    .attr('font-size', 22)
+    .attr('font-size', 26)
     .attr('dominan-baseline', 'middle');
 
   this.label = svg.append('text')
