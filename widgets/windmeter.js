@@ -66,30 +66,68 @@ function WindMeter(selector) {
     .attr('stroke', 'black')
   drawTicks(this.ticks);
 
-  this.hand = svg.append('path')
+  var hand = svg.append('path')
     .attr('d', 'M ' + half + ',0 l 10,' + half + 'l -20,0 L ' + half + ',0')
     .attr('style', 'fill:black; stroke:black; stroke-width:1')
 
 
-  var valueBoxWidth = 100;
-  var valueBoxHeight = 50;
-  var valueBox = svg.append('g');
-  valueBox.append('rect')
-    .attr('width', valueBoxWidth)
-    .attr('height', valueBoxHeight)
-    .attr('x', half - (valueBoxWidth / 2))
-    .attr('y', half * 0.8 - (valueBoxHeight / 2))
+  var boxWidth = 100;
+  var boxHeight = 50;
+  var angleBox = svg.append('g');
+  angleBox.append('rect')
+    .attr('width', boxWidth)
+    .attr('height', boxHeight)
+    .attr('x', half - (boxWidth / 2))
+    .attr('y', half * 0.8 - (boxHeight / 2))
     .attr('rx', 5)
     .attr('ry', 5)
     .attr('style', 'fill:white; opacity:0.8');
 
-  this.value = valueBox.append('text')
+  var angleText = angleBox.append('text')
     .attr('x', half)
     .attr('y', half * 0.8)
     .attr('text-anchor', 'middle')
     .attr('font-size', 38)
     .attr('dominant-baseline', 'middle')
     .text('000');
+
+  context.getStream('environment_wind_angleApparent').onValue(function(pathValue) {
+    angleText.text(pathValue.value + '\u00b0');
+    hand.attr('transform', centerRotate(pathValue.value));
+  });    
+
+  var speedBox = svg.append('g');
+  speedBox.append('rect')
+    .attr('width', boxWidth*2)
+    .attr('height', boxHeight)
+    .attr('x', half - (boxWidth ))
+    .attr('y', half * 1.2 - (boxHeight / 2))
+    .attr('rx', 5)
+    .attr('ry', 5)
+    .attr('style', 'fill:white; opacity:0.8');
+
+  var speedText = speedBox.append('text')
+    .attr('x', half)
+    .attr('y', half * 1.2)
+    .attr('text-anchor', 'middle')
+    .attr('font-size', 38)
+    .attr('dominant-baseline', 'middle')
+    .text('000');
+
+  context.getStream('environment_wind_speedApparent').onValue(function(pathValue) {
+    var text = speedText.text(pathValue.value + " ");
+    text.append('tspan')
+    .attr('baseline-shift', 'super')
+    .attr('font-size', '15')
+    .text('m');
+    text.append('tspan')
+    .attr('dominant-baseline', 'middle')
+    .text('/');
+    text.append('tspan')
+    .attr('baseline-shift', 'sub')
+    .attr('font-size', '15')
+    .text('s');
+  });
 
   this.label = svg.append('text')
     .attr('x', half / 2)
@@ -107,8 +145,5 @@ WindMeter.prototype.setLabel = function(value) {
   this.label.text(value);
 }
 
-WindMeter.prototype.setValue = function(value) {
-  this.value.text(value + '\u00b0');
-  this.hand.attr('transform', centerRotate(value));
-}
+WindMeter.prototype.setValue = function(value) {}
 module.exports = WindMeter;

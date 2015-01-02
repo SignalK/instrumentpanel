@@ -4,7 +4,7 @@
   "description": "SignalK HTML5 Instrumentpanel",
   "main": "widgetdemo.js",
   "dependencies": {
-    "baconjs": "^0.7.35",
+    "baconjs": "^0.7.41",
     "d3": "^3.5.2",
     "leaflet": "^0.7.3",
     "node-event-emitter": "0.0.1"

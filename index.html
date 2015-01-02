@@ -53,11 +53,22 @@ var widgetFactories = {
 }
 var svgWidgets = {};
 
+
 var xDim = 70;
 var yDim = 35;
 var xMargin = 5;
 var yMargin = 5;
 var context = new EventEmitter();
+context.streams = {};
+context.getStream = function getStream(id) {
+  var stream = context.streams[id];
+  if (typeof stream === 'undefined') {
+    stream = new Bacon.Bus();
+    context.streams[id] = stream
+  }
+  return stream;
+};
+
 var locked = false;
 
 function yPixels(ySize) {
@@ -136,11 +147,7 @@ function saveToLocalStorage() {
 
 
 var pathValues = {}
-/*  'navigation.position': function(value) {
-    return value.latitude + " " + value.longitude;
-  }
-}
-*/
+
 function valueToText(updateValue) {
   var pathValueFunction = pathValues[updateValue.path] || function(value) { return value;};
   return pathValueFunction(updateValue.value);
@@ -149,7 +156,8 @@ function valueToText(updateValue) {
 function dispatch(delta) {
   delta.updates.forEach(function(update) {
     update.values.forEach(function(value) {
-      var id = getIdFor(value.path)
+      var id = getIdFor(value.path);
+      pushToStream(id, value);
       var widget = gridWidgets[id];
       if (!widget) {
         widget = createWidget(value.path, 3, 2);
@@ -159,6 +167,10 @@ function dispatch(delta) {
       widget.setValue(valueToText(value));
     });
   });
+}
+
+function pushToStream(id, value) {
+  context.getStream(id).push(value);
 }
 
 

@@ -6,5 +6,6 @@ widgets = {
 }
 
 L = require('leaflet');
+Bacon = require('baconjs');
 
 EventEmitter = require('node-event-emitter')
