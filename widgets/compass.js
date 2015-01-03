@@ -86,6 +86,7 @@ Compass.prototype.setLabel = function(value) {
 }
 
 Compass.prototype.setValue = function(value) {
+  console.log(Date.now(), 'setValue', value);
   this.ticks.attr('transform', centerRotate(-value));
   this.value.text(value);
 }

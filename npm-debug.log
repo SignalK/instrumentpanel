@@ -1,0 +1,54 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   '--save',
+1 verbose cli   'git://github.com/signalk/signalk-compass-demo#compass-commonjs' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.33
+4 verbose readDependencies using package.json deps
+5 verbose cache add [ 'git://github.com/signalk/signalk-compass-demo#compass-commonjs',
+5 verbose cache add   null ]
+6 verbose cache add name=undefined spec="git://github.com/signalk/signalk-compass-demo#compass-commonjs" args=["git://github.com/signalk/signalk-compass-demo#compass-commonjs",null]
+7 verbose parsed url { protocol: 'git:',
+7 verbose parsed url   slashes: true,
+7 verbose parsed url   auth: null,
+7 verbose parsed url   host: 'github.com',
+7 verbose parsed url   port: null,
+7 verbose parsed url   hostname: 'github.com',
+7 verbose parsed url   hash: '#compass-commonjs',
+7 verbose parsed url   search: null,
+7 verbose parsed url   query: null,
+7 verbose parsed url   pathname: '/signalk/signalk-compass-demo',
+7 verbose parsed url   path: '/signalk/signalk-compass-demo',
+7 verbose parsed url   href: 'git://github.com/signalk/signalk-compass-demo#compass-commonjs' }
+8 silly lockFile fda699a7-com-signalk-signalk-compass-demo git://github.com/signalk/signalk-compass-demo
+9 verbose lock git://github.com/signalk/signalk-compass-demo /Users/Fabian/.npm/fda699a7-com-signalk-signalk-compass-demo.lock
+10 verbose addRemoteGit [ 'git://github.com/signalk/signalk-compass-demo',
+10 verbose addRemoteGit   'compass-commonjs' ]
+11 error git clone git://github.com/signalk/signalk-compass-demo Cloning into bare repository '/Users/Fabian/.npm/_git-remotes/git-github-com-signalk-signalk-compass-demo-fda699a7'...
+11 error git clone git://github.com/signalk/signalk-compass-demo fatal: unable to connect to github.com:
+11 error git clone git://github.com/signalk/signalk-compass-demo github.com[0: 192.30.252.130]: errno=Operation timed out
+12 silly lockFile fda699a7-com-signalk-signalk-compass-demo git://github.com/signalk/signalk-compass-demo
+13 silly lockFile fda699a7-com-signalk-signalk-compass-demo git://github.com/signalk/signalk-compass-demo
+14 error Error: Command failed: Cloning into bare repository '/Users/Fabian/.npm/_git-remotes/git-github-com-signalk-signalk-compass-demo-fda699a7'...
+14 error fatal: unable to connect to github.com:
+14 error github.com[0: 192.30.252.130]: errno=Operation timed out
+14 error
+14 error
+14 error     at ChildProcess.exithandler (child_process.js:648:15)
+14 error     at ChildProcess.emit (events.js:98:17)
+14 error     at maybeClose (child_process.js:756:16)
+14 error     at Socket.<anonymous> (child_process.js:969:11)
+14 error     at Socket.emit (events.js:95:17)
+14 error     at Pipe.close (net.js:465:12)
+15 error If you need help, you may report this *entire* log,
+15 error including the npm and node versions, at:
+15 error     <http://github.com/npm/npm/issues>
+16 error System Darwin 14.0.0
+17 error command "/usr/local/bin/node" "/usr/local/bin/npm" "install" "--save" "git://github.com/signalk/signalk-compass-demo#compass-commonjs"
+18 error cwd /Users/Fabian/Dropbox/Sites/SignalK/instrumentpanel
+19 error node -v v0.10.33
+20 error npm -v 1.4.28
+21 error code 128
+22 verbose exit [ 1, true ]

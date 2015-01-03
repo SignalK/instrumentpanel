@@ -1,7 +1,7 @@
-(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({"/Users/tjk/git-workspace/signalk/instrumentpanel/node_modules/d3/d3.js":[function(require,module,exports){
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({"/Users/Fabian/Dropbox/Sites/SignalK/instrumentpanel/node_modules/d3/d3.js":[function(require,module,exports){
 !function() {
   var d3 = {
-    version: "3.5.2"
+    version: "3.5.3"
   };
   if (!Date.now) Date.now = function() {
     return +new Date();
@@ -8576,12 +8576,8 @@
     return function() {
       var lock, active;
       if ((lock = this[ns]) && (active = lock[lock.active])) {
-        if (--lock.count) {
-          delete lock[lock.active];
-          lock.active += .5;
-        } else {
-          delete this[ns];
-        }
+        if (--lock.count) delete lock[lock.active]; else delete this[ns];
+        lock.active += .5;
         active.event && active.event.interrupt.call(this, this.__data__, active.index);
       }
     };
@@ -9469,7 +9465,7 @@
   if (typeof define === "function" && define.amd) define(d3); else if (typeof module === "object" && module.exports) module.exports = d3;
   this.d3 = d3;
 }();
-},{}],"/Users/tjk/git-workspace/signalk/instrumentpanel/node_modules/leaflet/dist/leaflet-src.js":[function(require,module,exports){
+},{}],"/Users/Fabian/Dropbox/Sites/SignalK/instrumentpanel/node_modules/leaflet/dist/leaflet-src.js":[function(require,module,exports){
 /*
  Leaflet, a JavaScript library for mobile-friendly interactive maps. http://leafletjs.com
  (c) 2010-2013, Vladimir Agafonkin
@@ -18650,7 +18646,7 @@ L.Map.include({
 
 
 }(window, document));
-},{}],"/Users/tjk/git-workspace/signalk/instrumentpanel/node_modules/node-event-emitter/index.js":[function(require,module,exports){
+},{}],"/Users/Fabian/Dropbox/Sites/SignalK/instrumentpanel/node_modules/node-event-emitter/index.js":[function(require,module,exports){
 /**
  * Utility functions
  */
@@ -18947,18 +18943,140 @@ EventEmitter.listenerCount = function(emitter, type) {
   return ret;
 };
 
-},{}],"/Users/tjk/git-workspace/signalk/instrumentpanel/widgets.js":[function(require,module,exports){
+},{}],"/Users/Fabian/Dropbox/Sites/SignalK/instrumentpanel/node_modules/signalk-compass/scripts/app.js":[function(require,module,exports){
+;(function(module) {
+  var renderer
+    , scene 
+    , camera
+    , sphere
+    , light
+    , offset  = -0.09
+    , last    = 0
+    , heading = 0
+    , pitch   = 0
+    , roll    = 0
+    , vessel  = null
+  ;
+
+  function createSphere() {
+    var geometry    = new THREE.SphereGeometry(2, 50, 50);
+    //var material  = new THREE.MeshBasicMaterial({ color: 0x00ffff, wireframe: true });
+    var material    = new THREE.MeshPhongMaterial();
+    material.map    = THREE.ImageUtils.loadTexture('styles/compass.png');
+    sphere          = new THREE.Mesh(geometry, material);
+
+    scene.add(sphere);
+  }
+
+  function addMainNeedle(clr) {
+    var geometry  = new THREE.Geometry();
+    var material  = new THREE.LineBasicMaterial({ color: clr, linewidth: 4 });
+    var mesh      = new THREE.Line(geometry, material);
+
+    geometry.vertices.push(new THREE.Vector3(0, -0.29, 3));
+    geometry.vertices.push(new THREE.Vector3(0, 0.29, 3));
+
+    scene.add(mesh);
+  }
+
+  function addRing() {
+    var geometry    = new THREE.TorusGeometry(2.41, 0.2, 50, 50);
+    //var material = new THREE.MeshBasicMaterial({ color: 0x000000, wireframe: false });
+    var material    = new THREE.MeshPhongMaterial();
+    material.map    = THREE.ImageUtils.loadTexture('styles/quarters.png');
+   
+    var torus       = new THREE.Mesh(geometry, material);
+    
+    scene.add(torus);
+  }
+
+  function init(canvas, width, height) {
+    canvas    = typeof canvas === 'string' ? $(canvas) : canvas;
+    width     = width || $(window).width();
+    height    = height || $(window).height();
+
+    scene     = new THREE.Scene();
+    camera    = new THREE.PerspectiveCamera(75, width / height, 0.01, 10000);
+    renderer  = new THREE.WebGLRenderer();
+    light     = new THREE.AmbientLight(0xEEEEEE);
+
+    scene.add(light);
+    camera.position.z = 5;
+    
+    renderer.setSize($(window).width(), $(window).height());
+    renderer.setClearColor(0x003300, 1);
+
+    canvas.empty().append(renderer.domElement);
+    
+    createSphere();
+    addMainNeedle(0x00CC00);
+    addRing();
+    animate();
+  }
+
+  function resizeScene(width, height) {
+    renderer.setSize(width, height);
+    camera.aspect = width / height;
+    camera.updateProjectionMatrix();
+  }
+
+  function calculateRotation() {
+    if(heading !== last) {
+      //* Heading
+      var compass = -(heading - 90);
+      sphere.rotation.y = (compass * Math.PI / 180) + offset;
+      //*/
+
+      //* Roll
+      sphere.rotation.x = (roll * Math.PI / 180);
+      sphere.rotation.z = (roll * Math.PI / 180);
+      //*/
+
+      //* Pitch
+      sphere.rotation.x = (pitch * Math.PI / 180);
+      //*/
+
+      last = heading;
+    }
+  }
+
+  function render() {
+    calculateRotation();
+    renderer.render(scene, camera);
+  }
+
+  function animate() {
+    requestAnimationFrame(animate);
+    render();
+  }
+
+  function updateVariables(h, p, r) {
+    heading = h || 0.0;
+    pitch = p || 0.0;
+    roll = r || 0.0;
+  }
+
+  if(module !== null && typeof module === 'object' && typeof module.exports !== 'undefined') {
+    module.exports = {
+      init: init,
+      update: updateVariables,
+      resize: resizeScene
+    };
+  }
+})(module);
+},{}],"/Users/Fabian/Dropbox/Sites/SignalK/instrumentpanel/widgets.js":[function(require,module,exports){
 widgets = {
   Compass: require('./widgets/compass'),
+  Compass3D: require('./widgets/compass3d'),
   Digital: require('./widgets/digital'),
   WindMeter: require('./widgets/windmeter'),
   LeafletMap: require('./widgets/leafletmap')
-}
+};
 
 L = require('leaflet');
 
 EventEmitter = require('node-event-emitter')
-},{"./widgets/compass":"/Users/tjk/git-workspace/signalk/instrumentpanel/widgets/compass.js","./widgets/digital":"/Users/tjk/git-workspace/signalk/instrumentpanel/widgets/digital.js","./widgets/leafletmap":"/Users/tjk/git-workspace/signalk/instrumentpanel/widgets/leafletmap.js","./widgets/windmeter":"/Users/tjk/git-workspace/signalk/instrumentpanel/widgets/windmeter.js","leaflet":"/Users/tjk/git-workspace/signalk/instrumentpanel/node_modules/leaflet/dist/leaflet-src.js","node-event-emitter":"/Users/tjk/git-workspace/signalk/instrumentpanel/node_modules/node-event-emitter/index.js"}],"/Users/tjk/git-workspace/signalk/instrumentpanel/widgets/compass.js":[function(require,module,exports){
+},{"./widgets/compass":"/Users/Fabian/Dropbox/Sites/SignalK/instrumentpanel/widgets/compass.js","./widgets/compass3d":"/Users/Fabian/Dropbox/Sites/SignalK/instrumentpanel/widgets/compass3d.js","./widgets/digital":"/Users/Fabian/Dropbox/Sites/SignalK/instrumentpanel/widgets/digital.js","./widgets/leafletmap":"/Users/Fabian/Dropbox/Sites/SignalK/instrumentpanel/widgets/leafletmap.js","./widgets/windmeter":"/Users/Fabian/Dropbox/Sites/SignalK/instrumentpanel/widgets/windmeter.js","leaflet":"/Users/Fabian/Dropbox/Sites/SignalK/instrumentpanel/node_modules/leaflet/dist/leaflet-src.js","node-event-emitter":"/Users/Fabian/Dropbox/Sites/SignalK/instrumentpanel/node_modules/node-event-emitter/index.js"}],"/Users/Fabian/Dropbox/Sites/SignalK/instrumentpanel/widgets/compass.js":[function(require,module,exports){
 var d3 = require('d3');
 
 
@@ -19047,11 +19165,34 @@ Compass.prototype.setLabel = function(value) {
 }
 
 Compass.prototype.setValue = function(value) {
+  console.log(Date.now(), 'setValue', value);
   this.ticks.attr('transform', centerRotate(-value));
   this.value.text(value);
 }
 module.exports = Compass;
-},{"d3":"/Users/tjk/git-workspace/signalk/instrumentpanel/node_modules/d3/d3.js"}],"/Users/tjk/git-workspace/signalk/instrumentpanel/widgets/digital.js":[function(require,module,exports){
+},{"d3":"/Users/Fabian/Dropbox/Sites/SignalK/instrumentpanel/node_modules/d3/d3.js"}],"/Users/Fabian/Dropbox/Sites/SignalK/instrumentpanel/widgets/compass3d.js":[function(require,module,exports){
+var compass = require('signalk-compass');
+
+function Compass3D(selector) {
+  var canvas = $(selector);
+  compass.init(canvas, canvas.width(), canvas.height());
+}
+
+Compass3D.prototype.setLabel = function(value) {
+  // SET COMPASS LABEL
+  return;
+}
+
+Compass3D.prototype.setValue = function(heading) {
+  compass.update(heading);
+}
+
+Compass3D.prototype.resize = function(width, height) {
+  compass.resize(width, height);
+}
+
+module.exports = Compass3D;
+},{"signalk-compass":"/Users/Fabian/Dropbox/Sites/SignalK/instrumentpanel/node_modules/signalk-compass/scripts/app.js"}],"/Users/Fabian/Dropbox/Sites/SignalK/instrumentpanel/widgets/digital.js":[function(require,module,exports){
 function Digital(selector) {
   var svg = d3.select(selector).append('svg')
     .attr('height', '100%')
@@ -19083,7 +19224,7 @@ Digital.prototype.setLabel = function(label) {
 }
 
 module.exports = Digital;
-},{}],"/Users/tjk/git-workspace/signalk/instrumentpanel/widgets/leafletmap.js":[function(require,module,exports){
+},{}],"/Users/Fabian/Dropbox/Sites/SignalK/instrumentpanel/widgets/leafletmap.js":[function(require,module,exports){
 function LeafletMap(selector, context) {
   d3.select(selector).append('div')
     .attr('id', 'map')
@@ -19182,7 +19323,7 @@ LeafletMap.prototype.resize = function(width, height) {
 
 
 module.exports = LeafletMap;
-},{}],"/Users/tjk/git-workspace/signalk/instrumentpanel/widgets/windmeter.js":[function(require,module,exports){
+},{}],"/Users/Fabian/Dropbox/Sites/SignalK/instrumentpanel/widgets/windmeter.js":[function(require,module,exports){
 var d3 = require('d3');
 
 
@@ -19297,4 +19438,4 @@ WindMeter.prototype.setValue = function(value) {
   this.hand.attr('transform', centerRotate(value));
 }
 module.exports = WindMeter;
-},{"d3":"/Users/tjk/git-workspace/signalk/instrumentpanel/node_modules/d3/d3.js"}]},{},["/Users/tjk/git-workspace/signalk/instrumentpanel/widgets.js"]);
+},{"d3":"/Users/Fabian/Dropbox/Sites/SignalK/instrumentpanel/node_modules/d3/d3.js"}]},{},["/Users/Fabian/Dropbox/Sites/SignalK/instrumentpanel/widgets.js"]);

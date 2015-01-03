@@ -11,6 +11,7 @@
   <script src='dist/widgets.js'></script>
   <script src='/bower_components/jquery/dist/jquery.min.js'></script>
   <script src='/bower_components/gridster/dist/jquery.gridster.js'></script>
+  <script src="/node_modules/signalk-compass/vendor/three.js/build/three.min.js"></script>
 
   <style>
   .gridster li {
@@ -47,7 +48,8 @@ String.prototype.replaceAll = function(target, replacement) {
 var gridster;
 var gridWidgets = {};
 var widgetFactories = {
-  'navigation_courseOverGroundTrue': widgets.Compass,
+  'navigation_courseOverGroundTrue': widgets.Compass3D,
+  // 'navigation_courseOverGroundTrue': widgets.Compass,
   'environment_wind_angleApparent': widgets.WindMeter,
   'navigation_position': widgets.LeafletMap
 }
@@ -127,7 +129,7 @@ $(function() {
       gridWidgets[item.id] = createWidget(item.id, item.size_x, item.size_y, item.col, item.row);
     });
   }
-  connectWs(window.location.host, dispatch)
+  connectWs('localhost:3000', dispatch)
 });
 
 function saveToLocalStorage() {
@@ -151,10 +153,12 @@ function dispatch(delta) {
     update.values.forEach(function(value) {
       var id = getIdFor(value.path)
       var widget = gridWidgets[id];
+
       if (!widget) {
         widget = createWidget(value.path, 3, 2);
         gridWidgets[id] = widget;
       }
+
       widget.setLabel(value.path);
       widget.setValue(valueToText(value));
     });
