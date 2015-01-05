@@ -47,7 +47,7 @@ function drawTicks(tickmarks) {
   }
 }
 
-function WindMeter(selector) {
+function WindMeter(selector,  theContext) {
   var svg = d3.select(selector).append('svg')
     .attr('height', '100%')
     .attr('width', '100%')
@@ -91,7 +91,7 @@ function WindMeter(selector) {
     .attr('dominant-baseline', 'middle')
     .text('000');
 
-  context.getStream('environment_wind_angleApparent').onValue(function(pathValue) {
+  theContext.getStream('environment_wind_angleApparent').onValue(function(pathValue) {
     angleText.text(pathValue.value + '\u00b0');
     hand.attr('transform', centerRotate(pathValue.value));
   });    
@@ -114,7 +114,7 @@ function WindMeter(selector) {
     .attr('dominant-baseline', 'middle')
     .text('000');
 
-  context.getStream('environment_wind_speedApparent').onValue(function(pathValue) {
+  theContext.getStream('environment_wind_speedApparent').onValue(function(pathValue) {
     var text = speedText.text(pathValue.value + " ");
     text.append('tspan')
     .attr('baseline-shift', 'super')
