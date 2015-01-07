@@ -1,5 +1,5 @@
-function LeafletMap(selector, context) {
-  d3.select(selector).append('div')
+function LeafletMap(_id, context) {
+  d3.select("#" + _id).append('div')
     .attr('id', 'map')
     .attr('style', 'height:200px');
   this.map = new L.Map("map", {

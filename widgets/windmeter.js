@@ -47,8 +47,8 @@ function drawTicks(tickmarks) {
   }
 }
 
-function WindMeter(selector,  theContext) {
-  var svg = d3.select(selector).append('svg')
+function WindMeter(id,  theContext) {
+  var svg = d3.select("#" + id).append('svg')
     .attr('height', '100%')
     .attr('width', '100%')
     .attr('viewBox', '0  0 ' + size + ' ' + size);

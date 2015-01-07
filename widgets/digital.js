@@ -1,5 +1,5 @@
-function Digital(selector) {
-  var svg = d3.select(selector).append('svg')
+function Digital(id) {
+  var svg = d3.select("#" + id).append('svg')
     .attr('height', '100%')
     .attr('width', '100%')
     .attr('viewBox', "0 0 20 40")

@@ -53,8 +53,8 @@ function drawTicks(tickmarks) {
     .attr('style', 'fill:none; stroke:black; stroke-width:1');
 }
 
-function Compass(selector) {
-  var svg = d3.select(selector).append('svg')
+function Compass(_id) {
+  var svg = d3.select("#" + _id).append('svg')
     .attr('height', '100%')
     .attr('width', '100%')
     .attr('viewBox', size * 0.25 + ' 0 ' + size * 0.5 + ' ' + size * 0.25)
