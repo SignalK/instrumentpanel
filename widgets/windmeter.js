@@ -3,6 +3,9 @@ var d3 = require('d3');
 
 var size = 400;
 var half = size / 2;
+var arcWidthFraction = 0.15;
+var arcWidth = half * arcWidthFraction;
+var arcParam = half - arcWidth / 2;
 
 function centerRotate(deg) {
   return "rotate(" + deg + " " + half + " " + half + ")"
@@ -11,7 +14,7 @@ function centerRotate(deg) {
 function drawTicks(tickmarks) {
   for (var i = 0; i < 360; i += 30) {
     tickmarks.append("path").attr("id", "id10-" + i)
-      .attr("d", "m " + half + "," + "0 L " + half + "," + (half * 0.15))
+      .attr("d", "m " + half + "," + "0 L " + half + "," + (arcWidth))
       .attr("stroke-width", "3")
       .attr("transform", centerRotate(i));
   }
@@ -53,21 +56,19 @@ function WindMeter(id,  theContext) {
     .attr('width', '100%')
     .attr('viewBox', '0  0 ' + size + ' ' + size);
 
-
-  var arcParam = half - half * 0.15 / 2;
   svg.append('path')
-    .attr('d', 'M ' + half + ',' + (half * 0.15) / 2 + ' a' + arcParam + ',' + arcParam + ' 0 0,1 ' + arcParam * Math.sin(Math.PI / 3) + ',' + arcParam * Math.cos(Math.PI / 3))
-    .attr('style', 'fill:none; stroke:green; stroke-width:' + half * 0.15);
+    .attr('d', 'M ' + half + ',' + (arcWidth) / 2 + ' a' + arcParam + ',' + arcParam + ' 0 0,1 ' + arcParam * Math.sin(Math.PI / 3) + ',' + arcParam * Math.cos(Math.PI / 3))
+    .attr('style', 'fill:none; stroke:green; stroke-width:' + arcWidth);
   svg.append('path')
-    .attr('d', 'M ' + half + ',' + (half * 0.15) / 2 + ' a' + arcParam + ',' + arcParam + ' 0 0,0 ' + -arcParam * Math.sin(Math.PI / 3) + ',' + arcParam * Math.cos(Math.PI / 3))
-    .attr('style', 'fill:none; stroke:red; stroke-width:' + half * 0.15);
+    .attr('d', 'M ' + half + ',' + (arcWidth) / 2 + ' a' + arcParam + ',' + arcParam + ' 0 0,0 ' + -arcParam * Math.sin(Math.PI / 3) + ',' + arcParam * Math.cos(Math.PI / 3))
+    .attr('style', 'fill:none; stroke:red; stroke-width:' + arcWidth);
 
   this.ticks = svg.append('g')
     .attr('stroke', 'black')
   drawTicks(this.ticks);
 
   var hand = svg.append('path')
-    .attr('d', 'M ' + half + ',0 l 10,' + half + 'l -20,0 L ' + half + ',0')
+    .attr('d', 'M ' + half + ',' + arcWidth + ' l 10,' + half + 'l -20,0 L ' + half + ',' + arcWidth)
     .attr('style', 'fill:black; stroke:black; stroke-width:1')
 
 
