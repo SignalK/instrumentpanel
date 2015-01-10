@@ -8,9 +8,6 @@
   <link href="/bower_components/gridster/dist/jquery.gridster.min.css" rel="stylesheet">
   <link href="/bower_components/font-awesome/css/font-awesome.css" rel="stylesheet">
   <script src='/bower_components/d3/d3.min.js'></script>
-  <script src='dist/widgets.js'></script>
-  <script src='/bower_components/jquery/dist/jquery.min.js'></script>
-  <script src='/bower_components/gridster/dist/jquery.gridster.js'></script>
 
   <style>
   .gridster li {
@@ -32,163 +29,86 @@
   </style>
 </head>
 <body>
-  <i class="fa fa-unlock" id="lock" style="font-size:25px"></i>
+  <i class="fa fa-lock" id="lock" style="font-size:25px"></i>
   <div class="gridster">
     <ul style="position:absolute">
     </ul>
   </div>
 </body>
+
+<script src='dist/gridwidgets.js'></script>
+<script src='/bower_components/jquery/dist/jquery.min.js'></script>
+<script src='/bower_components/gridster/dist/jquery.gridster.js'></script>
+
 <script>
-
-String.prototype.replaceAll = function(target, replacement) {
-  return this.split(target).join(replacement);
-};
-
-var gridster;
-var gridWidgets = {};
-var widgetFactories = {
-  'navigation_courseOverGroundTrue': widgets.Compass,
-  'environment_wind_angleApparent': widgets.WindMeter,
-  'navigation_position': widgets.LeafletMap
-}
-var svgWidgets = {};
-
-
 var xDim = 70;
 var yDim = 35;
 var xMargin = 5;
 var yMargin = 5;
-var context = new EventEmitter();
-context.streams = {};
-context.getStream = function getStream(id) {
-  var stream = context.streams[id];
-  if (typeof stream === 'undefined') {
-    stream = new Bacon.Bus();
-    context.streams[id] = stream
-  }
-  return stream;
-};
+var locked = true;
 
-var locked = false;
-
-function yPixels(ySize) {
-  return ySize * yDim + (ySize <= 1 ? 0 : (ySize -1) * yMargin * 2);
+var dimensions = {
+  cellWidth: 70,
+  cellHeight: 35,
+  xMargin: 5,
+  yMargin: 5
 }
-
-function xPixels(xSize) {
-  return xSize * xDim + (xSize <= 1 ? 0 : (xSize -1) * xMargin * 2);
-}
-
-function toggleLockState(event) {
-  $('#lock').toggleClass('fa-lock fa-unlock');
-  if (locked) {
-    context.emit('unlock');
-  } else {
-    context.emit('lock');
-  }
-  locked = !locked;
-}
-
-context.on('unlock', function() {
-  gridster.enable();
-  gridster.resize_api.enable();
-});
-context.on('lock', function() {
-  gridster.disable();
-  gridster.resize_api.disable();
-});
+var streamBundle = new StreamBundle();
 
 $(function() {
-
-  $('#lock').click(function(event) {
-    toggleLockState();
-  });
-
+  var panel = new InstrumentPanel(dimensions, streamBundle);
   $(".gridster ul").gridster({
     widget_margins: [xMargin, yMargin],
     widget_base_dimensions: [xDim, yDim],
-    serialize_params: function($w, wgd) {
-      return {
-        id: $w.attr('id'),
-        col: wgd.col,
-        row: wgd.row,
-        size_x: wgd.size_x,
-        size_y: wgd.size_y
-      }
-    },
+    serialize_params: panel.gridsterSerialize,
     draggable: {
       stop: function(e, ui, $widget) {
-        saveToLocalStorage();
+        panel.dragStop(e, ui, $widget);
+        window.localStorage['signalkGrid1'] = JSON.stringify({
+          widgetOptions: panel.serialize()
+        });
       }
     },
     resize: {
       enabled: true,
-      stop: function(e, ui, $widget) {
-        $widget.children('div').height(yPixels($widget.attr('data-sizey')));
-        if(typeof svgWidgets[$widget.attr('id')].resize === 'function') {
-          svgWidgets[$widget.attr('id')].resize(xPixels($widget.attr('data-sizex')), yPixels($widget.attr('data-sizey')))
-        }
-        saveToLocalStorage();
+      stop: function(e, ui, $widget){
+        panel.resizeStop(e, ui, $widget);
+        window.localStorage['signalkGrid1'] = JSON.stringify({
+          widgetOptions: panel.serialize()
+        });
       }
     }
   });
-  gridster = $(".gridster ul").gridster().data('gridster');
-  if (window.localStorage['signalkGrid']) {
-    JSON.parse(window.localStorage['signalkGrid']).forEach(function(item) {
-      gridWidgets[item.id] = createWidget(item.id, item.size_x, item.size_y, item.col, item.row);
-    });
-  }
-  connectWs(window.location.host, dispatch)
-});
+  var gridster = $(".gridster ul").gridster().data('gridster');
+  panel.setGridster(gridster);
+  panel.lock.call(panel);
 
-function saveToLocalStorage() {
-  window.localStorage['signalkGrid'] = JSON.stringify(gridster.serialize());  
-}
-
-
-var pathValues = {}
-
-function valueToText(updateValue) {
-  var pathValueFunction = pathValues[updateValue.path] || function(value) { return value;};
-  return pathValueFunction(updateValue.value);
-}
-
-function dispatch(delta) {
-  delta.updates.forEach(function(update) {
-    update.values.forEach(function(value) {
-      var id = getIdFor(value.path);
-      pushToStream(id, value);
-      var widget = gridWidgets[id];
-      if (!widget) {
-        widget = createWidget(value.path, 3, 2);
-        gridWidgets[id] = widget;
-      }
-      widget.setLabel(value.path);
-      widget.setValue(valueToText(value));
+  d3.json('panel1.json', function(err, widgetData) {
+    if (window.localStorage['signalkGrid1']) {
+      widgetData = JSON.parse(window.localStorage['signalkGrid1'])
+    }
+    panel.setWidgetData(widgetData);
+    var pushToStream = streamBundle.push.bind(streamBundle);
+    connectWs(window.location.host, function dispatch(delta) {
+      delta.updates.forEach(function(update) {
+        update.values.forEach(function(pathValue) {
+          panel.pushPath.call(panel, pathValue.path);
+          pushToStream(pathValue);
+        });
+      });
     });
   });
-}
 
-function pushToStream(id, value) {
-  context.getStream(id).push(value);
-}
-
-
-function getIdFor(path) {
-  return path.replaceAll('.', '_')
-}
-
-function createWidget(path, widthInCells, heightInCells, xCell, yCell) {
-  var id = getIdFor(path);
-  var cell = gridster.add_widget('<li class="new" id="' + id + '"></li>', widthInCells, heightInCells, xCell, yCell);
-  var widgetCreator = widgetFactories[id] || widgets.Digital;
-  var result = svgWidgets[id] = new widgetCreator(id, context);
-  cell.children('div').height(yPixels(cell.attr('data-sizey')));
-  if (typeof svgWidgets[id].resize === 'function') {
-    svgWidgets[id].resize(xPixels(cell.attr('data-sizex')), yPixels(cell.attr('data-sizey')))
-  }
-  return result;
-}
+  $('#lock').click(function(event) {
+    $('#lock').toggleClass('fa-lock fa-unlock');
+    if (locked) {
+      panel.unlock.call(panel);
+    } else {
+      panel.lock.call(panel);
+    }
+    locked = !locked;
+  });
+});
 
 
 function connectWs(hostname, callback) {
@@ -209,7 +129,7 @@ function connectWs(hostname, callback) {
     };
 
     connection.onerror = function(error) {
-      console.log("error:" + msg);
+      console.log("error:" + error);
     };
     connection.onmessage = function(msg) {
       callback(JSON.parse(msg.data));

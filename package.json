@@ -7,13 +7,16 @@
     "baconjs": "^0.7.41",
     "d3": "^3.5.2",
     "leaflet": "^0.7.3",
-    "node-event-emitter": "0.0.1"
+    "lodash": "^2.4.1"
   },
   "devDependencies": {
+    "browserify": "^8.0.3",
     "watchify": "^2.2.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "browserify -d lib/gridwidgets.js -o dist/gridwidgets.js",
+    "watch": "watchify -d lib/gridwidgets.js -o dist/gridwidgets.js"
   },
   "repository": {
     "type": "git",

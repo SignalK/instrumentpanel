@@ -1,0 +1,90 @@
+{
+  "widgetOptions": [{
+    "id": "i1",
+    "type": "compass",
+    "options": {
+      "path": "navigation.courseOverGroundTrue"
+    },
+    "col": 7,
+    "row": 3,
+    "size_x": 4,
+    "size_y": 3
+  }, {
+    "id": "i2",
+    "type": "digital",
+    "options": {
+      "path": "environment.depth.belowTransducer"
+    },
+    "col": 7,
+    "row": 1,
+    "size_x": 2,
+    "size_y": 2
+  }, {
+    "id": "i3",
+    "type": "leafletmap",
+    "options": {
+      "basemaps": [{
+        "name": "Fin Nautic",
+        "type": "wms",
+        "url": "http://kartta.liikennevirasto.fi/meriliikenne/dgds/wms_ip/merikartta",
+        "options": {
+          "layers": "cells",
+          "styles": "style-id-203",
+          "format": "image/png",
+          "transparent": true
+        }
+      }, {
+        "name": "OpenStreetMap",
+        "url": "http://{s}.tile.osm.org/{z}/{x}/{y}.png",
+        "selected": true        
+      }],
+      "overlays": [{
+        "name": "Clouds",
+        "url": "http://{s}.tile.openweathermap.org/map/clouds/{z}/{x}/{y}.png",
+        "visible": false
+      }, {
+        "name": "Precipitation",
+        "url": "http://{s}.tile.openweathermap.org/map/precipitation/{z}/{x}/{y}.png",
+        "visible": false
+      }, {
+        "name": "Rain",
+        "url": "http://{s}.tile.openweathermap.org/map/rain/{z}/{x}/{y}.png",
+        "visible": false
+      }, {
+        "name": "Pressure",
+        "url": "http://{s}.tile.openweathermap.org/map/pressure/{z}/{x}/{y}.png",
+        "visible": false
+      }, {
+        "name": "Pressure Countours",
+        "url": "http://{s}.tile.openweathermap.org/map/pressure_cntr/{z}/{x}/{y}.png",
+        "visible": false
+      }, {
+        "name": "Wind",
+        "url": "http://{s}.tile.openweathermap.org/map/wind/{z}/{x}/{y}.png",
+        "visible": true
+      }, {
+        "name": "Temperature",
+        "url": "http://{s}.tile.openweathermap.org/map/temp/{z}/{x}/{y}.png",
+        "visible": false
+      }]
+    },
+    "col": 1,
+    "row": 1,
+    "size_x": 6,
+    "size_y": 4
+  }, {
+    "id": "i4",
+    "type": "windmeter",
+    "options": {
+      "apparent": true,
+      "true": true,
+      "currentDisplay": "apparent",
+      "autoSwitchCloseHauled": true,
+      "closeHauled": true
+    },
+    "col": 5,
+    "row": 13,
+    "size_x": 2,
+    "size_y": 2
+  }]
+}
