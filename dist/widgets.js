@@ -1,9 +1,9 @@
-(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({"/Users/tjk/git-workspace/signalk/instrumentpanel/node_modules/baconjs/dist/Bacon.js":[function(require,module,exports){
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({"/private/tmp/instrumentpanel/node_modules/baconjs/dist/Bacon.js":[function(require,module,exports){
 (function (global){
 (function() {
   var Bacon, BufferingSource, Bus, CompositeUnsubscribe, ConsumingSource, Desc, Dispatcher, End, Error, Event, EventStream, Exception, Initial, Next, None, Observable, Property, PropertyDispatcher, Some, Source, UpdateBarrier, addPropertyInitValueToStream, assert, assertArray, assertEventStream, assertFunction, assertNoArguments, assertObservable, assertString, cloneArray, compositeUnsubscribe, constantToFunction, containsDuplicateDeps, convertArgsToFunction, describe, end, eventIdCounter, findDeps, flatMap_, former, idCounter, initial, isArray, isFieldKey, isFunction, isObservable, latter, liftCallback, makeFunction, makeFunctionArgs, makeFunction_, makeObservable, makeSpawner, next, nop, partiallyApplied, recursionDepth, registerObs, spys, toCombinator, toEvent, toFieldExtractor, toFieldKey, toOption, toSimpleExtractor, withDescription, withMethodCallSupport, _, _ref,
-    __slice = [].slice,
     __hasProp = {}.hasOwnProperty,
+    __slice = [].slice,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
@@ -13,23 +13,239 @@
     }
   };
 
-  Bacon.version = '0.7.41';
+  Bacon.version = '0.7.42';
 
   Exception = (typeof global !== "undefined" && global !== null ? global : this).Error;
+
+  _ = {
+    indexOf: Array.prototype.indexOf ? function(xs, x) {
+      return xs.indexOf(x);
+    } : function(xs, x) {
+      var i, y, _i, _len;
+      for (i = _i = 0, _len = xs.length; _i < _len; i = ++_i) {
+        y = xs[i];
+        if (x === y) {
+          return i;
+        }
+      }
+      return -1;
+    },
+    indexWhere: function(xs, f) {
+      var i, y, _i, _len;
+      for (i = _i = 0, _len = xs.length; _i < _len; i = ++_i) {
+        y = xs[i];
+        if (f(y)) {
+          return i;
+        }
+      }
+      return -1;
+    },
+    head: function(xs) {
+      return xs[0];
+    },
+    always: function(x) {
+      return function() {
+        return x;
+      };
+    },
+    negate: function(f) {
+      return function(x) {
+        return !f(x);
+      };
+    },
+    empty: function(xs) {
+      return xs.length === 0;
+    },
+    tail: function(xs) {
+      return xs.slice(1, xs.length);
+    },
+    filter: function(f, xs) {
+      var filtered, x, _i, _len;
+      filtered = [];
+      for (_i = 0, _len = xs.length; _i < _len; _i++) {
+        x = xs[_i];
+        if (f(x)) {
+          filtered.push(x);
+        }
+      }
+      return filtered;
+    },
+    map: function(f, xs) {
+      var x, _i, _len, _results;
+      _results = [];
+      for (_i = 0, _len = xs.length; _i < _len; _i++) {
+        x = xs[_i];
+        _results.push(f(x));
+      }
+      return _results;
+    },
+    each: function(xs, f) {
+      var key, value;
+      for (key in xs) {
+        value = xs[key];
+        f(key, value);
+      }
+      return void 0;
+    },
+    toArray: function(xs) {
+      if (isArray(xs)) {
+        return xs;
+      } else {
+        return [xs];
+      }
+    },
+    contains: function(xs, x) {
+      return _.indexOf(xs, x) !== -1;
+    },
+    id: function(x) {
+      return x;
+    },
+    last: function(xs) {
+      return xs[xs.length - 1];
+    },
+    all: function(xs, f) {
+      var x, _i, _len;
+      if (f == null) {
+        f = _.id;
+      }
+      for (_i = 0, _len = xs.length; _i < _len; _i++) {
+        x = xs[_i];
+        if (!f(x)) {
+          return false;
+        }
+      }
+      return true;
+    },
+    any: function(xs, f) {
+      var x, _i, _len;
+      if (f == null) {
+        f = _.id;
+      }
+      for (_i = 0, _len = xs.length; _i < _len; _i++) {
+        x = xs[_i];
+        if (f(x)) {
+          return true;
+        }
+      }
+      return false;
+    },
+    without: function(x, xs) {
+      return _.filter((function(y) {
+        return y !== x;
+      }), xs);
+    },
+    remove: function(x, xs) {
+      var i;
+      i = _.indexOf(xs, x);
+      if (i >= 0) {
+        return xs.splice(i, 1);
+      }
+    },
+    fold: function(xs, seed, f) {
+      var x, _i, _len;
+      for (_i = 0, _len = xs.length; _i < _len; _i++) {
+        x = xs[_i];
+        seed = f(seed, x);
+      }
+      return seed;
+    },
+    flatMap: function(f, xs) {
+      return _.fold(xs, [], (function(ys, x) {
+        return ys.concat(f(x));
+      }));
+    },
+    cached: function(f) {
+      var value;
+      value = None;
+      return function() {
+        if (value === None) {
+          value = f();
+          f = void 0;
+        }
+        return value;
+      };
+    },
+    toString: function(obj) {
+      var ex, internals, key, value;
+      try {
+        recursionDepth++;
+        if (obj == null) {
+          return "undefined";
+        } else if (isFunction(obj)) {
+          return "function";
+        } else if (isArray(obj)) {
+          if (recursionDepth > 5) {
+            return "[..]";
+          }
+          return "[" + _.map(_.toString, obj).toString() + "]";
+        } else if (((obj != null ? obj.toString : void 0) != null) && obj.toString !== Object.prototype.toString) {
+          return obj.toString();
+        } else if (typeof obj === "object") {
+          if (recursionDepth > 5) {
+            return "{..}";
+          }
+          internals = (function() {
+            var _results;
+            _results = [];
+            for (key in obj) {
+              if (!__hasProp.call(obj, key)) continue;
+              value = (function() {
+                try {
+                  return obj[key];
+                } catch (_error) {
+                  ex = _error;
+                  return ex;
+                }
+              })();
+              _results.push(_.toString(key) + ":" + _.toString(value));
+            }
+            return _results;
+          })();
+          return "{" + internals + "}";
+        } else {
+          return obj;
+        }
+      } finally {
+        recursionDepth--;
+      }
+    }
+  };
+
+  recursionDepth = 0;
+
+  Bacon._ = _;
+
+  Bacon.scheduler = {
+    setTimeout: function(f, d) {
+      return setTimeout(f, d);
+    },
+    setInterval: function(f, i) {
+      return setInterval(f, i);
+    },
+    clearInterval: function(id) {
+      return clearInterval(id);
+    },
+    now: function() {
+      return new Date().getTime();
+    }
+  };
 
   Bacon.fromBinder = function(binder, eventTransformer) {
     if (eventTransformer == null) {
       eventTransformer = _.id;
     }
     return new EventStream(describe(Bacon, "fromBinder", binder, eventTransformer), function(sink) {
-      var unbind, unbinder, unbound;
+      var needsUnbind, unbind, unbinder, unbound;
       unbound = false;
+      needsUnbind = false;
       unbind = function() {
-        if (typeof unbinder !== "undefined" && unbinder !== null) {
-          if (!unbound) {
+        if (!unbound) {
+          if (typeof unbinder !== "undefined" && unbinder !== null) {
             unbinder();
+            return unbound = true;
+          } else {
+            return needsUnbind = true;
           }
-          return unbound = true;
         }
       };
       unbinder = binder(function() {
@@ -44,16 +260,15 @@
           event = value[_i];
           reply = sink(event = toEvent(event));
           if (reply === Bacon.noMore || event.isEnd()) {
-            if (unbinder != null) {
-              unbind();
-            } else {
-              Bacon.scheduler.setTimeout(unbind, 0);
-            }
+            unbind();
             return reply;
           }
         }
         return reply;
       });
+      if (needsUnbind) {
+        unbind();
+      }
       return unbind;
     });
   };
@@ -2682,9 +2897,12 @@
       }
     };
     wrappedSubscribe = function(obs, sink) {
-      var doUnsub, unsub, unsubd;
+      var doUnsub, shouldUnsub, unsub, unsubd;
       unsubd = false;
-      doUnsub = function() {};
+      shouldUnsub = false;
+      doUnsub = function() {
+        return shouldUnsub = true;
+      };
       unsub = function() {
         unsubd = true;
         return doUnsub();
@@ -2700,6 +2918,9 @@
           }
         });
       });
+      if (shouldUnsub) {
+        doUnsub();
+      }
       return unsub;
     };
     hasWaiters = function() {
@@ -2936,219 +3157,6 @@
     }
   };
 
-  _ = {
-    indexOf: Array.prototype.indexOf ? function(xs, x) {
-      return xs.indexOf(x);
-    } : function(xs, x) {
-      var i, y, _i, _len;
-      for (i = _i = 0, _len = xs.length; _i < _len; i = ++_i) {
-        y = xs[i];
-        if (x === y) {
-          return i;
-        }
-      }
-      return -1;
-    },
-    indexWhere: function(xs, f) {
-      var i, y, _i, _len;
-      for (i = _i = 0, _len = xs.length; _i < _len; i = ++_i) {
-        y = xs[i];
-        if (f(y)) {
-          return i;
-        }
-      }
-      return -1;
-    },
-    head: function(xs) {
-      return xs[0];
-    },
-    always: function(x) {
-      return function() {
-        return x;
-      };
-    },
-    negate: function(f) {
-      return function(x) {
-        return !f(x);
-      };
-    },
-    empty: function(xs) {
-      return xs.length === 0;
-    },
-    tail: function(xs) {
-      return xs.slice(1, xs.length);
-    },
-    filter: function(f, xs) {
-      var filtered, x, _i, _len;
-      filtered = [];
-      for (_i = 0, _len = xs.length; _i < _len; _i++) {
-        x = xs[_i];
-        if (f(x)) {
-          filtered.push(x);
-        }
-      }
-      return filtered;
-    },
-    map: function(f, xs) {
-      var x, _i, _len, _results;
-      _results = [];
-      for (_i = 0, _len = xs.length; _i < _len; _i++) {
-        x = xs[_i];
-        _results.push(f(x));
-      }
-      return _results;
-    },
-    each: function(xs, f) {
-      var key, value;
-      for (key in xs) {
-        value = xs[key];
-        f(key, value);
-      }
-      return void 0;
-    },
-    toArray: function(xs) {
-      if (isArray(xs)) {
-        return xs;
-      } else {
-        return [xs];
-      }
-    },
-    contains: function(xs, x) {
-      return _.indexOf(xs, x) !== -1;
-    },
-    id: function(x) {
-      return x;
-    },
-    last: function(xs) {
-      return xs[xs.length - 1];
-    },
-    all: function(xs, f) {
-      var x, _i, _len;
-      if (f == null) {
-        f = _.id;
-      }
-      for (_i = 0, _len = xs.length; _i < _len; _i++) {
-        x = xs[_i];
-        if (!f(x)) {
-          return false;
-        }
-      }
-      return true;
-    },
-    any: function(xs, f) {
-      var x, _i, _len;
-      if (f == null) {
-        f = _.id;
-      }
-      for (_i = 0, _len = xs.length; _i < _len; _i++) {
-        x = xs[_i];
-        if (f(x)) {
-          return true;
-        }
-      }
-      return false;
-    },
-    without: function(x, xs) {
-      return _.filter((function(y) {
-        return y !== x;
-      }), xs);
-    },
-    remove: function(x, xs) {
-      var i;
-      i = _.indexOf(xs, x);
-      if (i >= 0) {
-        return xs.splice(i, 1);
-      }
-    },
-    fold: function(xs, seed, f) {
-      var x, _i, _len;
-      for (_i = 0, _len = xs.length; _i < _len; _i++) {
-        x = xs[_i];
-        seed = f(seed, x);
-      }
-      return seed;
-    },
-    flatMap: function(f, xs) {
-      return _.fold(xs, [], (function(ys, x) {
-        return ys.concat(f(x));
-      }));
-    },
-    cached: function(f) {
-      var value;
-      value = None;
-      return function() {
-        if (value === None) {
-          value = f();
-          f = void 0;
-        }
-        return value;
-      };
-    },
-    toString: function(obj) {
-      var ex, internals, key, value;
-      try {
-        recursionDepth++;
-        if (obj == null) {
-          return "undefined";
-        } else if (isFunction(obj)) {
-          return "function";
-        } else if (isArray(obj)) {
-          if (recursionDepth > 5) {
-            return "[..]";
-          }
-          return "[" + _.map(_.toString, obj).toString() + "]";
-        } else if (((obj != null ? obj.toString : void 0) != null) && obj.toString !== Object.prototype.toString) {
-          return obj.toString();
-        } else if (typeof obj === "object") {
-          if (recursionDepth > 5) {
-            return "{..}";
-          }
-          internals = (function() {
-            var _results;
-            _results = [];
-            for (key in obj) {
-              if (!__hasProp.call(obj, key)) continue;
-              value = (function() {
-                try {
-                  return obj[key];
-                } catch (_error) {
-                  ex = _error;
-                  return ex;
-                }
-              })();
-              _results.push(_.toString(key) + ":" + _.toString(value));
-            }
-            return _results;
-          })();
-          return "{" + internals + "}";
-        } else {
-          return obj;
-        }
-      } finally {
-        recursionDepth--;
-      }
-    }
-  };
-
-  recursionDepth = 0;
-
-  Bacon._ = _;
-
-  Bacon.scheduler = {
-    setTimeout: function(f, d) {
-      return setTimeout(f, d);
-    },
-    setInterval: function(f, i) {
-      return setInterval(f, i);
-    },
-    clearInterval: function(id) {
-      return clearInterval(id);
-    },
-    now: function() {
-      return new Date().getTime();
-    }
-  };
-
   if ((typeof define !== "undefined" && define !== null) && (define.amd != null)) {
     define([], function() {
       return Bacon;
@@ -3164,10 +3172,10 @@
 }).call(this);
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],"/Users/tjk/git-workspace/signalk/instrumentpanel/node_modules/d3/d3.js":[function(require,module,exports){
+},{}],"/private/tmp/instrumentpanel/node_modules/d3/d3.js":[function(require,module,exports){
 !function() {
   var d3 = {
-    version: "3.5.2"
+    version: "3.5.3"
   };
   if (!Date.now) Date.now = function() {
     return +new Date();
@@ -11742,12 +11750,8 @@
     return function() {
       var lock, active;
       if ((lock = this[ns]) && (active = lock[lock.active])) {
-        if (--lock.count) {
-          delete lock[lock.active];
-          lock.active += .5;
-        } else {
-          delete this[ns];
-        }
+        if (--lock.count) delete lock[lock.active]; else delete this[ns];
+        lock.active += .5;
         active.event && active.event.interrupt.call(this, this.__data__, active.index);
       }
     };
@@ -12635,7 +12639,7 @@
   if (typeof define === "function" && define.amd) define(d3); else if (typeof module === "object" && module.exports) module.exports = d3;
   this.d3 = d3;
 }();
-},{}],"/Users/tjk/git-workspace/signalk/instrumentpanel/node_modules/leaflet/dist/leaflet-src.js":[function(require,module,exports){
+},{}],"/private/tmp/instrumentpanel/node_modules/leaflet/dist/leaflet-src.js":[function(require,module,exports){
 /*
  Leaflet, a JavaScript library for mobile-friendly interactive maps. http://leafletjs.com
  (c) 2010-2013, Vladimir Agafonkin
@@ -21816,7 +21820,7 @@ L.Map.include({
 
 
 }(window, document));
-},{}],"/Users/tjk/git-workspace/signalk/instrumentpanel/node_modules/node-event-emitter/index.js":[function(require,module,exports){
+},{}],"/private/tmp/instrumentpanel/node_modules/node-event-emitter/index.js":[function(require,module,exports){
 /**
  * Utility functions
  */
@@ -22113,7 +22117,7 @@ EventEmitter.listenerCount = function(emitter, type) {
   return ret;
 };
 
-},{}],"/Users/tjk/git-workspace/signalk/instrumentpanel/widgets.js":[function(require,module,exports){
+},{}],"/private/tmp/instrumentpanel/widgets.js":[function(require,module,exports){
 widgets = {
   Compass: require('./widgets/compass'),
   Digital: require('./widgets/digital'),
@@ -22125,7 +22129,7 @@ L = require('leaflet');
 Bacon = require('baconjs');
 
 EventEmitter = require('node-event-emitter')
-},{"./widgets/compass":"/Users/tjk/git-workspace/signalk/instrumentpanel/widgets/compass.js","./widgets/digital":"/Users/tjk/git-workspace/signalk/instrumentpanel/widgets/digital.js","./widgets/leafletmap":"/Users/tjk/git-workspace/signalk/instrumentpanel/widgets/leafletmap.js","./widgets/windmeter":"/Users/tjk/git-workspace/signalk/instrumentpanel/widgets/windmeter.js","baconjs":"/Users/tjk/git-workspace/signalk/instrumentpanel/node_modules/baconjs/dist/Bacon.js","leaflet":"/Users/tjk/git-workspace/signalk/instrumentpanel/node_modules/leaflet/dist/leaflet-src.js","node-event-emitter":"/Users/tjk/git-workspace/signalk/instrumentpanel/node_modules/node-event-emitter/index.js"}],"/Users/tjk/git-workspace/signalk/instrumentpanel/widgets/compass.js":[function(require,module,exports){
+},{"./widgets/compass":"/private/tmp/instrumentpanel/widgets/compass.js","./widgets/digital":"/private/tmp/instrumentpanel/widgets/digital.js","./widgets/leafletmap":"/private/tmp/instrumentpanel/widgets/leafletmap.js","./widgets/windmeter":"/private/tmp/instrumentpanel/widgets/windmeter.js","baconjs":"/private/tmp/instrumentpanel/node_modules/baconjs/dist/Bacon.js","leaflet":"/private/tmp/instrumentpanel/node_modules/leaflet/dist/leaflet-src.js","node-event-emitter":"/private/tmp/instrumentpanel/node_modules/node-event-emitter/index.js"}],"/private/tmp/instrumentpanel/widgets/compass.js":[function(require,module,exports){
 var d3 = require('d3');
 
 
@@ -22181,8 +22185,8 @@ function drawTicks(tickmarks) {
     .attr('style', 'fill:none; stroke:black; stroke-width:1');
 }
 
-function Compass(selector) {
-  var svg = d3.select(selector).append('svg')
+function Compass(_id) {
+  var svg = d3.select("#" + _id).append('svg')
     .attr('height', '100%')
     .attr('width', '100%')
     .attr('viewBox', size * 0.25 + ' 0 ' + size * 0.5 + ' ' + size * 0.25)
@@ -22218,9 +22222,9 @@ Compass.prototype.setValue = function(value) {
   this.value.text(value);
 }
 module.exports = Compass;
-},{"d3":"/Users/tjk/git-workspace/signalk/instrumentpanel/node_modules/d3/d3.js"}],"/Users/tjk/git-workspace/signalk/instrumentpanel/widgets/digital.js":[function(require,module,exports){
-function Digital(selector) {
-  var svg = d3.select(selector).append('svg')
+},{"d3":"/private/tmp/instrumentpanel/node_modules/d3/d3.js"}],"/private/tmp/instrumentpanel/widgets/digital.js":[function(require,module,exports){
+function Digital(id) {
+  var svg = d3.select("#" + id).append('svg')
     .attr('height', '100%')
     .attr('width', '100%')
     .attr('viewBox', "0 0 20 40")
@@ -22250,9 +22254,9 @@ Digital.prototype.setLabel = function(label) {
 }
 
 module.exports = Digital;
-},{}],"/Users/tjk/git-workspace/signalk/instrumentpanel/widgets/leafletmap.js":[function(require,module,exports){
-function LeafletMap(selector, context) {
-  d3.select(selector).append('div')
+},{}],"/private/tmp/instrumentpanel/widgets/leafletmap.js":[function(require,module,exports){
+function LeafletMap(_id, context) {
+  d3.select("#" + _id).append('div')
     .attr('id', 'map')
     .attr('style', 'height:200px');
   this.map = new L.Map("map", {
@@ -22349,12 +22353,15 @@ LeafletMap.prototype.resize = function(width, height) {
 
 
 module.exports = LeafletMap;
-},{}],"/Users/tjk/git-workspace/signalk/instrumentpanel/widgets/windmeter.js":[function(require,module,exports){
+},{}],"/private/tmp/instrumentpanel/widgets/windmeter.js":[function(require,module,exports){
 var d3 = require('d3');
 
 
 var size = 400;
 var half = size / 2;
+var arcWidthFraction = 0.15;
+var arcWidth = half * arcWidthFraction;
+var arcParam = half - arcWidth / 2;
 
 function centerRotate(deg) {
   return "rotate(" + deg + " " + half + " " + half + ")"
@@ -22363,7 +22370,7 @@ function centerRotate(deg) {
 function drawTicks(tickmarks) {
   for (var i = 0; i < 360; i += 30) {
     tickmarks.append("path").attr("id", "id10-" + i)
-      .attr("d", "m " + half + "," + "0 L " + half + "," + (half * 0.15))
+      .attr("d", "m " + half + "," + "0 L " + half + "," + (arcWidth))
       .attr("stroke-width", "3")
       .attr("transform", centerRotate(i));
   }
@@ -22399,27 +22406,25 @@ function drawTicks(tickmarks) {
   }
 }
 
-function WindMeter(selector) {
-  var svg = d3.select(selector).append('svg')
+function WindMeter(id,  theContext) {
+  var svg = d3.select("#" + id).append('svg')
     .attr('height', '100%')
     .attr('width', '100%')
     .attr('viewBox', '0  0 ' + size + ' ' + size);
 
-
-  var arcParam = half - half * 0.15 / 2;
   svg.append('path')
-    .attr('d', 'M ' + half + ',' + (half * 0.15) / 2 + ' a' + arcParam + ',' + arcParam + ' 0 0,1 ' + arcParam * Math.sin(Math.PI / 3) + ',' + arcParam * Math.cos(Math.PI / 3))
-    .attr('style', 'fill:none; stroke:green; stroke-width:' + half * 0.15);
+    .attr('d', 'M ' + half + ',' + (arcWidth) / 2 + ' a' + arcParam + ',' + arcParam + ' 0 0,1 ' + arcParam * Math.sin(Math.PI / 3) + ',' + arcParam * Math.cos(Math.PI / 3))
+    .attr('style', 'fill:none; stroke:green; stroke-width:' + arcWidth);
   svg.append('path')
-    .attr('d', 'M ' + half + ',' + (half * 0.15) / 2 + ' a' + arcParam + ',' + arcParam + ' 0 0,0 ' + -arcParam * Math.sin(Math.PI / 3) + ',' + arcParam * Math.cos(Math.PI / 3))
-    .attr('style', 'fill:none; stroke:red; stroke-width:' + half * 0.15);
+    .attr('d', 'M ' + half + ',' + (arcWidth) / 2 + ' a' + arcParam + ',' + arcParam + ' 0 0,0 ' + -arcParam * Math.sin(Math.PI / 3) + ',' + arcParam * Math.cos(Math.PI / 3))
+    .attr('style', 'fill:none; stroke:red; stroke-width:' + arcWidth);
 
   this.ticks = svg.append('g')
     .attr('stroke', 'black')
   drawTicks(this.ticks);
 
   var hand = svg.append('path')
-    .attr('d', 'M ' + half + ',0 l 10,' + half + 'l -20,0 L ' + half + ',0')
+    .attr('d', 'M ' + half + ',' + arcWidth + ' l 10,' + half + 'l -20,0 L ' + half + ',' + arcWidth)
     .attr('style', 'fill:black; stroke:black; stroke-width:1')
 
 
@@ -22443,7 +22448,7 @@ function WindMeter(selector) {
     .attr('dominant-baseline', 'middle')
     .text('000');
 
-  context.getStream('environment_wind_angleApparent').onValue(function(pathValue) {
+  theContext.getStream('environment_wind_angleApparent').onValue(function(pathValue) {
     angleText.text(pathValue.value + '\u00b0');
     hand.attr('transform', centerRotate(pathValue.value));
   });    
@@ -22466,7 +22471,7 @@ function WindMeter(selector) {
     .attr('dominant-baseline', 'middle')
     .text('000');
 
-  context.getStream('environment_wind_speedApparent').onValue(function(pathValue) {
+  theContext.getStream('environment_wind_speedApparent').onValue(function(pathValue) {
     var text = speedText.text(pathValue.value + " ");
     text.append('tspan')
     .attr('baseline-shift', 'super')
@@ -22499,4 +22504,4 @@ WindMeter.prototype.setLabel = function(value) {
 
 WindMeter.prototype.setValue = function(value) {}
 module.exports = WindMeter;
-},{"d3":"/Users/tjk/git-workspace/signalk/instrumentpanel/node_modules/d3/d3.js"}]},{},["/Users/tjk/git-workspace/signalk/instrumentpanel/widgets.js"]);
+},{"d3":"/private/tmp/instrumentpanel/node_modules/d3/d3.js"}]},{},["/private/tmp/instrumentpanel/widgets.js"]);
