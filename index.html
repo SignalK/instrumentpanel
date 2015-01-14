@@ -135,7 +135,11 @@ $(function() {
   gridster = $(".gridster ul").gridster().data('gridster');
   if (window.localStorage['signalkGrid']) {
     JSON.parse(window.localStorage['signalkGrid']).forEach(function(item) {
-      gridWidgets[item.id] = createWidget(item.id, item.size_x, item.size_y, item.col, item.row);
+      try {
+        gridWidgets[item.id] = createWidget(item.id, item.size_x, item.size_y, item.col, item.row);
+      } catch (ex) {
+        console.log(ex);
+      }
     });
   }
   connectWs(window.location.host, dispatch)
