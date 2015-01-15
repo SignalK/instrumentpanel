@@ -85,7 +85,11 @@ $(function() {
 
   d3.json('panel1.json', function(err, widgetData) {
     if (window.localStorage['signalkGrid1']) {
-      widgetData = JSON.parse(window.localStorage['signalkGrid1'])
+      try {
+        widgetData = JSON.parse(window.localStorage['signalkGrid1'])
+      } catch (ex) {
+        console.error("Could not deserialize grid from localstorage:" + ex)
+      }
     }
     panel.setWidgetData(widgetData);
     var pushToStream = streamBundle.push.bind(streamBundle);
