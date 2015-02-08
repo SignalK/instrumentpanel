@@ -1,146 +1,31 @@
-<!doctype html>
+<!-- template.html -->
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="/bower_components/leaflet/dist/leaflet.css">
-  <link href="/bower_components/gridster/dist/jquery.gridster.min.css" rel="stylesheet">
-  <link href="/bower_components/font-awesome/css/font-awesome.css" rel="stylesheet">
-  <script src='/bower_components/d3/d3.min.js'></script>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF8">
+    <title>SignalK Instrumentpanel</title>
+    <link rel="stylesheet" type="text/css" href="node_modules/react-grid-layout/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="node_modules/react-grid-layout/node_modules/react-resizable/css/styles.css">
+    <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/bower_components/font-awesome/css/font-awesome.css" rel="stylesheet">
 
-  <style>
-  .gridster li {
-    background: #EEE;
-    cursor: pointer;
-    -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.3);
-    box-shadow: 0 0 5px rgba(0,0,0,0.3);
-  }
-
-  ul {
-    list-style-type: none;
-  }
-
-  body {
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    background: #fff;
-  }
-
-  </style>
-</head>
-<body>
-  <i class="fa fa-lock" id="lock" style="font-size:25px"></i>
-  <div class="gridster">
-    <ul style="position:absolute">
-    </ul>
-  </div>
-</body>
-
-<script src='dist/gridwidgets.js'></script>
-<script src='/bower_components/jquery/dist/jquery.min.js'></script>
-<script src='/bower_components/gridster/dist/jquery.gridster.js'></script>
-
-<script>
-var xDim = 70;
-var yDim = 35;
-var xMargin = 5;
-var yMargin = 5;
-var locked = true;
-
-var dimensions = {
-  cellWidth: 70,
-  cellHeight: 35,
-  xMargin: 5,
-  yMargin: 5
-}
-var streamBundle = new StreamBundle();
-
-$(function() {
-  var panel = new InstrumentPanel(dimensions, streamBundle);
-  $(".gridster ul").gridster({
-    widget_margins: [xMargin, yMargin],
-    widget_base_dimensions: [xDim, yDim],
-    serialize_params: panel.gridsterSerialize,
-    draggable: {
-      stop: function(e, ui, $widget) {
-        panel.dragStop(e, ui, $widget);
-        window.localStorage['signalkGrid1'] = JSON.stringify({
-          widgetOptions: panel.serialize()
-        });
+    <style>
+      .react-draggable {
+        background-color: gold;
       }
-    },
-    resize: {
-      enabled: true,
-      stop: function(e, ui, $widget){
-        panel.resizeStop(e, ui, $widget);
-        window.localStorage['signalkGrid1'] = JSON.stringify({
-          widgetOptions: panel.serialize()
-        });
+      .navbar>.container {
+        width: auto;
+        padding-left: 0;
       }
-    }
-  });
-  var gridster = $(".gridster ul").gridster().data('gridster');
-  panel.setGridster(gridster);
-  panel.lock.call(panel);
-
-  d3.json('panel1.json', function(err, widgetData) {
-    if (window.localStorage['signalkGrid1']) {
-      try {
-        widgetData = JSON.parse(window.localStorage['signalkGrid1'])
-      } catch (ex) {
-        console.error("Could not deserialize grid from localstorage:" + ex)
+      .widgetlist {
+        overflow: scroll;
+        height: 70%;
       }
-    }
-    panel.setWidgetData(widgetData);
-    var pushToStream = streamBundle.push.bind(streamBundle);
-    connectWs(window.location.host, function dispatch(delta) {
-      delta.updates.forEach(function(update) {
-        update.values.forEach(function(pathValue) {
-          panel.pushPath.call(panel, pathValue.path);
-          pushToStream(pathValue);
-        });
-      });
-    });
-  });
+    </style>
+  </head>
 
-  $('#lock').click(function(event) {
-    $('#lock').toggleClass('fa-lock fa-unlock');
-    if (locked) {
-      panel.unlock.call(panel);
-    } else {
-      panel.lock.call(panel);
-    }
-    locked = !locked;
-  });
-});
+  <body>
+    <div id="content"></div>
+  </body>
+  <script src="dist/ui.js"></script>
 
-
-function connectWs(hostname, callback) {
-  var url = "ws://" + hostname + "/signalk/stream?stream=delta&context=self ";
-  if (typeof Primus != 'undefined') {
-    var signalKStream = Primus.connect(url, {
-      reconnect: {
-        maxDelay: 15000,
-        minDelay: 500,
-        retries: Infinity
-      }
-    });
-    signalKStream.on('data', callback);
-  } else {
-    connection = new WebSocket(url);
-    connection.onopen = function(msg) {
-      console.log("open:" + msg);
-    };
-
-    connection.onerror = function(error) {
-      console.log("error:" + error);
-    };
-    connection.onmessage = function(msg) {
-      callback(JSON.parse(msg.data));
-    };
-  }
-}
-
-
-</script>
 </html>

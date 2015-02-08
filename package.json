@@ -4,10 +4,18 @@
   "description": "SignalK HTML5 Instrumentpanel",
   "main": "widgetdemo.js",
   "dependencies": {
-    "baconjs": "^0.7.41",
+    "bacon.model": "^0.1.12",
+    "baconjs": "^0.7.42",
     "d3": "^3.5.2",
+    "debug": "^2.1.1",
     "leaflet": "^0.7.3",
-    "lodash": "^2.4.1"
+    "lodash": "^2.4.1",
+    "react": "^0.12.2",
+    "react-bootstrap": "^0.13.2",
+    "react-font-awesome": "git://github.com/tkurki/react-font-awesome",
+    "react-grid-layout": "^0.6.1",
+    "reactify": "^0.17.1",
+    "ws": "^0.7.1"
   },
   "devDependencies": {
     "browserify": "^8.0.3",
