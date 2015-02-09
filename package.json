@@ -6,7 +6,6 @@
   "dependencies": {
     "bacon.model": "^0.1.12",
     "baconjs": "^0.7.42",
-    "d3": "^3.5.2",
     "debug": "^2.1.1",
     "leaflet": "^0.7.3",
     "lodash": "^2.4.1",
