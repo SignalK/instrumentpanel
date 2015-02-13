@@ -5,3 +5,17 @@ Instrument panel implemented as a grid with draggable &amp; resizable components
 
 ![image](https://cloud.githubusercontent.com/assets/1049678/5593080/9657b632-91fc-11e4-9585-53e90c101149.png)
 
+To Do:
+
+- [ ] activate/deactivate individual widgets
+- [ ] 'discovery mode' manual activation/deactivation
+- [ ] manual addition of widgets, multiple alternative widgets
+- [ ] configurat    ion mode for widgets
+- [ ] history graph widget (simple)
+- [ ] history graph widget with bootstrapping from server
+- [ ] configurable number of grid columns
+- [ ] multiple layouts
+- [ ] sailgauge widget
+- [ ] ais tracker widget
+- [ ] map widget
+
