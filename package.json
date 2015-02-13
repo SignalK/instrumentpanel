@@ -9,6 +9,7 @@
     "debug": "^2.1.1",
     "leaflet": "^0.7.3",
     "lodash": "^2.4.1",
+    "minifyify": "^6.1.0",
     "react": "^0.12.2",
     "react-bootstrap": "^0.13.2",
     "react-font-awesome": "git://github.com/tkurki/react-font-awesome",
