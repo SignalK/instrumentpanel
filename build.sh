@@ -1,3 +1,3 @@
 #!/bin/sh
 
-watchify -t reactify lib/ui/main.js -o dist/ui.js --debug --verbose
+node_modules/.bin/watchify -t reactify lib/ui/main.js -o dist/ui.js --debug --verbose
