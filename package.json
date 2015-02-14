@@ -15,6 +15,7 @@
     "react-font-awesome": "git://github.com/tkurki/react-font-awesome",
     "react-grid-layout": "^0.6.1",
     "reactify": "^0.17.1",
+    "watchify": "^2.3.0",
     "ws": "^0.7.1"
   },
   "devDependencies": {
