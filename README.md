@@ -8,7 +8,7 @@ Instrument panel implemented as a grid with draggable &amp; resizable components
 To Do:
 
 
-- [ ] activate/deactivate individual widgets
+- [x] activate/deactivate individual widgets
 - [ ] 'discovery mode' manual activation/deactivation
 - [ ] manual addition of widgets, multiple alternative widgets
 - [ ] configuration mode for widgets
@@ -16,8 +16,10 @@ To Do:
 - [ ] history graph widget with bootstrapping from server
 - [ ] configurable number of grid columns
 - [ ] multiple layouts
+- [ ] server configuration storage
 - [ ] sailgauge widget
 - [ ] ais tracker widget
 - [ ] map widget
 - [ ] connect to multiple servers
+- [ ] ui cleanup
 
