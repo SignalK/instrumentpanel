@@ -9,7 +9,6 @@
     "debug": "^2.1.1",
     "leaflet": "^0.7.3",
     "lodash": "^2.4.1",
-    "minifyify": "^6.1.0",
     "react": "^0.12.2",
     "react-bootstrap": "^0.13.2",
     "react-font-awesome": "git://github.com/tkurki/react-font-awesome",
@@ -20,12 +19,13 @@
   },
   "devDependencies": {
     "browserify": "^8.0.3",
+    "minifyify": "^6.1.0",
     "watchify": "^2.2.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "browserify -d lib/gridwidgets.js -o dist/gridwidgets.js",
-    "watch": "watchify -d lib/gridwidgets.js -o dist/gridwidgets.js"
+    "watch": "watchify -t reactify lib/ui/main.js -o dist/ui.js --debug --verbose",
+    "dist": "browserify lib/ui/main.js -t reactify -d -p [minifyify --map ui.map.json --output dist/ui.map.json] > dist/ui.js"
   },
   "repository": {
     "type": "git",
