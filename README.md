@@ -11,6 +11,8 @@ To Do:
 
 - [ ] bug: start with no localstorage, unlock, drag, lock => changes not saved
 
+- [ ] react-grid-styles: bower packaging
+
 - [ ] 'discovery mode' manual activation/deactivation
 - [ ] delete obsolete data items, delete all
 - [ ] manual addition of widgets, multiple alternative widgets
