@@ -5,13 +5,23 @@ Instrument panel implemented as a grid with draggable &amp; resizable components
 
 ![image](https://cloud.githubusercontent.com/assets/1049678/5593080/9657b632-91fc-11e4-9585-53e90c101149.png)
 
-To Do:
+
+Building
+================
+Developing: build & watch with `npm run watch`
+
+Building js bundle for distribution: `npm run dist` (and push changes to dist/ui.js).
+
+
+To Do
+=================
 - [x] activate/deactivate individual widgets
 - [x] connect to multiple servers
+- [X] minify 
+- [x] react-grid-styles: bower packaging  
 
 - [ ] bug: start with no localstorage, unlock, drag, lock => changes not saved
 
-- [ ] react-grid-styles: bower packaging
 
 - [ ] 'discovery mode' manual activation/deactivation
 - [ ] delete obsolete data items, delete all
@@ -30,5 +40,4 @@ To Do:
 - [ ] per server layout
 - [ ] bootstrapping from server for history graph
 
-- [ ] minify http://maketea.co.uk/2014/04/07/building-robust-web-apps-with-react-part-2.html
 
