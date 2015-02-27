@@ -19,6 +19,7 @@ To Do
 - [x] connect to multiple servers
 - [X] minify 
 - [x] react-grid-styles: bower packaging  
+- [x] 'Receiving indicator' (circle/circle-o)
 
 - [ ] bug: start with no localstorage, unlock, drag, lock => changes not saved
 
