@@ -23,6 +23,11 @@ To Do
 
 - [ ] bug: start with no localstorage, unlock, drag, lock => changes not saved
 
+- [ ] good widgets for 'normal' data set (position, current, date & time)
+- [ ] better label handling
+
+- [ ] alternative units
+- [ ] true values in windmeter
 
 - [ ] 'discovery mode' manual activation/deactivation
 - [ ] delete obsolete data items, delete all
@@ -36,7 +41,6 @@ To Do
 - [ ] sailgauge widget
 - [ ] ais tracker widget
 - [ ] map widget
-- [ ] connect to multiple servers
 - [ ] ui cleanup
 - [ ] per server layout
 - [ ] bootstrapping from server for history graph
