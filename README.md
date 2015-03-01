@@ -24,6 +24,7 @@ To Do
 - [ ] bug: start with no localstorage, unlock, drag, lock => changes not saved
 
 - [ ] good widgets for 'normal' data set (position, current, date & time)
+- [ ] add grid cell outline
 - [ ] better label handling
 
 - [ ] alternative units
