@@ -21,6 +21,10 @@ To Do
 - [x] react-grid-styles: bower packaging  
 - [x] 'Receiving indicator' (circle/circle-o)
 
+- [ ] allow bootstrap of grid configuration from server
+- [ ] reset to server
+- [ ] reset to discover mode
+
 - [ ] bug: start with no localstorage, unlock, drag, lock => changes not saved
 
 - [ ] good widgets for 'normal' data set (position, current, date & time)
