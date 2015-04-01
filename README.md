@@ -20,16 +20,16 @@ To Do
 - [X] minify 
 - [x] react-grid-styles: bower packaging  
 - [x] 'Receiving indicator' (circle/circle-o)
+- [X] allow bootstrap of grid configuration from server
+- [x] visible grid cell background
+- [x] bug: start with no localstorage, unlock, drag, lock => changes not saved
+- [x] better label handling
+- [x] per server layout
 
-- [ ] allow bootstrap of grid configuration from server
 - [ ] reset to server
 - [ ] reset to discover mode
 
-- [ ] bug: start with no localstorage, unlock, drag, lock => changes not saved
-
 - [ ] good widgets for 'normal' data set (position, current, date & time)
-- [ ] add grid cell outline
-- [ ] better label handling
 
 - [ ] alternative units
 - [ ] true values in windmeter
@@ -47,7 +47,6 @@ To Do
 - [ ] ais tracker widget
 - [ ] map widget
 - [ ] ui cleanup
-- [ ] per server layout
 - [ ] bootstrapping from server for history graph
 
 
