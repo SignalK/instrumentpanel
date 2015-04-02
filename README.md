@@ -26,27 +26,30 @@ To Do
 - [x] better label handling
 - [x] per server layout
 
-- [ ] reset to server
-- [ ] reset to discover mode
-
+- [ ] doesn't work with java server
+- [ ] only self messages in client /discard ais stuff
 - [ ] good widgets for 'normal' data set (position, current, date & time)
 
-- [ ] alternative units
-- [ ] true values in windmeter
+=> master
+
+- [ ] true/both values in windmeter, change by click
+- [ ] history graph widget (simple)
+
+- [ ] sailgauge widget
+
+- [ ] reset
 
 - [ ] 'discovery mode' manual activation/deactivation
-- [ ] delete obsolete data items, delete all
+- [ ] delete obsolete data items
 - [ ] manual addition of widgets, multiple alternative widgets
 - [ ] configuration mode for widgets
-- [ ] history graph widget (simple)
-- [ ] history graph widget 
+- [ ] history graph widget https://github.com/mapbox/react-tangle
 - [ ] configurable number of grid columns
 - [ ] multiple layouts
 - [ ] server configuration storage
-- [ ] sailgauge widget
 - [ ] ais tracker widget
 - [ ] map widget
 - [ ] ui cleanup
 - [ ] bootstrapping from server for history graph
 
-
+- [ ] subscription support
