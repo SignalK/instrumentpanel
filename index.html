@@ -17,9 +17,48 @@
       .react-draggable {
         background-color: gold;
       }
+<<<<<<< HEAD
       .navbar>.container {
         width: auto;
         padding-left: 0;
+=======
+    }
+  });
+  gridster = $(".gridster ul").gridster().data('gridster');
+  if (window.localStorage['signalkGrid']) {
+    JSON.parse(window.localStorage['signalkGrid']).forEach(function(item) {
+      try {
+        gridWidgets[item.id] = createWidget(item.id, item.size_x, item.size_y, item.col, item.row);
+      } catch (ex) {
+        console.log(ex);
+      }
+    });
+  }
+  connectWs(window.location.host, dispatch)
+});
+
+function saveToLocalStorage() {
+  window.localStorage['signalkGrid'] = JSON.stringify(gridster.serialize());  
+}
+
+
+var pathValues = {}
+
+function valueToText(updateValue) {
+  var pathValueFunction = pathValues[updateValue.path] || function(value) { return value;};
+  return pathValueFunction(updateValue.value);
+}
+
+function dispatch(delta) {
+  delta.updates.forEach(function(update) {
+    update.values.forEach(function(value) {
+      var id = getIdFor(value.path);
+      pushToStream(id, value);
+      var widget = gridWidgets[id];
+      if (!widget) {
+        widget = createWidget(value.path, 3, 2);
+        gridWidgets[id] = widget;
+>>>>>>> master
       }
       .widgetlist {
         overflow: scroll;
