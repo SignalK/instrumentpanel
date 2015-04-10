@@ -1,0 +1,132 @@
+{
+  "layout": [
+    {
+      "w": 3,
+      "h": 7,
+      "x": 0,
+      "y": 0,
+      "i": "0"
+    },
+    {
+      "w": 3,
+      "h": 2,
+      "x": 3,
+      "y": 0,
+      "i": "2"
+    },
+    {
+      "w": 3,
+      "h": 4,
+      "x": 3,
+      "y": 2,
+      "i": "3"
+    },
+    {
+      "w": 2,
+      "h": 1,
+      "x": 6,
+      "y": 0,
+      "i": "5"
+    },
+    {
+      "w": 2,
+      "h": 1,
+      "x": 6,
+      "y": 1,
+      "i": "6"
+    },
+    {
+      "w": 2,
+      "h": 1,
+      "x": 6,
+      "y": 2,
+      "i": "8"
+    },
+    {
+      "w": 2,
+      "h": 1,
+      "x": 6,
+      "y": 3,
+      "i": "9"
+    }
+  ],
+  "widgets": [
+    {
+      "type": "windmeter",
+      "options": {
+        "path": "environment.wind.speedApparent",
+        "active": true
+      }
+    },
+    {
+      "type": "digital",
+      "options": {
+        "path": "navigation.speedOverGround",
+        "active": false
+      }
+    },
+    {
+      "type": "compass",
+      "options": {
+        "path": "navigation.courseOverGroundTrue",
+        "active": true
+      }
+    },
+    {
+      "type": "digitalposition",
+      "options": {
+        "path": "navigation.position",
+        "active": false
+      }
+    },
+    {
+      "type": "digital",
+      "options": {
+        "path": "environment.depth.belowTransducer",
+        "active": false
+      }
+    },
+    {
+      "type": "digital",
+      "options": {
+        "path": "environment.date",
+        "active": true
+      }
+    },
+    {
+      "type": "digital",
+      "options": {
+        "path": "environment.time",
+        "active": true
+      }
+    },
+    {
+      "type": "digital",
+      "options": {
+        "path": "navigation.speedThroughWater",
+        "active": false
+      }
+    },
+    {
+      "type": "digital",
+      "options": {
+        "path": "navigation.logTrip",
+        "active": true
+      }
+    },
+    {
+      "type": "digital",
+      "options": {
+        "path": "navigation.log",
+        "active": true
+      }
+    },
+    {
+      "type": "digital",
+      "options": {
+        "path": "entertainment",
+        "active": false
+      }
+    }
+  ]
+}

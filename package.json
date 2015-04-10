@@ -4,16 +4,30 @@
   "description": "SignalK HTML5 Instrumentpanel",
   "main": "widgetdemo.js",
   "dependencies": {
-    "baconjs": "^0.7.41",
-    "d3": "^3.5.2",
+    "bacon.model": "^0.1.12",
+    "baconjs": "^0.7.42",
+    "bluebird": "^2.9.24",
+    "debug": "^2.1.1",
     "leaflet": "^0.7.3",
-    "node-event-emitter": "0.0.1"
+    "lodash": "^2.4.1",
+    "react": "^0.12.2",
+    "react-bootstrap": "^0.13.2",
+    "react-font-awesome": "git://github.com/tkurki/react-font-awesome",
+    "react-grid-layout": "^0.6.1",
+    "reactify": "^0.17.1",
+    "signalk-schema": "SignalK/specification#i18n",
+    "watchify": "^2.3.0",
+    "ws": "^0.7.1"
   },
   "devDependencies": {
+    "browserify": "^8.0.3",
+    "minifyify": "^6.1.0",
     "watchify": "^2.2.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "watchify -t reactify lib/ui/main.js -o dist/ui.js --debug --verbose",
+    "dist": "browserify lib/ui/main.js -t reactify -d -p [minifyify --map ui.map.json --output dist/ui.map.json] > dist/ui.js"
   },
   "repository": {
     "type": "git",

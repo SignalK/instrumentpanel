@@ -1,8 +1,8 @@
 widgets = {
-  Compass: require('./widgets/compass'),
-  Digital: require('./widgets/digital'),
-  WindMeter: require('./widgets/windmeter'),
-  LeafletMap: require('./widgets/leafletmap')
+  Compass: require('./lib/widgets/compass'),
+  Digital: require('./lib/widgets/digital'),
+  WindMeter: require('./lib/widgets/windmeter'),
+  LeafletMap: require('./lib/widgets/leafletmap')
 }
 
 L = require('leaflet');

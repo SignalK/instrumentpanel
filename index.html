@@ -1,135 +1,27 @@
-<!doctype html>
+<!-- template.html -->
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="/bower_components/leaflet/dist/leaflet.css">
-  <link href="/bower_components/gridster/dist/jquery.gridster.min.css" rel="stylesheet">
-  <link href="/bower_components/font-awesome/css/font-awesome.css" rel="stylesheet">
-  <script src='/bower_components/d3/d3.min.js'></script>
-  <script src='dist/widgets.js'></script>
-  <script src='/bower_components/jquery/dist/jquery.min.js'></script>
-  <script src='/bower_components/gridster/dist/jquery.gridster.js'></script>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF8">
+    <title>SignalK Instrumentpanel</title>
+    <link rel="stylesheet" type="text/css" href="css/react-grid-layout.css">
+    <link rel="stylesheet" type="text/css" href="css/react-resizable.css">
+    <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/bower_components/font-awesome/css/font-awesome.css" rel="stylesheet">
 
-  <style>
-  .gridster li {
-    background: #EEE;
-    cursor: pointer;
-    -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.3);
-    box-shadow: 0 0 5px rgba(0,0,0,0.3);
-  }
-
-  ul {
-    list-style-type: none;
-  }
-
-  body {
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    background: #fff;
-  }
-
-  </style>
-</head>
-<body>
-  <i class="fa fa-unlock" id="lock" style="font-size:25px"></i>
-  <div class="gridster">
-    <ul style="position:absolute">
-    </ul>
-  </div>
-</body>
-<script>
-
-String.prototype.replaceAll = function(target, replacement) {
-  return this.split(target).join(replacement);
-};
-
-var gridster;
-var gridWidgets = {};
-var widgetFactories = {
-  'navigation_courseOverGroundTrue': widgets.Compass,
-  'environment_wind_angleApparent': widgets.WindMeter,
-  'navigation_position': widgets.LeafletMap
-}
-var svgWidgets = {};
-
-
-var xDim = 70;
-var yDim = 35;
-var xMargin = 5;
-var yMargin = 5;
-var context = new EventEmitter();
-context.streams = {};
-context.getStream = function getStream(id) {
-  var stream = context.streams[id];
-  if (typeof stream === 'undefined') {
-    stream = new Bacon.Bus();
-    context.streams[id] = stream
-  }
-  return stream;
-};
-
-var locked = false;
-
-function yPixels(ySize) {
-  return ySize * yDim + (ySize <= 1 ? 0 : (ySize -1) * yMargin * 2);
-}
-
-function xPixels(xSize) {
-  return xSize * xDim + (xSize <= 1 ? 0 : (xSize -1) * xMargin * 2);
-}
-
-function toggleLockState(event) {
-  $('#lock').toggleClass('fa-lock fa-unlock');
-  if (locked) {
-    context.emit('unlock');
-  } else {
-    context.emit('lock');
-  }
-  locked = !locked;
-}
-
-context.on('unlock', function() {
-  gridster.enable();
-  gridster.resize_api.enable();
-});
-context.on('lock', function() {
-  gridster.disable();
-  gridster.resize_api.disable();
-});
-
-$(function() {
-
-  $('#lock').click(function(event) {
-    toggleLockState();
-  });
-
-  $(".gridster ul").gridster({
-    widget_margins: [xMargin, yMargin],
-    widget_base_dimensions: [xDim, yDim],
-    serialize_params: function($w, wgd) {
-      return {
-        id: $w.attr('id'),
-        col: wgd.col,
-        row: wgd.row,
-        size_x: wgd.size_x,
-        size_y: wgd.size_y
+    <style>
+      .react-grid-item {
+        background-color: whitesmoke;
+        border-radius: 8px;
+        border: 1px solid silver;      
       }
-    },
-    draggable: {
-      stop: function(e, ui, $widget) {
-        saveToLocalStorage();
+      .react-draggable {
+        background-color: gold;
       }
-    },
-    resize: {
-      enabled: true,
-      stop: function(e, ui, $widget) {
-        $widget.children('div').height(yPixels($widget.attr('data-sizey')));
-        if(typeof svgWidgets[$widget.attr('id')].resize === 'function') {
-          svgWidgets[$widget.attr('id')].resize(xPixels($widget.attr('data-sizex')), yPixels($widget.attr('data-sizey')))
-        }
-        saveToLocalStorage();
-      }
+<<<<<<< HEAD
+      .navbar>.container {
+        width: auto;
+        padding-left: 0;
+=======
     }
   });
   gridster = $(".gridster ul").gridster().data('gridster');
@@ -166,61 +58,18 @@ function dispatch(delta) {
       if (!widget) {
         widget = createWidget(value.path, 3, 2);
         gridWidgets[id] = widget;
+>>>>>>> master
       }
-      widget.setLabel(value.path);
-      widget.setValue(valueToText(value));
-    });
-  });
-}
-
-function pushToStream(id, value) {
-  context.getStream(id).push(value);
-}
-
-
-function getIdFor(path) {
-  return path.replaceAll('.', '_')
-}
-
-function createWidget(path, widthInCells, heightInCells, xCell, yCell) {
-  var id = getIdFor(path);
-  var cell = gridster.add_widget('<li class="new" id="' + id + '"></li>', widthInCells, heightInCells, xCell, yCell);
-  var widgetCreator = widgetFactories[id] || widgets.Digital;
-  var result = svgWidgets[id] = new widgetCreator(id, context);
-  cell.children('div').height(yPixels(cell.attr('data-sizey')));
-  if (typeof svgWidgets[id].resize === 'function') {
-    svgWidgets[id].resize(xPixels(cell.attr('data-sizex')), yPixels(cell.attr('data-sizey')))
-  }
-  return result;
-}
-
-
-function connectWs(hostname, callback) {
-  var url = "ws://" + hostname + "/signalk/stream?stream=delta&context=self ";
-  if (typeof Primus != 'undefined') {
-    var signalKStream = Primus.connect(url, {
-      reconnect: {
-        maxDelay: 15000,
-        minDelay: 500,
-        retries: Infinity
+      .widgetlist {
+        overflow: scroll;
+        height: 70%;
       }
-    });
-    signalKStream.on('data', callback);
-  } else {
-    connection = new WebSocket(url);
-    connection.onopen = function(msg) {
-      console.log("open:" + msg);
-    };
+    </style>
+  </head>
 
-    connection.onerror = function(error) {
-      console.log("error:" + msg);
-    };
-    connection.onmessage = function(msg) {
-      callback(JSON.parse(msg.data));
-    };
-  }
-}
+  <body>
+    <div id="content"></div>
+  </body>
+  <script src="dist/ui.js"></script>
 
-
-</script>
 </html>
