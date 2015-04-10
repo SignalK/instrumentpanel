@@ -24,7 +24,7 @@ To Do
 - [x] visible grid cell background
 - [x] per server layout persisted in localstorage
 - [x] last known servers & connection status in localstorage
-- 
+
 - [ ] good widgets for 'normal' data set (position, current, date & time)
 - [ ] true/both values in windmeter, change by click
 - [ ] history graph widget (simple)
