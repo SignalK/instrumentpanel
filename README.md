@@ -3,13 +3,13 @@ Signalk K Instrument Panel
 
 Instrument panel implemented as a grid with draggable &amp; resizable components. Components are added dynamically eg. when the panel receives data it hasn't seen before a new cell is added to the grid.
 
-![image](https://cloud.githubusercontent.com/assets/1049678/5593080/9657b632-91fc-11e4-9585-53e90c101149.png)
+![image](https://cloud.githubusercontent.com/assets/1049678/7094488/616bab4c-dfca-11e4-9c0b-eb1d4398f097.png)
+
 
 
 Building
 ================
 Developing: build & watch with `npm run watch`
-
 Building js bundle for distribution: `npm run dist` (and push changes to dist/ui.js).
 
 
@@ -17,39 +17,31 @@ To Do
 =================
 - [x] activate/deactivate individual widgets
 - [x] connect to multiple servers
-- [X] minify 
+- [x] minify 
 - [x] react-grid-styles: bower packaging  
 - [x] 'Receiving indicator' (circle/circle-o)
-- [X] allow bootstrap of grid configuration from server
+- [x] allow bootstrap of grid configuration from server: settings panel shows json that can be retrieved from the server with ?useGridFromServer=true url parameter)
 - [x] visible grid cell background
-- [x] bug: start with no localstorage, unlock, drag, lock => changes not saved
-- [x] better label handling
-- [x] per server layout
-
-- [ ] doesn't work with java server
-- [ ] only self messages in client /discard ais stuff
+- [x] per server layout persisted in localstorage
+- [x] last known servers & connection status in localstorage
+- 
 - [ ] good widgets for 'normal' data set (position, current, date & time)
-
-=> master
-
 - [ ] true/both values in windmeter, change by click
 - [ ] history graph widget (simple)
-
 - [ ] sailgauge widget
-
-- [ ] reset
-
 - [ ] 'discovery mode' manual activation/deactivation
-- [ ] delete obsolete data items
+- [ ] possibility to delete obsolete data items
 - [ ] manual addition of widgets, multiple alternative widgets
 - [ ] configuration mode for widgets
-- [ ] history graph widget https://github.com/mapbox/react-tangle
+- [ ] full screen mode for widgets
+- [ ] history graph widget (maybe https://github.com/mapbox/react-tangle for scaling)
 - [ ] configurable number of grid columns
-- [ ] multiple layouts
-- [ ] server configuration storage
+- [ ] multiple alternate layouts
+- [ ] server configuration storage (button to store on the server)
 - [ ] ais tracker widget
 - [ ] map widget
-- [ ] ui cleanup
+- [ ] ui cleanup...
 - [ ] bootstrapping from server for history graph
 
-- [ ] subscription support
+- [ ] subscription support: fetch items list from server, only subscribe when widget activated
+- [ ] use Primus/reconnect support
