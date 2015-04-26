@@ -29,6 +29,8 @@ To Do
 
 - [ ] good widgets for 'normal' data set (position, current, date & time)
 - [ ] true/both values in windmeter, change by click
+- [ ] alternative/configurable units (knots/mps/mph)
+- [ ] configurable display format (position: deg+min.dec, deg.min.sec / precision)
 - [ ] history graph widget (simple)
 - [ ] sailgauge widget
 - [ ] 'discovery mode' manual activation/deactivation
