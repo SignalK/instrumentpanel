@@ -9,8 +9,10 @@ Instrument panel implemented as a grid with draggable &amp; resizable components
 
 Building
 ================
-Developing: build & watch with `npm run watch`
-Building js bundle for distribution: `npm run dist` (and push changes to dist/ui.js).
+Developing: 
+- install development dependencies with `npm install`
+- build & watch with `npm run watch`
+- building js bundle for distribution: `npm run dist` (and push changes to dist/ui.js). This builds minified ui.js.
 
 
 To Do
