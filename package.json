@@ -4,6 +4,7 @@
   "description": "SignalK HTML5 Instrumentpanel",
   "main": "widgetdemo.js",
   "dependencies": {
+    "babel": "^5.8.23",
     "bacon.model": "^0.1.12",
     "baconjs": "^0.7.42",
     "bluebird": "^2.9.24",
@@ -21,14 +22,15 @@
     "ws": "^0.7.1"
   },
   "devDependencies": {
-    "browserify": "^8.0.3",
-    "minifyify": "^6.1.0",
-    "watchify": "^2.2.1"
+    "babel-loader": "^5.3.2",
+    "json-loader": "^0.5.2",
+    "webpack": "^1.11.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "watchify -t reactify lib/ui/main.js -o dist/ui.js --debug --verbose",
-    "dist": "browserify lib/ui/main.js -t reactify -d -p [minifyify --map ui.map.json --output dist/ui.map.json] > dist/ui.js"
+    "start": "npm run watch",
+    "build": "webpack -p --devtool source-map",
+    "watch": "webpack -d --watch"
   },
   "repository": {
     "type": "git",
