@@ -15,7 +15,7 @@
     "react-font-awesome": "git://github.com/tkurki/react-font-awesome",
     "react-grid-layout": "^0.6.1",
     "reactify": "^0.17.1",
-    "signalk-schema": "SignalK/specification#i18n",
+    "signalk-schema": "SignalK/specification",
     "watchify": "^2.3.0",
     "ws": "^0.7.1"
   },
