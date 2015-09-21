@@ -5,6 +5,10 @@ Instrument panel implemented as a grid with draggable &amp; resizable components
 
 ![image](https://cloud.githubusercontent.com/assets/1049678/7094488/616bab4c-dfca-11e4-9c0b-eb1d4398f097.png)
 
+Trouble?
+=========================
+InstrumentPanel stores some of the settings in the browser's localstorage. In case there is some garbage there you can get it cleared by using a url with query parameter `?reset=true`.
+
 
 
 Building
