@@ -13,7 +13,7 @@
     "lodash": "^2.4.1",
     "react": "^0.12.2",
     "react-bootstrap": "^0.13.2",
-    "react-font-awesome": "git://github.com/tkurki/react-font-awesome",
+    "react-fontawesome": "^0.3.3",
     "react-grid-layout": "^0.6.1",
     "reactify": "^0.17.1",
     "signalk-schema": "SignalK/specification",
