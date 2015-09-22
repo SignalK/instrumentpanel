@@ -3,7 +3,7 @@ var webpack = require('webpack')
 module.exports = {
   entry: {
     ui: './lib/ui/main.js',
-    vendor: ['react', 'debug']
+    vendor: ['react', 'debug', 'd3', 'react-bootstrap']
   },
   output: {
     path: 'dist',
