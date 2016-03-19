@@ -12,10 +12,11 @@
     "debug": "^2.1.1",
     "js-quantities": "^1.5.0",
     "lodash": "^2.4.1",
-    "react": "^0.12.2",
+    "react": "^0.14",
+    "react-dom": "^0.14",
     "react-bootstrap": "^0.13.2",
     "react-fontawesome": "^0.3.3",
-    "react-grid-layout": "^0.6.1",
+    "react-grid-layout": "0.10",
     "signalk-schema": "SignalK/specification",
     "signalk-client": "SignalK/signalk-js-client",
     "ws": "^0.7.1"
