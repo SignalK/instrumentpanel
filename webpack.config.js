@@ -1,4 +1,5 @@
-var webpack = require('webpack')
+var webpack = require('webpack');
+var path = require('path');
 
 module.exports = {
   entry: {
@@ -20,6 +21,7 @@ module.exports = {
       bacon: "baconjs"
     }
   },
+  resolveLoader: { fallback: path.join(__dirname, "node_modules") },
   plugins: [
     new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js'),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
