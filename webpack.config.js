@@ -11,8 +11,8 @@ module.exports = {
   },
   module: {
     loaders: [
-      {test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel'},
-      {test: /\.json$/, loader: 'json'}
+      {test: /\.js?$/, exclude: /node_modules/, loader: 'babel', query:{"presets":['react']}},
+      {test: /\.json$/, loader: 'json-loader'}
     ]
   },
   resolve: {
@@ -23,6 +23,5 @@ module.exports = {
   plugins: [
     new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js'),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
-  ],
- externals: ['mdns']
+  ]
 }
