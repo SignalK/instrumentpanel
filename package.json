@@ -1,8 +1,24 @@
 {
   "name": "instrumentpanel",
-  "version": "0.0.1",
-  "description": "SignalK HTML5 Instrumentpanel",
-  "main": "widgetdemo.js",
+  "version": "2.0.0-alpha1",
+  "description": "Signal K instrument panel implemented as an HTML5 grid with draggable & resizable widgets",
+  "keywords": ["signal k", "signalk", "instruments", "dashboard", "marine", "nmea"],
+  "homepage": "https://github.com/SignalK/instrumentpanel",
+  "bugs": "https://github.com/SignalK/instrumentpanel/issues",
+  "license": "Apache-2.0",
+  "author": "Teppo Kurki <teppo.kurki@iki.fi>",
+  "contributors": [
+    "Tim Mathews <tim@signalk.org>"
+  ],
+  "main": "lib/ui/main.js",
+  "repository": "github:SignalK/instrumentpanel.git",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm run watch",
+    "build": "webpack -p",
+    "build-debug": "webpack -p --devtool source-map",
+    "watch": "webpack -d --watch"
+  },
   "dependencies": {
     "babel": "^5.8.23",
     "bacon.model": "^0.1.12",
@@ -24,22 +40,5 @@
     "babel-loader": "^5.3.2",
     "json-loader": "^0.5.2",
     "webpack": "^1.11.0"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm run watch",
-    "build": "webpack -p",
-    "build-debug": "webpack -p --devtool source-map",
-    "watch": "webpack -d --watch"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/SignalK/instrumentpanel.git"
-  },
-  "author": "teppo.kurki@iki.fi",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/SignalK/instrumentpanel/issues"
-  },
-  "homepage": "https://github.com/SignalK/instrumentpanel"
+  }
 }
