@@ -1,5 +1,5 @@
 var path = require('path');
-var webpack = require('webpack')
+var webpack = require('webpack');
 
 module.exports = {
   entry: {
@@ -23,18 +23,19 @@ module.exports = {
       test: /\.json$/,
       loader: 'json'
     }]
-//    noParse: /\.txt$/
   },
   resolve: {
     alias: {
       bacon: "baconjs"
     }
   },
+  resolveLoader: { fallback: path.join(__dirname, "node_modules") },
   plugins: [
     new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js'),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
   ],
- externals: ['mdns']
+  externals: ['mdns']
 }
