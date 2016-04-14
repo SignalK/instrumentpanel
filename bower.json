@@ -1,29 +1,25 @@
 {
   "name": "instrumentpanel",
-  "version": "0.0.0",
-  "authors": [
-    "Teppo Kurki"
-  ],
-  "description": "Signalk-based instrument panel implemented as a HTML5 grid with draggable & resisable simple instruments\"",
-  "main": "index.html",
-  "moduleType": [
-    "node"
-  ],
-  "keywords": [
-    "signalk",
-    "signalk-ui",
-    "marine",
-    "instrument",
-    "nmea"
-  ],
-  "license": "Apache 2",
+  "version": "0.1.0",
+  "description": "Signal K instrument panel implemented as an HTML5 grid with draggable & resizable widgets",
+  "keywords": ["signal k", "signalk", "instruments", "dashboard", "marine", "nmea"],
   "homepage": "https://github.com/SignalK/instrumentpanel",
+  "license": "Apache-2.0",
+  "authors": [
+    "Teppo Kurki <tkurki@iki.fi>",
+    "Tim Mathews <tim@signalk.org>"
+  ],
+  "main": "index.html",
+  "moduleType": "node",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SignalK/instrumentpanel.git"
+  },
   "ignore": [
     "**/.*",
     "node_modules",
     "bower_components",
     "test",
     "tests"
-  ],
-  "dependencies": {}
+  ]
 }
