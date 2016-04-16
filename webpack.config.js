@@ -1,27 +1,41 @@
-var webpack = require('webpack')
+var path = require('path');
+var webpack = require('webpack');
 
 module.exports = {
   entry: {
-    ui: './lib/ui/main.js',
-    vendor: ['react', 'debug', 'd3', 'react-bootstrap', 'bluebird', 'baconjs']
+    ui: [
+      'webpack-dev-server/client?http://localhost:3000',
+      'webpack/hot/only-dev-server',
+      './lib/ui/main.js'
+    ]
   },
   output: {
-    path: 'dist',
-    filename: '[name].js'
+    path: path.join(__dirname, 'dist'),
+    filename: '[name].js',
+    publicPath: '/dist/'
   },
   module: {
-    loaders: [
-      {test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel'},
-      {test: /\.json$/, loader: 'json'}
-    ]
+    loaders: [{
+      test: /\.jsx?$/,
+      exclude: /node_modules/,
+      loaders: ['react-hot', 'babel']
+    },{
+      test: /\.json$/,
+      loader: 'json'
+    }]
   },
   resolve: {
     alias: {
       bacon: "baconjs"
     }
   },
+  resolveLoader: { fallback: path.join(__dirname, "node_modules") },
   plugins: [
     new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js'),
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin(),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
-  ]
+  ],
+  externals: ['mdns']
 }
