@@ -4,7 +4,7 @@ var webpack = require('webpack');
 module.exports = {
   entry: {
     ui: [
-      'webpack-dev-server/client?http://localhost:3000',
+      'webpack-dev-server/client?http://localhost:3001',
       'webpack/hot/only-dev-server',
       './lib/ui/main.js'
     ]
