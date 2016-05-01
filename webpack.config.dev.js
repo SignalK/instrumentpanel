@@ -4,6 +4,8 @@ var webpack = require('webpack');
 module.exports = {
   entry: {
     ui: [
+      'webpack-dev-server/client?http://localhost:3001',
+      'webpack/hot/only-dev-server',
       './lib/ui/main.js'
     ]
   },
@@ -29,7 +31,9 @@ module.exports = {
   },
   resolveLoader: { fallback: path.join(__dirname, "node_modules") },
   plugins: [
+    new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js'),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+    new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
   ],
