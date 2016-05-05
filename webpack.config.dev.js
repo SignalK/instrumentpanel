@@ -31,7 +31,6 @@ module.exports = {
   },
   resolveLoader: { fallback: path.join(__dirname, "node_modules") },
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js'),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
