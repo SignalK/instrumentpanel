@@ -16,10 +16,16 @@ module.exports = {
     loaders: [{
       test: /\.jsx?$/,
       exclude: /node_modules/,
-      loaders: ['react-hot', 'babel']
+      loader: 'babel',
+      query: {
+        presets: ['es2015', 'stage-0', 'react']
+      }
     },{
       test: /\.json$/,
       loader: 'json'
+    },{
+      test: /\.txt$/,
+      loader: 'ignore-loader'
     }]
   },
   resolve: {
@@ -30,8 +36,7 @@ module.exports = {
   resolveLoader: { fallback: path.join(__dirname, "node_modules") },
   plugins: [
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-    new webpack.NoErrorsPlugin(),
-    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
+    new webpack.NoErrorsPlugin()
   ],
   externals: ['mdns']
 }

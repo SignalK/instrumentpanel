@@ -4,7 +4,7 @@ var webpack = require('webpack');
 module.exports = {
   entry: {
     ui: [
-      'webpack-dev-server/client?http://localhost:3001',
+      'webpack-dev-server/client?http://localhost:3001/',
       'webpack/hot/only-dev-server',
       './lib/main.js'
     ]
@@ -18,10 +18,16 @@ module.exports = {
     loaders: [{
       test: /\.jsx?$/,
       exclude: /node_modules/,
-      loaders: ['react-hot', 'babel']
+      loader: 'babel',
+      query: {
+        presets: ['es2015', 'stage-0', 'react', 'react-hmre']
+      }
     },{
       test: /\.json$/,
       loader: 'json'
+    },{
+      test: /\.txt$/,
+      loader: 'ignore-loader'
     }]
   },
   resolve: {
@@ -32,9 +38,7 @@ module.exports = {
   resolveLoader: { fallback: path.join(__dirname, "node_modules") },
   plugins: [
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
-    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
+    new webpack.NoErrorsPlugin()
   ],
   externals: ['mdns']
 }
