@@ -4,7 +4,7 @@ var webpack = require('webpack');
 module.exports = {
   entry: {
     ui: [
-      './lib/ui/main.js'
+      './lib/main.js'
     ]
   },
   output: {

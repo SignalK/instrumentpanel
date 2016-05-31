@@ -6,7 +6,7 @@ module.exports = {
     ui: [
       'webpack-dev-server/client?http://localhost:3001',
       'webpack/hot/only-dev-server',
-      './lib/ui/main.js'
+      './lib/main.js'
     ]
   },
   output: {
