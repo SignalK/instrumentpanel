@@ -18,15 +18,16 @@ For Developers
 
 To Do
 =====
-- [x] activate/deactivate individual widgets
+- [ ] activate/deactivate individual widgets
 - [x] connect to multiple servers
 - [x] minify
 - [x] react-grid-styles: bower packaging
 - [x] 'Receiving indicator' (circle/circle-o)
-- [x] allow bootstrap of grid configuration from server: settings panel shows json that can be retrieved from the server with ?useGridFromServer=true url parameter)
+- [x] allow bootstrap of grid configuration from server: settings panel shows json that can be retrieved from the
+      server with ?useGridFromServer=true url parameter
 - [x] visible grid cell background
 - [x] per server layout persisted in localstorage
-- [x] last known servers & connection status in localstorage
+- [ ] last known servers & connection status in localstorage
 - [ ] good widgets for 'normal' data set (position, current, date & time)
 - [ ] true/both values in windmeter, change by click
 - [ ] alternative/configurable units (knots/mps/mph)
@@ -44,7 +45,7 @@ To Do
 - [ ] server configuration storage (button to store on the server)
 - [ ] ais tracker widget
 - [ ] map widget
-- [ ] ui cleanup...
 - [ ] bootstrapping from server for history graph
 - [ ] subscription support: fetch items list from server, only subscribe when widget activated
 - [ ] use Primus/reconnect support
+- [ ] enable theme support in widgets
