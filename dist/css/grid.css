@@ -7,26 +7,11 @@
   transition: all 200ms ease;
   transition-property: left, top;
   background-color: whitesmoke;
-  border-radius: 8px;
   border: 1px solid silver;
 }
 
 .react-grid-item.cssTransforms {
   transition-property: transform;
-}
-
-.react-grid-item.resizing {
-  z-index: 1;
-}
-
-.react-resizable {
-  z-index: 1;
-  background-color: gold;
-}
-
-.react-grid-item.react-draggable-dragging {
-  transition: none;
-  z-index: 3;
 }
 
 .react-grid-item.react-grid-placeholder {
