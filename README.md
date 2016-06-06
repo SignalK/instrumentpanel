@@ -4,6 +4,8 @@ Instrument panel implemented as a grid with draggable &amp; resizable components
 when the panel receives data it hasn't seen before a new cell is added to the grid.
 
 ![Signal K Instrument Panel](./index.png)
+![Signal K Instrument Panel Menu](./menu.png)
+![Signal K Instrument Panel Settings](./settings.png)
 
 Trouble?
 ========
