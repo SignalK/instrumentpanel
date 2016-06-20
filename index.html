@@ -5,16 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edgei,chrome=1">
     <meta name="viewport" content="initial-scale=1">
     <title>Signal K Instrument Panel</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <style>
+      html {
+        font-family: 'Open Sans', sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      body, h1, h2, h3, h4, h5, h6 {
+        margin: 0;
+      }
+
+      body {
+        font-size: 15px;
+        line-height: 24px;
+        height: 100%;
+      }
+    </style>
     <link href="./dist/css/font-awesome.css" rel="stylesheet">
     <link href="./dist/css/settingslist.css" rel="stylesheet">
     <link href="./dist/css/grid.css" rel="stylesheet">
   </head>
   <body>
     <div id="content"></div>
-    <footer class="text-center">
-      <hr/>
-      <p><a href="https://github.com/SignalK/instrumentpanel">Signal K Instrument Panel</a></p>
-    </footer>
     <script>
       function getParameterByName(name) {
           name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
