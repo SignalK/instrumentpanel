@@ -7,6 +7,17 @@ when the panel receives data it hasn't seen before a new cell is added to the gr
 ![Signal K Instrument Panel Menu](./menu.png)
 ![Signal K Instrument Panel Settings](./settings.png)
 
+Keyboard Shortcuts
+==================
+Looking for comments on these:
+- c &mdash; Show connection dialog
+- d &mdash; Disconnect
+- f &mdash; Fullscreen mode
+- n &mdash; Toggle day/night mode
+- r &mdash; Reconnect to last server
+- s &mdash; Toggle settings page
+- u &mdash; Unlock/lock layout for moving widgets
+
 Trouble?
 ========
 InstrumentPanel stores some of the settings in the browser's localstorage. In case there is some garbage there you can
@@ -20,7 +31,7 @@ For Developers
 
 To Do
 =====
-- [ ] activate/deactivate individual widgets
+- [x] activate/deactivate individual widgets
 - [x] connect to multiple servers
 - [x] minify
 - [x] react-grid-styles: bower packaging
@@ -29,7 +40,7 @@ To Do
       server with ?useGridFromServer=true url parameter
 - [x] visible grid cell background
 - [x] per server layout persisted in localstorage
-- [ ] last known servers & connection status in localstorage
+- [x] last known servers & connection status in localstorage
 - [ ] good widgets for 'normal' data set (position, current, date & time)
 - [ ] true/both values in windmeter, change by click
 - [ ] alternative/configurable units (knots/mps/mph)
@@ -40,7 +51,7 @@ To Do
 - [ ] possibility to delete obsolete data items
 - [ ] manual addition of widgets, multiple alternative widgets
 - [ ] configuration mode for widgets
-- [ ] full screen mode for widgets
+- [x] full screen mode for widgets
 - [ ] history graph widget (maybe https://github.com/mapbox/react-tangle for scaling)
 - [ ] configurable number of grid columns
 - [ ] multiple alternate layouts
