@@ -16,6 +16,10 @@ For Developers
 - build & watch with `npm start`
 - building js bundle for distribution: `npm run build` (and push changes to dist/ui.js). This builds minified ui.js.
 
+Changelog
+=====
+- Remove primus.js usage. Primus is useful only with Signal K Node server and the requests for the client library cause unneeded confusion.
+
 To Do
 =====
 - [x] activate/deactivate individual widgets
