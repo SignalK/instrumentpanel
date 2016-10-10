@@ -12,6 +12,11 @@
   transition-property: transform;
 }
 
+.react-grid-item.react-draggable-dragging {
+  transition: none;
+  z-index: 3;
+}
+
 .react-grid-item.react-grid-placeholder {
   background: red;
   opacity: 0.2;
@@ -22,6 +27,10 @@
   -ms-user-select: none;
   -o-user-select: none;
   user-select: none;
+}
+
+.react-grid-item.resizing {
+  z-index: 1;
 }
 
 .react-grid-item > .react-resizable-handle {
@@ -37,4 +46,9 @@
   background-origin: content-box;
   box-sizing: border-box;
   cursor: se-resize;
+}
+
+.react-resizable {
+  z-index: 1;
+  cursor: move;
 }
