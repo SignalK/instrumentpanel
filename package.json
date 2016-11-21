@@ -1,6 +1,6 @@
 {
   "name": "instrumentpanel",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Signal K instrument panel implemented as an HTML5 grid with draggable & resizable widgets",
   "keywords": [
     "signal k",
@@ -29,17 +29,17 @@
   "dependencies": {
     "bacon.model": "^0.1.12",
     "baconjs": "^0.7.42",
-    "bluebird": "^2.9.24",
-    "d3": "^3.5.6",
+    "bluebird": "^3.0.0",
+    "d3": "^4.0.0",
     "debug": "^2.1.1",
     "js-quantities": "^1.5.0",
-    "lodash": "^3.10.0",
-    "material-ui": "^0.15.0",
+    "lodash": "^4.0.0",
+    "material-ui": "^0.16.0",
     "react": "^15.0",
     "react-dom": "^15.0",
-    "react-grid-layout": "0.11",
-    "react-hotkey": "^0.6.0",
-    "react-tap-event-plugin": "^1.0.0",
+    "react-grid-layout": "^0.13",
+    "react-hotkey": "^0.7.0",
+    "react-tap-event-plugin": "^2.0.0",
     "signalk-client": "SignalK/signalk-js-client",
     "signalk-schema": "SignalK/specification"
   },
