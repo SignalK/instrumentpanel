@@ -33,5 +33,5 @@ module.exports = {
     new webpack.NoErrorsPlugin(),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
   ],
-  externals: ['mdns']
+  externals: ['mdns', 'validator-js']
 }
