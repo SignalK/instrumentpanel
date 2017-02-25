@@ -3,6 +3,7 @@
   "version": "0.2.1",
   "description": "Signal K instrument panel implemented as an HTML5 grid with draggable & resizable widgets",
   "keywords": [
+    "signalk-webapp",
     "signal k",
     "signalk",
     "instruments",
