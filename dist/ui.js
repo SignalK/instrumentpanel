@@ -60352,6 +60352,7 @@
 	});
 	
 	module.exports.getUnits = function (path) {
+	  console.log(path);
 	  var vesselPath = '/vessels/_/' + path.replace(/\./g, '/');
 	  var result = metadataByRegex.find(function (entry) {
 	    return entry.regexp.test(vesselPath);
@@ -91001,6 +91002,15 @@
 	  "Hz": {
 	    "1/min": function min(hz) {
 	      return hz * 60;
+	    },
+	    "10/min": function min(hz) {
+	      return hz * 60 / 10;
+	    },
+	    "100/min": function min(hz) {
+	      return hz * 60 / 100;
+	    },
+	    "1000/min": function min(hz) {
+	      return hz * 60 / 1000;
 	    }
 	  },
 	  "m": {
@@ -110193,43 +110203,43 @@
 
 	/* REACT HOT LOADER */ if (false) { (function () { var ReactHotAPI = require("/Users/tjk/git-workspace/signalk/instrumentpanel/node_modules/react-hot-api/modules/index.js"), RootInstanceProvider = require("/Users/tjk/git-workspace/signalk/instrumentpanel/node_modules/react-hot-loader/RootInstanceProvider.js"), ReactMount = require("react/lib/ReactMount"), React = require("react"); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
 	
-	"use strict";
+	'use strict';
+	
+	var _settingsConversions = __webpack_require__(/*! ../settings/conversions */ 607);
 	
 	var React = __webpack_require__(/*! react */ 7);
 	
 	var SettingsPanel = function SettingsPanel(props) {
 	  return React.createElement(
-	    "div",
+	    'div',
 	    null,
-	    React.createElement("input", { type: "radio",
-	      name: props.options.key + "rose",
-	      id: "rose",
-	      checked: props.options.selectedWidget === 0,
-	      onChange: props.onChange.bind(undefined, 0) }),
-	    React.createElement(
-	      "label",
-	      { htmlFor: "rose", style: { marginLeft: 10 } },
-	      "Rose"
-	    ),
-	    React.createElement("br", null),
-	    React.createElement("input", { type: "radio",
-	      name: props.options.key + "reading",
-	      id: "reading",
-	      checked: props.options.selectedWidget === 1,
-	      onChange: props.onChange.bind(undefined, 1) }),
-	    React.createElement(
-	      "label",
-	      { htmlFor: "reading", style: { marginLeft: 10 } },
-	      "Reading"
-	    ),
-	    React.createElement("br", null)
+	    props.gaugeTypes.map(function (gaugeType, i) {
+	      return React.createElement(
+	        'span',
+	        null,
+	        React.createElement('input', { type: 'radio',
+	          key: i,
+	          name: props.options.key + gaugeType,
+	          id: props.options.key + gaugeType,
+	          checked: props.options.selectedWidget === i,
+	          onChange: props.onChange.bind(undefined, i) }),
+	        React.createElement(
+	          'label',
+	          { htmlFor: props.options.key + gaugeType, style: { marginLeft: 10 } },
+	          gaugeType
+	        ),
+	        React.createElement('br', null)
+	      );
+	    }),
+	    React.createElement('br', null)
 	  );
 	};
 	
-	var pathsCovered = ["navigation.courseOverGroundTrue", "navigation.courseOverGroundMagnetic"];
+	var pathsCovered = ["navigation.courseOverGroundTrue", "navigation.courseOverGroundMagnetic", "navigation.headingMagnetic", "navigation.headingTrue"];
 	
 	var readingComponent = __webpack_require__(/*! ./compassreadingcomponent */ 616);
 	var roseComponent = __webpack_require__(/*! ./compassrosecomponent */ 617);
+	var digitalComponent = __webpack_require__(/*! ./digitalcomponent */ 614);
 	
 	var BaseWidget = __webpack_require__(/*! ./basewidget */ 613);
 	__webpack_require__(/*! util */ 443).inherits(Compass, BaseWidget);
@@ -110238,6 +110248,17 @@
 	  BaseWidget.call(this, id, options, streamBundle, instrumentPanel);
 	  this.options = options;
 	  this.options.initialDimensions = this.options.initialDimensions || { w: 2, h: 4 };
+	
+	  var valueStream = streamBundle.getStreamForSourcePath(options.sourceId, options.path);
+	  if (options.convertTo) {
+	    var conversions = (0, _settingsConversions.getConversionsForUnit)(this.unit);
+	    if (conversions[options.convertTo]) {
+	      valueStream = valueStream.map(conversions[options.convertTo]);
+	    } else {
+	      console.error("No such conversion:" + this.unit + "=>" + options.convertTo);
+	    }
+	  }
+	
 	  this.widgets = [React.createElement(roseComponent, {
 	    key: id,
 	    value: streamBundle.getStreamForSourcePath(options.sourceId, options.path),
@@ -110247,6 +110268,14 @@
 	    key: id,
 	    value: streamBundle.getStreamForSourcePath(options.sourceId, options.path),
 	    label: this.getLabelForPath(options.path),
+	    sourceId: options.sourceId
+	  }), React.createElement(digitalComponent, {
+	    key: id,
+	    unit: this.unit,
+	    convertTo: options.convertTo,
+	    valueStream: valueStream,
+	    label: this.getLabelForPath(options.path),
+	    path: options.path,
 	    sourceId: options.sourceId
 	  })];
 	  this.options.selectedWidget = this.options.selectedWidget || 0;
@@ -110259,6 +110288,7 @@
 	Compass.prototype.getSettingsElement = function () {
 	  var that = this;
 	  return SettingsPanel({
+	    gaugeTypes: ["Rose", "Reading", "Digital"],
 	    options: this.options,
 	    onChange: function onChange(value) {
 	      that.options.selectedWidget = value;
@@ -110333,7 +110363,7 @@
 	      ),
 	      React.createElement(
 	        "text",
-	        { x: "100", y: "10", textAnchor: "middle", fontSize: "12", dominantBaseline: "middle" },
+	        { x: "200", y: "85", textAnchor: "middle", fontSize: "12", dominantBaseline: "middle" },
 	        this.state.label
 	      )
 	    );
