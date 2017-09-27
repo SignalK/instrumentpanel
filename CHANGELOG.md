@@ -1,6 +1,6 @@
 ## Change Log
 
-### upcoming (2017/02/28 20:21 +00:00)
+### v0.1.2 (2017/03/04 15:19 +00:00)
 - [#54](https://github.com/SignalK/instrumentpanel/pull/54) More consistent source display (@tkurki)
 - [#53](https://github.com/SignalK/instrumentpanel/pull/53) Use same widgets for heading and cog, add Digital (@tkurki)
 - [#43](https://github.com/SignalK/instrumentpanel/pull/43) Split path and source label to two rows (@tkurki)
