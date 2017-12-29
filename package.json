@@ -28,7 +28,7 @@
     "changelog": "github-changes -o signalk -r instrumentpanel -a --only-pulls --use-commit-body --data=pulls"
   },
   "devDependencies": {
-    "@signalk/client": "^0.1.1",
+    "@signalk/client": "^0.1.4",
     "@signalk/signalk-schema": "0.0.1-7",
     "bacon.model": "^0.1.12",
     "baconjs": "^0.7.42",
