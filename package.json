@@ -40,7 +40,6 @@
     "github-changes": "^1.0.4",
     "js-quantities": "^1.5.0",
     "json-loader": "^0.5.2",
-    "lodash": "^2.4.1",
     "react": "^0.14",
     "react-bootstrap": "^0.13.2",
     "react-dom": "^0.14",
