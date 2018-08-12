@@ -1,5 +1,11 @@
 ## Change Log
 
+### v0.3.0 (2018/08/12 07:53 +00:00)
+- [#64](https://github.com/SignalK/instrumentpanel/pull/64) Added ratio conversion (@cmotelet)
+
+### v0.2.6 (2018/02/21 18:12 +00:00)
+- [#61](https://github.com/SignalK/instrumentpanel/pull/61) Remove decimal places from Apparent Wind (port) (@zubenubi)
+
 ### v0.1.2 (2017/03/04 15:19 +00:00)
 - [#54](https://github.com/SignalK/instrumentpanel/pull/54) More consistent source display (@tkurki)
 - [#53](https://github.com/SignalK/instrumentpanel/pull/53) Use same widgets for heading and cog, add Digital (@tkurki)
