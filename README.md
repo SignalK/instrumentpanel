@@ -8,7 +8,10 @@ when the panel receives data it hasn't seen before a new cell is added to the gr
 Trouble?
 ========
 InstrumentPanel stores some of the settings in the browser's localstorage. In case there is some garbage there you can
-get it cleared by using a url with query parameter `?reset=true`.
+get it cleared by using a url with query parameter `?reset=true`.  
+The units and labels are also stored in the browser's localstorage and fetched from the signalK's server only the first time.
+If you change a unit or a display label on the server, you can clear the cache without destroying your layout by using a url with query parameter  `?flushCache=true`.
+
 
 For Developers
 ==============
@@ -32,9 +35,9 @@ To Do
 - [x] per server layout persisted in localstorage
 - [x] last known servers & connection status in localstorage
 - [ ] good widgets for 'normal' data set (position, current, date & time)
-- [ ] true/both values in windmeter, change by click
+- [x] true/both values in windmeter, change by click
 - [ ] alternative/configurable units (knots/mps/mph)
-- [ ] configurable display format (position: deg+min.dec, deg.min.sec / precision)
+- [x] configurable display format (position: deg+min.dec, deg.min.sec / precision)
 - [ ] history graph widget (simple)
 - [ ] sailgauge widget
 - [ ] 'discovery mode' manual activation/deactivation
