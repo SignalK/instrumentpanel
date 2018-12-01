@@ -17,6 +17,11 @@ div.widget svg {
 	margin-left: 10px;
 	margin-top: 10px;
 }
+.clickIconWidget {
+  left: 5;
+  top: 5;
+  position: absolute;
+}
 @media (min-width: 620px) {
   .items .item {
     max-width: calc(50% - 10px);
