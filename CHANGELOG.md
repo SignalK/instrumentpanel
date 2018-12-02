@@ -1,5 +1,8 @@
 ## Change Log
 
+### v0.5.1 (2018/12/02 15:22 +00:00)
+- [#68](https://github.com/SignalK/instrumentpanel/pull/68) chore: React production build (@tkurki)
+
 ### v0.5.0 (2018/12/02 10:11 +00:00)
 - [#66](https://github.com/SignalK/instrumentpanel/pull/66) feature: add new widget options (@cmotelet)
 
