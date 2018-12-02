@@ -1,5 +1,8 @@
 ## Change Log
 
+### v0.5.0 (2018/12/02 10:11 +00:00)
+- [#66](https://github.com/SignalK/instrumentpanel/pull/66) feature: add new widget options (@cmotelet)
+
 ### v0.4.0 (2018/11/17 19:15 +00:00)
 - [#65](https://github.com/SignalK/instrumentpanel/pull/65) feature: Use schema data from the server and remove the bundled schema (@cmotelet)
 
