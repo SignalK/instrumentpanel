@@ -17,10 +17,15 @@ div.widget svg {
 	margin-left: 10px;
 	margin-top: 10px;
 }
-.clickIconWidget {
-  left: 5;
-  top: 5;
+div.react-grid-item .clickIconWidget {
+  left: 5px;
+  top: 5px;
   position: absolute;
+}
+div.widget .clickIconWidget {
+  left: 5px;
+  top: -15px;
+  position: relative;
 }
 @media (min-width: 620px) {
   .items .item {
