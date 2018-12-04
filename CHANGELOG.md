@@ -1,5 +1,8 @@
 ## Change Log
 
+### v0.5.2 (2018/12/04 19:34 +00:00)
+- [#69](https://github.com/SignalK/instrumentpanel/pull/69) fix: bad position of icon on clickable widget in setting mode (chrome browser) (@cmotelet)
+
 ### v0.5.1 (2018/12/02 15:22 +00:00)
 - [#68](https://github.com/SignalK/instrumentpanel/pull/68) chore: React production build (@tkurki)
 
