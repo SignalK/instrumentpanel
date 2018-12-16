@@ -4,7 +4,7 @@ var webpack = require('webpack');
 module.exports = {
   entry: {
     ui: [
-      'webpack-dev-server/client?http://localhost:3001',
+      'webpack-dev-server/client?http://barco.local:3001',
       'webpack/hot/only-dev-server',
       './lib/ui/main.js'
     ]
@@ -14,27 +14,39 @@ module.exports = {
     filename: '[name].js',
     publicPath: '/dist/'
   },
+  devtool: 'cheap-module-source-map',
+  devServer: {
+    contentBase: './dist',
+    hot: true,
+    open: true
+  },
   module: {
-    loaders: [{
-      test: /\.jsx?$/,
-      exclude: /node_modules/,
-      loaders: ['react-hot', 'babel']
-    },{
-      test: /\.json$/,
-      loader: 'json'
-    }]
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+          exclude: /node_modules/,
+          use: {
+            loader: 'babel-loader',
+            options: {
+              cacheDirectory: true,
+              presets: ['react', 'env']
+            }
+          }
+      }
+    ]
   },
   resolve: {
     alias: {
       bacon: "baconjs"
-    }
+    },
+    extensions: [ '.mjs', '.js', '.jsx', '.json' ]
   },
-  resolveLoader: { fallback: path.join(__dirname, "node_modules") },
   plugins: [
-    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
-    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
+    new webpack.DefinePlugin({
+      VERSION: JSON.stringify(require("./package.json").version)
+    })
   ],
-  externals: ['mdns']
+  externals: ['mdns', 'validator-js', 'ws'],
+  mode: 'development'
 }
