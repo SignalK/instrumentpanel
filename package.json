@@ -39,7 +39,7 @@
     "bluebird": "^3.5.0",
     "d3-scale": "^2.1.2",
     "d3-shape": "^1.2.2",
-    "github-changes": "^1.0.4",
+    "github-changes": "^1.1.2",
     "js-quantities": "^1.5.0",
     "json-loader": "^0.5.2",
     "prop-types": "^15.6.2",
