@@ -23,7 +23,7 @@
   "scripts": {
     "start": "node server.js",
     "build": "webpack -p --progress",
-    "build-debug": "webpack --devtool cheap-module-source-map --progress",
+    "build-debug": "webpack -d --devtool cheap-module-source-map --progress",
     "watch": "webpack -d --watch",
     "changelog": "github-changes -o signalk -r instrumentpanel -a --only-pulls --use-commit-body --data=pulls --tag-name=v$npm_package_version",
     "release": "git tag -d v$npm_package_version ; npm run changelog && git add CHANGELOG.md && git commit -m 'chore: update changelog' && git tag v$npm_package_version && git push --tags && git push && git tag -d latest && git push origin :refs/tags/latest && git tag latest && git push origin tag latest"
