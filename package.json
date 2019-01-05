@@ -35,7 +35,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "bacon.model": "^0.1.12",
-    "baconjs": "^0.7.28",
+    "baconjs": "^2.0.10",
     "bluebird": "^3.5.0",
     "d3-scale": "^2.1.2",
     "d3-shape": "^1.2.2",
