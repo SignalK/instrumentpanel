@@ -1,5 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -27,6 +28,16 @@ module.exports = {
       }
     ]
   },
+  optimization: {
+    minimizer: [
+      new TerserPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: true
+      }),
+    ],
+  },
+  devtool: 'source-map',
   resolve: {
     alias: {
       bacon: "baconjs"
