@@ -1,5 +1,8 @@
 ## Change Log
 
+### v0.6.0 (2019/01/15 19:23 +00:00)
+- [#70](https://github.com/SignalK/instrumentpanel/pull/70) chore(package): update to latest package version (webpack@4.27.1, react@16.6.3, and all sub modules) (@cmotelet)
+
 ### v0.5.2 (2018/12/04 19:34 +00:00)
 - [#69](https://github.com/SignalK/instrumentpanel/pull/69) fix: bad position of icon on clickable widget in setting mode (chrome browser) (@cmotelet)
 
