@@ -1,5 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -13,30 +14,40 @@ module.exports = {
     publicPath: '/dist/'
   },
   module: {
-    loaders: [{
-      test: /\.jsx?$/,
-      exclude: /node_modules/,
-      loaders: ['react-hot', 'babel']
-    },{
-      test: /\.json$/,
-      loader: 'json'
-    }]
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+          exclude: /node_modules/,
+          use: {
+            loader: 'babel-loader',
+            options: {
+              cacheDirectory: true,
+              presets: ['react', 'env']
+            }
+          }
+      }
+    ]
   },
+  optimization: {
+    minimizer: [
+      new TerserPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: true
+      }),
+    ],
+  },
+  devtool: 'source-map',
   resolve: {
     alias: {
       bacon: "baconjs"
     }
   },
-  resolveLoader: { fallback: path.join(__dirname, "node_modules") },
   plugins: [
-    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-    new webpack.NoErrorsPlugin(),
-    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     new webpack.DefinePlugin({
-      'process.env': {
-        'NODE_ENV': JSON.stringify('production')
-      }
+      VERSION: JSON.stringify(require("./package.json").version)
     })
   ],
-  externals: ['mdns', 'validator-js', 'ws']
+  externals: ['mdns', 'validator-js', 'ws'],
+  mode: 'production'
 }
