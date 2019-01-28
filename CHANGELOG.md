@@ -1,5 +1,16 @@
 ## Change Log
 
+### v0.7.0 (2019/01/28 20:34 +00:00)
+- [#80](https://github.com/SignalK/instrumentpanel/pull/80) fix: windmeter display mode when multiple pages & optimize handle new source (@cmotelet)
+- [#77](https://github.com/SignalK/instrumentpanel/pull/77) fix: populate new pages with all known discovered widget (@cmotelet)
+- [#74](https://github.com/SignalK/instrumentpanel/pull/74) feature: add buttons to hide/show all widgets & popup message on reset (@cmotelet)
+- [#76](https://github.com/SignalK/instrumentpanel/pull/76) feature: add minimal widget to display yaw/pitch/roll (@cmotelet)
+- [#81](https://github.com/SignalK/instrumentpanel/pull/81) chore:extend widget resizing zone (@cmotelet)
+- [#78](https://github.com/SignalK/instrumentpanel/pull/78) chore: add the new widgets by page bottom (@cmotelet)
+- [#75](https://github.com/SignalK/instrumentpanel/pull/75) feature: add popup if no wind true data (@cmotelet)
+- [#79](https://github.com/SignalK/instrumentpanel/pull/79) chore: remove unused file (@cmotelet)
+- [#73](https://github.com/SignalK/instrumentpanel/pull/73) feature: check outdated widgets before loading layout (@cmotelet)
+
 ### v0.6.0 (2019/01/15 19:23 +00:00)
 - [#70](https://github.com/SignalK/instrumentpanel/pull/70) chore(package): update to latest package version (webpack@4.27.1, react@16.6.3, and all sub modules) (@cmotelet)
 
