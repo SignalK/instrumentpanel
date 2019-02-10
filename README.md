@@ -10,8 +10,14 @@ Trouble?
 InstrumentPanel stores some of the settings in the browser's localstorage. In case there is some garbage there you can
 get it cleared by using a url with query parameter `?reset=true`.  
 The units and labels are also stored in the browser's localstorage and fetched from the signalK's server only the first time.
-If you change a unit or a display label on the server, you can clear the cache without destroying your layout by using a url with query parameter  `?flushCache=true`.
+If you change a unit or a display label on the server, you can clear the cache without destroying your layout by using a url with query parameter  `?flushCache=true`.  
 
+For iOS user:
+=============
+In `edit mode` for draging or resizing a widget, click one or twice on the center of the widget to get focus on it and after you can drag or resize widget with grid's scroll locked.  
+If you don't click before on center of the widget, the grid scroll before you can drag or resize widget.  
+For scrolling the grid, it's better to do by the left side even if vertical scroll bar is on the right side.  
+In vertical scrolling by the the right side, you risk resizing the widget instead of scrolling the grid.  
 
 For Developers
 ==============
