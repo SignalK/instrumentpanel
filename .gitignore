@@ -5,3 +5,4 @@ node_modules/*
 !node_modules/app
 **/*.swp
 npm-debug.log
+dist/help/*.html
