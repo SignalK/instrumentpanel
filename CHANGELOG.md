@@ -1,5 +1,12 @@
 ## Change Log
 
+### v0.8.0 (2019/02/25 20:15 +00:00)
+- [#88](https://github.com/SignalK/instrumentpanel/pull/88) feature: add online help page (@cmotelet)
+- [#86](https://github.com/SignalK/instrumentpanel/pull/86) fix: reset displayed sourceId when the page changed (@cmotelet)
+- [#87](https://github.com/SignalK/instrumentpanel/pull/87) fix: change the cursor type on the heartbeat icon (@cmotelet)
+- [#83](https://github.com/SignalK/instrumentpanel/pull/83) chore: optimizing size of widgets & navbar (@cmotelet)
+- [#82](https://github.com/SignalK/instrumentpanel/pull/82) fix: draging & resizing widget on iOS12 (@cmotelet)
+
 ### v0.7.0 (2019/01/28 20:34 +00:00)
 - [#80](https://github.com/SignalK/instrumentpanel/pull/80) fix: windmeter display mode when multiple pages & optimize handle new source (@cmotelet)
 - [#77](https://github.com/SignalK/instrumentpanel/pull/77) fix: populate new pages with all known discovered widget (@cmotelet)
