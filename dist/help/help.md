@@ -32,7 +32,7 @@
 <a id="menu"></a>
 #### Help and Instructions
 ___
-+ [0. Introduction](#menu)  
++ [0. Introduction](#0)  
 + [1. Connect to a Signal K Server](#1)  
 + [2. Top Bar Buttons](#2)  
     - [2.1. Change Page](#2_1)  
@@ -47,11 +47,11 @@ ___
             - [2.3.4.1. Universal Widget](#2_3_4_1)  
             - [2.3.4.2. Compass Widget](#2_3_4_2)  
             - [2.3.4.3. Windmeter Widget:](#2_3_4_3)  
-            - [2.3.4.4. Digital DateTime Widget:](#2_3_4_3)  
+            - [2.3.4.4. Digital DateTime Widget:](#2_3_4_4)  
 + [3 Options Available on the Widgets](#3)  
     - [3.1 Changing Display Mode](#3_1)  
-    - [3.2 Display SourceID](#3_2)  
-    - [3.3. Wind Widget Modes](#3_3)  
+    - [3.2. Wind Widget Modes](#3_2)  
+    - [3.3 Display SourceID](#3_3)  
 + [4. Trouble?](#4)  
   
 <a id="0"></a>
@@ -176,11 +176,11 @@ In setting mode, use the ![view](./dist/help/view-icon.png) button to return to 
 <a id="2_3_1"></a>
 **2.3.1. Add or Delete Pages** [Back to menu](#menu)  
 ___
+You can have up to 10 pages with a specific widget organization.  
 >
 >![multi-page](./dist/help/add-page-before.png#maxwidth)  
 >
-You can have up to 10 pages with a specific widget organization.  
-To add a new page, just click on ![button-plus](./dist/help/button-plus.png) button.  
+To create a new page, click on ![button-plus](./dist/help/button-plus.png) button.  
 The new page is automatically selected.  
 >
 >![add-page-after](./dist/help/add-page-after.png#maxwidth)  
@@ -196,7 +196,11 @@ A common option for all widgets is the **visible** option
 >![visible](./dist/help/widget-settings-visible.png#maxwidth)  
 >
 Unselect/Select checkbox to hide/show the widget on the page.  
-By default, all new widgets are visible. 
+By default, all new widgets are visible.  
+- ![button-hideAll](./dist/help/button-hideAll.png) button: Hides all widgets on the current page in one operation.  
+- ![button-ShowAll](./dist/help/button-ShowAll.png) button: Shows all widgets on the current page in one operation.  
+- ![button-resetAll.png](./dist/help/button-resetAll.png) button: Be careful with this button. It will completely erase the entire layout of all pages.  
+You will have to answer "Yes" in the dialog box.  
   
 <a id="2_3_3"></a>
 **2.3.3. Unit selection** [Back to menu](#menu)  
@@ -269,27 +273,15 @@ Click on this icon to change the display mode.
 New display mode is automatically saved.  
   
 <a id="3_2"></a>
-**3.2 Display SourceID** [Back to menu](#menu)  
-___
-To display the source Id of a widget's data stream,
- click on to the top right corner of widget.  
->
->![sourceID-hidden](./dist/help/widget-sourceID-hidden.png#maxwidth)  
->
-To hide the source Id, just click in the displayed source Id field.  
->
->![sourceID-visible](./dist/help/widget-sourceID-visible.png#maxwidth)  
->
-  
-<a id="3_3"></a>
-**3.3. Wind Widget Modes** [Back to menu](#menu)  
+**3.2. Wind Widget Modes** [Back to menu](#menu)  
 ___
 The wind widget displays by default apparent wind.  
 >
 >![widget-windmeter](./dist/help/widget-windmeter.png#maxwidth)  
 >
 This widget can also display True Wind over Ground and True Wind through Water,
- if your Signal K server provides them. You can change the mode by clicking on the widget.  
+ if your Signal K server provides them. You can change the mode by clicking
+ on the ![clickme-icon](./dist/help/clickme-icon.png) icon inside the widget.  
 If there is no data, an alert message is raised when you try to display these values.  
 >
 >![windmeter-alert](./dist/help/widget-windmeter-alert.png#maxwidth)  
@@ -312,6 +304,19 @@ Enable the options for True Wind over Ground and True Wind through Water:
 >![DerivedData-options](./dist/help/plugin-DerivedData-options.png#maxwidth)  
 >
 And then click on the ![DerivedData-submit](./dist/help/plugin-DerivedData-submit.png) button to save and activate these options.  
+  
+<a id="3_3"></a>
+**3.3 Display SourceID** [Back to menu](#menu)  
+___
+To display the source Id of a widget's data stream,
+ click on to the top right corner of widget.  
+>
+>![sourceID-hidden](./dist/help/widget-sourceID-hidden.png#maxwidth)  
+>
+To hide the source Id, just click in the displayed source Id field.  
+>
+>![sourceID-visible](./dist/help/widget-sourceID-visible.png#maxwidth)  
+>
   
 <a id="4"></a>
 **4. Trouble?** [Back to menu](#menu)  
