@@ -36,6 +36,7 @@ ___
 + [1. Connect to a Signal K Server](#1)  
 + [2. Top Bar Buttons](#2)  
     - [2.1. Change Page](#2_1)  
+        - [2.1.1 Alarms Page](#2_1_1)  
     - [2.2. Modify Layout](#2_2)  
         - [2.2.1 Moving and Resizing Widgets](#2_2_1)  
         - [2.2.2. Notes for iOS users](#2_2_2)  
@@ -48,6 +49,7 @@ ___
             - [2.3.4.2. Compass Widget](#2_3_4_2)  
             - [2.3.4.3. Windmeter Widget:](#2_3_4_3)  
             - [2.3.4.4. Digital DateTime Widget:](#2_3_4_4)  
+        - [2.3.5. Alarms Settings](#2_3_5)  
 + [3 Options Available on the Widgets](#3)  
     - [3.1 Changing Display Mode](#3_1)  
     - [3.2. Wind Widget Modes](#3_2)  
@@ -68,7 +70,7 @@ The cells are grouped into three columns:
 - everything else (electrical, propulsion etc)
   
 >
->![demo](./dist/help/main-page.png#maxwidth)  
+>![demo](./dist/help/main-page-2.png#maxwidth)  
 >
 <a id="0_help"></a>
 When the help page is displayed all buttons are disabled.  
@@ -96,7 +98,7 @@ Signal K data items are displayed in different cells with dedicated widgets depe
 Widgets are arranged on a virtual grid with vertical compaction.  
 **Units** on widgets are set to default and fetched from the server metadata.  
 >
->![main-page](./dist/help/main-page-default.png#maxwidth)  
+>![main-page](./dist/help/main-page-default-2.png#maxwidth)  
 >
   
 - ![lock](./dist/help/button-lock.png) button: Click to unlock your layout  
@@ -107,6 +109,10 @@ Widgets are arranged on a virtual grid with vertical compaction.
 - ![multi-page](./dist/help/multi-page.png#maxwidth) buttons: 
 To switch pages, just click on the page number.  
 (See:[Change Page](#2_1))  
+- ![button-notif-warn](./dist/help/button-notif-warn.png#maxwidth) buttons: 
+Click on it to see a list of your current alarms. 
+ The bell can have different colors depending on the current alert level (Emergency, Alarm, Warning, etc...).  
+(See:[Alarm Page](#2_1_1))  
 - ![help](./dist/help/help-icon.png) button: Cick to display the help page.  
 (See: [notes](#0_help))  
 - ![heart](./dist/help/heartbeat-icon.png) icon: It's data indicator icon.  
@@ -125,6 +131,32 @@ ___
 You can have up to 10 pages, each with a separate selection, configuration and layout of  widgets.  
 To switch pages, just click on the page number. To create a new page activate settings
  and add a new one with the plus button (See:[Add or Delete Pages](#2_3_1)).
+  
+<a id="2_1_1"></a>
+**2.1.1. Alarms Page** [Back to menu](#menu)  
+___
+By clicking on the ![button-notif-warn](./dist/help/button-notif-warn.png) button,
+ you display the list of current alarms. They are sorted by alarm level and
+ date when available (Emergency, Alarm, Warn, Alert, Normal, Nominal).  
+When you stay on the page, the alarms are no longer sorted.  
+To sort again, click the ![button-notif-warn](./dist/help/button-notif-warn.png) button again.  
+When the alarm level is higher than **Nominal** the border of all widgets takes the color of the highest alarm.
+>
+>![main-page-alarm](./dist/help/main-page-alarm.png#maxwidth)  
+>
+Color code by alarm level:
+- ![button-notif-nominal](./dist/help/button-notif-nominal.png): Nominal alarm level.  
+- ![button-notif-normal](./dist/help/button-notif-normal.png): Normal alarm level.  
+- ![button-notif-alert](./dist/help/button-notif-alert.png): Alert alarm level.  
+- ![button-notif-warn](./dist/help/button-notif-warn.png): Warning alarm level.  
+- ![button-notif-alarm](./dist/help/button-notif-alarm.png): Alarm alarm level.  
+- ![button-notif-emergency](./dist/help/button-notif-emergency.png): Emergency alarm level.  
+  
+You can hide some alarms in the settings page.
+ In this case, the alarm button can also display a second information.
+ The color of the dotted border of the ![button-notif-nominal-mixed](./dist/help/button-notif-nominal-mixed.png) indicates that there are hidden alarms
+ and the maximum level of hidden alarms.  
+(See: [Alarms Settings](#2_3_5))  
   
 <a id="2_2"></a>
 **2.2. Modify Layout** [Back to menu](#menu)  
@@ -259,6 +291,17 @@ In timezone list, **DST** means Daylight Saving Time and displays time automatic
 >
 >![settings-digitaldatetime](./dist/help/widget-settings-digitaldatetime.png#maxwidth)  
 >
+  
+<a id="2_3_5"></a>
+**2.3.5. Alarms Settings:** [Back to menu](#menu)  
+___
+In setting mode, on the ![button-notif-warn](./dist/help/button-notif-warn.png) page
+ you can hide alarms from the main view by unchecking the **visible** option.
+ The ![button-notif-nominal-mixed](./dist/help/button-notif-nominal-mixed.png) button
+ reminds you that alarms are hidden by a dotted border around the bell.  
+The color code for dotted lines is the same as for non-hidden alarms.
+ The color indicates the highest value of hidden alarms.  
+The alarm settings are not saved when you exit the GUI.  
   
 <a id="3"></a>
 **3 Options Available on the Widgets** [Back to menu](#menu)  
