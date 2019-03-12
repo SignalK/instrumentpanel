@@ -1,5 +1,8 @@
 ## Change Log
 
+### v0.9.0 (2019/03/12 18:48 +00:00)
+- [#89](https://github.com/SignalK/instrumentpanel/pull/89) feature: add dedicated page for notifications (@cmotelet)
+
 ### v0.8.0 (2019/02/25 20:15 +00:00)
 - [#88](https://github.com/SignalK/instrumentpanel/pull/88) feature: add online help page (@cmotelet)
 - [#86](https://github.com/SignalK/instrumentpanel/pull/86) fix: reset displayed sourceId when the page changed (@cmotelet)
