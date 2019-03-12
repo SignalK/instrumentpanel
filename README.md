@@ -5,6 +5,9 @@ when the panel receives data it hasn't seen before a new cell is added to the gr
 
 ![image](https://cloud.githubusercontent.com/assets/1049678/7094488/616bab4c-dfca-11e4-9c0b-eb1d4398f097.png)
 
+Online demo: [http://demo.signalk.org/@signalk/instrumentpanel](http://demo.signalk.org/@signalk/instrumentpanel)  
+InstrumentPanel help: [http://demo.signalk.org/@signalk/instrumentpanel#help](http://demo.signalk.org/@signalk/instrumentpanel#help)  
+
 Trouble?
 ========
 InstrumentPanel stores some of the settings in the browser's localstorage. In case there is some garbage there you can
@@ -14,10 +17,15 @@ If you change a unit or a display label on the server, you can clear the cache w
 
 For iOS user:
 =============
-In `edit mode` for draging or resizing a widget, click one or twice on the center of the widget to get focus on it and after you can drag or resize widget with grid's scroll locked.  
-If you don't click before on center of the widget, the grid scroll before you can drag or resize widget.  
-For scrolling the grid, it's better to do by the left side even if vertical scroll bar is on the right side.  
-In vertical scrolling by the the right side, you risk resizing the widget instead of scrolling the grid.  
+On an unlocked grid, to drag or to resize a widget,
+ first click once or twice in the center of the widget
+ to bring focus to it and then you can drag or resize the widget with the screen's scroll locked.  
+If you don't click first in the center of the widget,
+ the page starts scrolling before you can drag or resize the widget.  
+To scroll the grid, it's easiest to do it from the left side even
+ if the vertical scroll bar is to the right side.  
+Using the vertical scrollbar on the right side,
+ you risk resizing a widget instead of scrolling the page.  
 
 For Developers
 ==============
@@ -53,7 +61,7 @@ To Do
 - [ ] full screen mode for widgets
 - [ ] history graph widget (maybe https://github.com/mapbox/react-tangle for scaling)
 - [ ] configurable number of grid columns
-- [ ] multiple alternate layouts
+- [x] multiple alternate layouts
 - [ ] server configuration storage (button to store on the server)
 - [ ] ais tracker widget
 - [ ] map widget
