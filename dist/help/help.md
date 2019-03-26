@@ -137,15 +137,14 @@ To switch pages, just click on the page number. To create a new page activate se
 ___
 By clicking on the ![button-notif-warn](./dist/help/button-notif-warn.png) button,
  you display the list of current alarms. They are sorted by alarm level and
- date when available (Emergency, Alarm, Warn, Alert, Normal, Nominal).  
+ date when available (Emergency, Alarm, Warn, Alert, Normal).  
 When you stay on the page, the alarms are no longer sorted.  
 To sort again, click the ![button-notif-warn](./dist/help/button-notif-warn.png) button again.  
-When the alarm level is higher than **Nominal** the border of all widgets takes the color of the highest alarm.
+When the alarm level is higher than **Normal** the border of all widgets takes the color of the highest alarm.
 >
 >![main-page-alarm](./dist/help/main-page-alarm.png#maxwidth)  
 >
 Color code by alarm level:
-- ![button-notif-nominal](./dist/help/button-notif-nominal.png): Nominal alarm level.  
 - ![button-notif-normal](./dist/help/button-notif-normal.png): Normal alarm level.  
 - ![button-notif-alert](./dist/help/button-notif-alert.png): Alert alarm level.  
 - ![button-notif-warn](./dist/help/button-notif-warn.png): Warning alarm level.  
@@ -154,7 +153,7 @@ Color code by alarm level:
   
 You can hide some alarms in the settings page.
  In this case, the alarm button can also display a second information.
- The color of the dotted border of the ![button-notif-nominal-mixed](./dist/help/button-notif-nominal-mixed.png) indicates that there are hidden alarms
+ The color of the dotted border of the ![button-notif-normal-mixed](./dist/help/button-notif-normal-mixed.png) indicates that there are hidden alarms
  and the maximum level of hidden alarms.  
 (See: [Alarms Settings](#2_3_5))  
   
@@ -297,7 +296,7 @@ In timezone list, **DST** means Daylight Saving Time and displays time automatic
 ___
 In setting mode, on the ![button-notif-warn](./dist/help/button-notif-warn.png) page
  you can hide alarms from the main view by unchecking the **visible** option.
- The ![button-notif-nominal-mixed](./dist/help/button-notif-nominal-mixed.png) button
+ The ![button-notif-normal-mixed](./dist/help/button-notif-normal-mixed.png) button
  reminds you that alarms are hidden by a dotted border around the bell.  
 The color code for dotted lines is the same as for non-hidden alarms.
  The color indicates the highest value of hidden alarms.  
