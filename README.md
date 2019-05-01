@@ -32,6 +32,13 @@ For Developers
 - install development dependencies with `npm install`
 - build & watch with `npm start`
 - building js bundle for distribution: `npm run build` (and push changes to dist/ui.js). This builds minified ui.js.
+  
+The address of the signal K server is directly derived from your web page.  
+You can manually specify the address and the protocol to connect to your signal K server.  
+Be careful if you mix secure and unsecured protocols, your browser may refuse the connection.  
+To manually specify the address and the protocol of the signal K server,
+ add the following query parameter **?signalkServer=wss://mysignalk.local:3443** to the url.  
+Use **wss://** for secure websocket or **ws://** for unsecure websocket.  
 
 Changelog
 =====

@@ -33,7 +33,7 @@
 #### Help and Instructions
 ___
 + [0. Introduction](#0)  
-+ [1. Connect to a Signal K Server](#1)  
++ [1. Connect to your Signal K Server](#1)  
 + [2. Top Bar Buttons](#2)  
     - [2.1. Change Page](#2_1)  
         - [2.1.1 Alarms Page](#2_1_1)  
@@ -54,7 +54,8 @@ ___
     - [3.1 Changing Display Mode](#3_1)  
     - [3.2. Wind Widget Modes](#3_2)  
     - [3.3 Display SourceID](#3_3)  
-+ [4. Trouble?](#4)  
++ [4. Advanced options](#4)  
++ [5. Trouble?](#5)  
   
 <a id="0"></a>
 **0. Introduction** [Back to menu](#menu)  
@@ -78,17 +79,23 @@ You must close the help page by clicking on the ![help-on](./dist/help/help-on-i
  button to reactivate them.  
   
 <a id="1"></a>
-**1. Connect to a Signal K Server** [Back to menu](#menu)  
+**1. Connect to your Signal K Server** [Back to menu](#menu)  
 ___
 >
->![connect](./dist/help/connect.png#maxwidth)  
+>![connect](./dist/help/connect-new.png#maxwidth)  
 >
-When you open InstrumentPanel for the first time you need to specify the server
-you want to connect to.  
-The default value is the server that you loaded InstrumentPanel from (1).
-Click on the connect button(2) to connect  to the server.  
-The button's text changes to _Connecting_ indicate the connection status and once connected disappears.  
-In most cases you won't see the _Connecting_ text at all.  
+The address of the Signal K server is directly derived from your web page.  
+Click on the button to connect to the server.  
+The button's text changes to _Connecting_ indicate the connection status
+ and once connected disappears. In most cases you won't see the _Connecting_ text at all.  
+  
+If the _Connecting_ button reappears, it means that the connection
+ to the Signal K server is broken and that instrumentpanel
+ is trying to reconnect automatically.  
+  
+For advanced users, you can manually specify the address and
+ the protocol to connect to your signal K server
+ (See: [Advanced options](#4)).  
   
 <a id="2"></a>
 **2. Top Bar Buttons** [Back to menu](#menu)  
@@ -362,7 +369,16 @@ To hide the source Id, just click in the displayed source Id field.
 >
   
 <a id="4"></a>
-**4. Trouble?** [Back to menu](#menu)  
+**4. Advanced options** [Back to menu](#menu)  
+___
+For advanced users, you can manually specify the address and the protocol to connect to your signal K server.  
+Be careful if you mix secure and unsecured protocols, your browser may refuse the connection.  
+To manually specify the address and the protocol of the Signal K server,
+ add the following query parameter **?signalkServer=wss://mysignalk.local:3443** to the url.  
+Use **wss://** for secure websocket or **ws://** for unsecure websocket.  
+  
+<a id="5"></a>
+**5. Trouble?** [Back to menu](#menu)  
 ___
 InstrumentPanel stores some of its settings in the browser's local storage.  
 In case you have invalid stuff displayed, you can reset it
