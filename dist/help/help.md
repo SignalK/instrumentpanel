@@ -146,7 +146,7 @@ When the alarm level is higher than **Nominal** the border of all widgets takes 
 >
 Color code by alarm level:
 - ![button-notif-nominal](./dist/help/button-notif-nominal.png): Nominal alarm level.  
-- ![button-notif-normal](./dist/help/button-notif-normal.png): Normal alarm level.  
+- ![button-notif-nominal](./dist/help/button-notif-nominal.png): Normal alarm level.  
 - ![button-notif-alert](./dist/help/button-notif-alert.png): Alert alarm level.  
 - ![button-notif-warn](./dist/help/button-notif-warn.png): Warning alarm level.  
 - ![button-notif-alarm](./dist/help/button-notif-alarm.png): Alarm alarm level.  
