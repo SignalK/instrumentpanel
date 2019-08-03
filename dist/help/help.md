@@ -94,7 +94,7 @@ If the _Connecting_ button reappears, it means that the connection
  is trying to reconnect automatically.  
   
 For advanced users, you can manually specify the address and
- the protocol to connect to your signal K server
+ the protocol to connect to your Signal K server
  (See: [Advanced options](#4)).  
   
 <a id="2"></a>
@@ -371,7 +371,7 @@ To hide the source Id, just click in the displayed source Id field.
 <a id="4"></a>
 **4. Advanced options** [Back to menu](#menu)  
 ___
-For advanced users, you can manually specify the address and the protocol to connect to your signal K server.  
+For advanced users, you can manually specify the address and the protocol to connect to your Signal K server.
 Be careful if you mix secure and unsecured protocols, your browser may refuse the connection.  
 To manually specify the address and the protocol of the Signal K server,
  add the following query parameter **?signalkServer=wss://mysignalk.local:3443** to the url.  
