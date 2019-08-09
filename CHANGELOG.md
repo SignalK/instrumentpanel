@@ -1,5 +1,16 @@
 ## Change Log
 
+### v0.10.0 (2019/08/09 13:20 +00:00)
+- [#99](https://github.com/SignalK/instrumentpanel/pull/99)  chore: update to @signalk/client:2.0.3 and simplify the connection process (@cmotelet)
+- [#100](https://github.com/SignalK/instrumentpanel/pull/100) chore: change notification color normal to same color as nominal (@cmotelet)
+- [#97](https://github.com/SignalK/instrumentpanel/pull/97) chore: normalize options passed to the widget (@cmotelet)
+- [#94](https://github.com/SignalK/instrumentpanel/pull/94) fix: reactivation of knownKeys to reduce additional CPU cycles (@cmotelet)
+- [#96](https://github.com/SignalK/instrumentpanel/pull/96) chore: reduce the number of browser.saveGrid() calls (@cmotelet)
+- [#95](https://github.com/SignalK/instrumentpanel/pull/95) fix: updateNotificationLevel & pushGridChanges in toggleActive (@cmotelet)
+- [#92](https://github.com/SignalK/instrumentpanel/pull/92) feature: add specific widget (@cmotelet)
+- [#91](https://github.com/SignalK/instrumentpanel/pull/91) chore: moving css content to a dedicated file (@cmotelet)
+- [#90](https://github.com/SignalK/instrumentpanel/pull/90) chore: rewriting toolTips code (@cmotelet)
+
 ### v0.9.0 (2019/03/12 18:48 +00:00)
 - [#89](https://github.com/SignalK/instrumentpanel/pull/89) feature: add dedicated page for notifications (@cmotelet)
 
