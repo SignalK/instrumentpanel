@@ -1,6 +1,6 @@
 ## Change Log
 
-### v0.10.0 (2019/08/09 13:20 +00:00)
+### v0.10.0 (2019/08/09 13:38 +00:00)
 - [#99](https://github.com/SignalK/instrumentpanel/pull/99)  chore: update to @signalk/client:2.0.3 and simplify the connection process (@cmotelet)
 - [#100](https://github.com/SignalK/instrumentpanel/pull/100) chore: change notification color normal to same color as nominal (@cmotelet)
 - [#97](https://github.com/SignalK/instrumentpanel/pull/97) chore: normalize options passed to the widget (@cmotelet)
