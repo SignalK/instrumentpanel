@@ -31,7 +31,7 @@
     "release": "git tag -d v$npm_package_version ; npm run changelog && git add CHANGELOG.md && git commit -m 'chore: update changelog' && git tag v$npm_package_version && git push --tags && git push && git tag -d latest && git push origin :refs/tags/latest && git tag latest && git push origin tag latest"
   },
   "devDependencies": {
-    "@signalk/client": "^0.2.1",
+    "@signalk/client": "^2.0.3",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
