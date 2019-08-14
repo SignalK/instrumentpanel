@@ -29,7 +29,6 @@
     padding-left: 0;
   }
 </style>
-<a id="menu"></a>
 #### Help and Instructions
 ___
 + [0. Introduction](#0)  
@@ -90,7 +89,7 @@ The button's text changes to _Connecting_ indicate the connection status
  and once connected disappears. In most cases you won't see the _Connecting_ text at all.  
   
 If the _Connecting_ button reappears, it means that the connection
- to the Signal K server is broken and that instrumentpanel
+ to the Signal K server is broken and that InstrumentPanel
  is trying to reconnect automatically.  
   
 For advanced users, you can manually specify the address and
@@ -249,7 +248,8 @@ Select your preferred unit from the listbox.
 >
 >![unit](./dist/help/widget-settingUnit.png#maxwidth)  
 >
-To make the unit change active, please disconnect and reconnect or reload the page.  
+To make the unit change active, InstrumentPanel must be reloaded. This will be done automatically when you leave settings tab.  
+You will be informed by a message at the top of the screen.  
   
 <a id="2_3_4"></a>
 **2.3.4. Widget Specific Settings** [Back to menu](#menu)  
