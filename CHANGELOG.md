@@ -1,6 +1,6 @@
 ## Change Log
 
-### v0.11.0 (2019/08/15 13:46 +00:00)
+### v0.11.0 (2019/08/15 13:53 +00:00)
 - [#101](https://github.com/SignalK/instrumentpanel/pull/101) feature: auto reload page when unit changed (@cmotelet)
 
 ### v0.10.0 (2019/08/09 13:38 +00:00)
