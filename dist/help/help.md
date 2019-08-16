@@ -49,6 +49,7 @@ ___
             - [2.3.4.3. Windmeter Widget:](#2_3_4_3)  
             - [2.3.4.4. Digital DateTime Widget:](#2_3_4_4)  
         - [2.3.5. Alarms Settings](#2_3_5)  
+        - [2.3.6. Preferred Units Tab](#2_3_6)  
 + [3 Options Available on the Widgets](#3)  
     - [3.1 Changing Display Mode](#3_1)  
     - [3.2. Wind Widget Modes](#3_2)  
@@ -207,8 +208,14 @@ Using the vertical scrollbar on the right side,
 **2.3. Settings** [Back to menu](#menu)  
 ___
 Use the ![settings](./dist/help/settings-icon.png) button to switch to settings.  
- This will change the display to a grid that shows all widgets,
+In settings mode, you will find 2 tabs:  
+>
+>![settings-tabs](./dist/help/settings-tabs.png#maxwidth)  
+>
+- The ["By Display Widget"](#2_3_1) tab will change the display to a grid that shows all widgets,
  including ones you have previously hidden, with their individual settings.  
+- The ["Preferred Units"](#2_3_6) tab allows you to set the unit values applied to widgets when they are created.  
+  
 In setting mode, use the ![view](./dist/help/view-icon.png) button to return to the main view.  
   
 <a id="2_3_1"></a>
@@ -309,6 +316,24 @@ In setting mode, on the ![button-notif-warn](./dist/help/button-notif-warn.png) 
 The color code for dotted lines is the same as for non-hidden alarms.
  The color indicates the highest value of hidden alarms.  
 The alarm settings are not saved when you exit the GUI.  
+  
+<a id="2_3_6"></a>
+**2.3.6 Preferred Units Tab** [Back to menu](#menu)  
+___
+In this tab, you choose which default units will be displayed on your widgets.
+ In 90% of cases the default values you choose here will correspond to your display habit.  
+For widgets on which the default units are not suitable,
+ you can change them individually on each widget in the "By Display Widget" tab.  
+The application on widgets of the default units is done at the time of widget creation.
+ If your grid is already made up with widgets,
+ you can use the button ![button-apply-preferred-units](./dist/help/button-apply-preferred-units.png)
+ at the top right to apply the default units
+ to your already created widgets.  
+Use the ![button-reset-preferred-units](./dist/help/button-reset-preferred-units.png) button
+ at the top right to reset the default units to their initial values.  
+>
+>![tab-preferred-settings](./dist/help/tab-preferred-settings.png#maxwidth)  
+>
   
 <a id="3"></a>
 **3 Options Available on the Widgets** [Back to menu](#menu)  

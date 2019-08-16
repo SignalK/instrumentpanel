@@ -131,10 +131,11 @@ div.widget svg {
 .items {
  display: flex;
  flex-wrap: wrap;
+ margin-right: 10px;
 }
 
 .items .item {
- flex: 1 0 200px;
+ flex: 1 0 220px;
  box-sizing: border-box;
  background: #e0ddd5;
  color: #171e42;
