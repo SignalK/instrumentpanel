@@ -17,7 +17,9 @@
   }
 
   if (getParameterByName('reset')) {
-    localStorage.clear();
+    localStorage.removeItem('signalkGrid3');
+    localStorage.removeItem('signalKHostConnected');
+    localStorage.removeItem('signalKLastHost');
     location.replace(location.protocol + '//' + location.host + location.pathname);
   }
   </script>
