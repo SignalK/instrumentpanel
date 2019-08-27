@@ -35,9 +35,9 @@ ___
 + [1. Connect to your Signal K Server](#1)  
 + [2. Top Bar Buttons](#2)  
     - [2.1. Change Page](#2_1)  
-        - [2.1.1 Alarms Page](#2_1_1)  
+        - [2.1.1. Alarms Page](#2_1_1)  
     - [2.2. Modify Layout](#2_2)  
-        - [2.2.1 Moving and Resizing Widgets](#2_2_1)  
+        - [2.2.1. Moving and Resizing Widgets](#2_2_1)  
         - [2.2.2. Notes for iOS users](#2_2_2)  
     - [2.3. Settings](#2_3)  
         - [2.3.1. Add or Delete Pages](#2_3_1)  
@@ -50,10 +50,11 @@ ___
             - [2.3.4.4. Digital DateTime Widget:](#2_3_4_4)  
         - [2.3.5. Alarms Settings](#2_3_5)  
         - [2.3.6. Preferred Units Tab](#2_3_6)  
-+ [3 Options Available on the Widgets](#3)  
-    - [3.1 Changing Display Mode](#3_1)  
++ [3. Options Available on the Widgets](#3)  
+    - [3.1. Changing Display Mode](#3_1)  
     - [3.2. Wind Widget Modes](#3_2)  
-    - [3.3 Display SourceID](#3_3)  
+    - [3.3. Digital Position Modes](#3_3)  
+    - [3.4. Display SourceID](#3_4)  
 + [4. Advanced options](#4)  
 + [5. Trouble?](#5)  
   
@@ -177,7 +178,7 @@ To return to normal mode and to lock & save the layout,
  click on the ![unlock](./dist/help/button-unlock.png) button.  
   
 <a id="2_2_1"></a>
-**2.2.1 Moving and Resizing Widgets** [Back to menu](#menu)  
+**2.2.1. Moving and Resizing Widgets** [Back to menu](#menu)  
 ___
 On a unlocked layout:  
 - **resize** a widget by dragging the anchor located at the bottom right.  
@@ -318,7 +319,7 @@ The color code for dotted lines is the same as for non-hidden alarms.
 The alarm settings are not saved when you exit the GUI.  
   
 <a id="2_3_6"></a>
-**2.3.6 Preferred Units Tab** [Back to menu](#menu)  
+**2.3.6. Preferred Units Tab** [Back to menu](#menu)  
 ___
 In this tab, you choose which default units will be displayed on your widgets.
  In 90% of cases the default values you choose here will correspond to your display habit.  
@@ -336,11 +337,11 @@ Use the ![button-reset-preferred-units](./dist/help/button-reset-preferred-units
 >
   
 <a id="3"></a>
-**3 Options Available on the Widgets** [Back to menu](#menu)  
+**3. Options Available on the Widgets** [Back to menu](#menu)  
 ___
   
 <a id="3_1"></a>
-**3.1 Changing Display Mode** [Back to menu](#menu)  
+**3.1. Changing Display Mode** [Back to menu](#menu)  
 ___
 Some widgets have the ability to change their display mode directly.  
 They are identified by a ![clickme-icon](./dist/help/clickme-icon.png) icon in the top left corner.  
@@ -381,7 +382,20 @@ Enable the options for True Wind over Ground and True Wind through Water:
 And then click on the ![DerivedData-submit](./dist/help/plugin-DerivedData-submit.png) button to save and activate these options.  
   
 <a id="3_3"></a>
-**3.3 Display SourceID** [Back to menu](#menu)  
+**3.3. Digital Position Modes** [Back to menu](#menu)  
+___
+The Digital Position Widget can display your position in different formats:  
+- Dir D.ddddd° (N 38.99177°)  
+- Dir +/-D.ddddd° (N +38.99177°)  
+- Dir D°M'S''ddd (N 38°59'30"357)  
+- DDirM'S''ddd (38N59'30"357)  
+  
+You can change the display format by clicking on the ![clickme-icon](./dist/help/clickme-icon.png) icon.  
+The first click, displays the display format then the others clicks change the display format.  
+You have 5 seconds to repeat your clicks, after that the widget automatically displays its original label.  
+  
+<a id="3_4"></a>
+**3.4. Display SourceID** [Back to menu](#menu)  
 ___
 To display the source Id of a widget's data stream,
  click on to the top right corner of widget.  
