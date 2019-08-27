@@ -429,3 +429,9 @@ If you change a unit or a display label on the server,
  you can clear the cache without destroying your layout
  by modifying the url with the following query parameter  
  **?flushCache=true**.  
+  
+If you see **ERROR in unit retrieval** on the upper of a widget, there is a problem to contact your Signal K server.  
+Be careful, the values displayed may be wrong.  
+Try to add the options to the URL described above.  
+Check your browser logs and ask for help on slack: http://slack-invite.signalk.org/  
+Maybe you discovered a bug.  
