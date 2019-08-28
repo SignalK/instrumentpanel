@@ -1,5 +1,14 @@
 ## Change Log
 
+### v0.12.0 (2019/08/28 05:25 +00:00)
+- [#108](https://github.com/SignalK/instrumentpanel/pull/108) fix: fetch meta in TLS when host is in https (@cmotelet)
+- [#105](https://github.com/SignalK/instrumentpanel/pull/105) feature: extending display capabilities of digitalposition widget (@cmotelet)
+- [#107](https://github.com/SignalK/instrumentpanel/pull/107) feature: hard code missing metas in Signal K SchemaData (@cmotelet)
+- [#106](https://github.com/SignalK/instrumentpanel/pull/106) chore: avoid searching for notification's meta (@cmotelet)
+- [#104](https://github.com/SignalK/instrumentpanel/pull/104) chore: remove unused tab 'Grid as JSON' (@cmotelet)
+- [#103](https://github.com/SignalK/instrumentpanel/pull/103) feature: settings for preferred unit (@cmotelet)
+- [#102](https://github.com/SignalK/instrumentpanel/pull/102) fix: avoid clear entire localstorage (@cmotelet)
+
 ### v0.11.0 (2019/08/15 13:53 +00:00)
 - [#101](https://github.com/SignalK/instrumentpanel/pull/101) feature: auto reload page when unit changed (@cmotelet)
 
