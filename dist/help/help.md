@@ -435,3 +435,7 @@ Be careful, the values displayed may be wrong.
 Try to add the options to the URL described above.  
 Check your browser logs and ask for help on slack: http://slack-invite.signalk.org/  
 Maybe you discovered a bug.  
+
+If you see **NaN** inside a widget, it means that the value returned by your Signal K server is incorrect
+ and that InstrumentPanel cannot interpret it
+ 
