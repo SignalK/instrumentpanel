@@ -9,9 +9,9 @@ module.exports = {
     ]
   },
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, 'public'),
     filename: '[name].js',
-    publicPath: '/dist/'
+    publicPath: '/public/'
   },
   module: {
     rules: [
@@ -38,16 +38,39 @@ module.exports = {
     ],
   },
   devtool: 'source-map',
+  devServer: {
+    contentBase: './public',
+    publicPath: '/',
+    watchContentBase: true,
+    hot: true,
+    compress: true,
+    port: 3001,
+    host: '0.0.0.0',
+    index: 'index.html',
+    disableHostCheck: true,
+    progress: true,
+    stats: {
+      children: false,
+      maxModules: 0
+    }
+  },
   resolve: {
     alias: {
       bacon: "baconjs"
     }
   },
   plugins: [
+    new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
       VERSION: JSON.stringify(require("./package.json").version)
     })
   ],
-  externals: ['mdns', 'validator-js', 'ws'],
+  stats: {
+    children: false,
+    maxModules: 0
+  },
+  performance: {
+    hints: false
+  },
   mode: 'production'
 }

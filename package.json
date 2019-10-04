@@ -21,11 +21,10 @@
   "main": "lib/ui/main.js",
   "repository": "github:SignalK/instrumentpanel.git",
   "scripts": {
-    "start": "node server.js",
+    "start": "webpack-dev-server --mode development",
     "prepublishOnly": "npm run build-help; npm run build",
     "build": "webpack -p --progress",
-    "build-debug": "webpack -d --devtool cheap-module-source-map --progress",
-    "build-help": "marked -i ./dist/help/help.md -o ./dist/help/help.html",
+    "build-help": "marked -i ./lib/help/help.md -o ./public/help/help.html",
     "watch": "webpack -d --watch",
     "changelog": "github-changes -o signalk -r instrumentpanel -a --only-pulls --use-commit-body --data=pulls --tag-name=v$npm_package_version",
     "release": "git tag -d v$npm_package_version ; npm run changelog && git add CHANGELOG.md && git commit -m 'chore: update changelog' && git tag v$npm_package_version && git push && git tag -d latest && git push origin :refs/tags/latest && git tag latest && git push --tags"
