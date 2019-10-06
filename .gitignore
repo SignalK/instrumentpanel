@@ -1,8 +1,8 @@
-dist/ui.js
-dist/ui.js.map
+public/ui.js
+public/ui.js.map
 bower_components
 node_modules/*
 !node_modules/app
 **/*.swp
 npm-debug.log
-dist/help/*.html
+public/help/*.html
