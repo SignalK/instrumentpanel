@@ -22,7 +22,23 @@ module.exports = {
             loader: 'babel-loader',
             options: {
               cacheDirectory: true,
-              presets: ['react', 'env']
+              presets: [
+                '@babel/preset-react',
+                [
+                  '@babel/preset-env',
+                  {
+// If you want optimize the buid size but reduce compatibility
+// you can uncomment one line below. e.g. to produce a version most efficient but only compatible with chrome version 77
+//                    targets: { browsers: ['chrome 77'] },
+// 'defaults' produce a version for the most common and up-to-date browsers and not dead
+//                    targets: { browsers: ['defaults'] },
+//                    targets: { browsers: ['defaults', 'not ie 11', 'not ie_mob 11'] },
+                    debug: false,
+                    useBuiltIns: 'usage',
+                    corejs: 3,
+                  }
+                ]
+              ]
             }
           }
       }
