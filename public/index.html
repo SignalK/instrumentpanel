@@ -8,22 +8,6 @@
     <link href="./css/instrumentpanel.css" rel="stylesheet">
   </head>
 
-  <script>
-  function getParameterByName(name) {
-      name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-      var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-          results = regex.exec(location.search);
-      return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-  }
-
-  if (getParameterByName('reset')) {
-    localStorage.removeItem('signalkGrid3');
-    localStorage.removeItem('signalKHostConnected');
-    localStorage.removeItem('signalKLastHost');
-    location.replace(location.protocol + '//' + location.host + location.pathname);
-  }
-  </script>
-
   <body>
     <div id="content"></div>
     <footer style="text-align:center">

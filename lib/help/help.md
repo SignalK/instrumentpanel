@@ -36,9 +36,10 @@ ___
 + [2. Top Bar Buttons](#2)  
     - [2.1. Change Page](#2_1)  
         - [2.1.1. Alarms Page](#2_1_1)  
-    - [2.2. Modify Layout](#2_2)  
-        - [2.2.1. Moving and Resizing Widgets](#2_2_1)  
-        - [2.2.2. Notes for iOS users](#2_2_2)  
+    - [2.2. Layout](#2_2)  
+        - [2.2.1. Modify Layout](#2_2_1)  
+        - [2.2.2. Moving and Resizing Widgets](#2_2_2)  
+        - [2.2.3. Notes for iOS users](#2_2_3)  
     - [2.3. Settings](#2_3)  
         - [2.3.1. Add or Delete Pages](#2_3_1)  
         - [2.3.2. Hide or Show widget:](#2_3_2)  
@@ -50,6 +51,7 @@ ___
             - [2.3.4.4. Digital DateTime Widget:](#2_3_4_4)  
         - [2.3.5. Alarms Settings](#2_3_5)  
         - [2.3.6. Preferred Units Tab](#2_3_6)  
+        - [2.3.7. Reset settings Tab](#2_3_7)  
 + [3. Options Available on the Widgets](#3)  
     - [3.1. Changing Display Mode](#3_1)  
     - [3.2. Wind Widget Modes](#3_2)  
@@ -167,7 +169,26 @@ You can hide some alarms in the settings page.
 (See: [Alarms Settings](#2_3_5))  
   
 <a id="2_2"></a>
-**2.2. Modify Layout** [Back to menu](#menu)  
+**2.2. Layout** [Back to menu](#menu)  
+___
+InstrumentPanel supports several layouts. The choice of layout is selected according to 3 criteria in the following order:  
+- By adding the following query parameter **?layout=myLayoutName** to the url.  
+- By the source that opened InstrumentPanel (http referrer). 
+e.g. if you open InstrumentPanel embedded in freeboard-sk, the layout name will be **/@signalk/freeboard-sk/**.  
+- If no parameters are specified, the layout name will be **default**.  
+  
+You can view the name of the layout by switching to [Settings](#2_3) mode 
+![settings](./help/settings-icon.png)  
+in the **By Display Widget** tab.  
+  
+>
+>![layout-name](./help/layout-name.png#maxwidth)  
+>
+  
+In the example above an layout dedicated to freeboard-sk has been automatically selected.  
+  
+<a id="2_2_1"></a>
+**2.2.1. Modify Layout** [Back to menu](#menu)  
 ___
 Use the ![lock](./help/button-lock.png) button on the main bar to unlock the layout. 
 When the layout is unlocked, widget background changes to yellow and features are hidden.  
@@ -177,8 +198,8 @@ When the layout is unlocked, widget background changes to yellow and features ar
 To return to normal mode and to lock & save the layout,
  click on the ![unlock](./help/button-unlock.png) button.  
   
-<a id="2_2_1"></a>
-**2.2.1. Moving and Resizing Widgets** [Back to menu](#menu)  
+<a id="2_2_2"></a>
+**2.2.2. Moving and Resizing Widgets** [Back to menu](#menu)  
 ___
 On a unlocked layout:  
 - **resize** a widget by dragging the anchor located at the bottom right.  
@@ -192,8 +213,8 @@ On a unlocked layout:
 >
 The layout adjusts automatically to changes, compacting the widgets vertically.
   
-<a id="2_2_2"></a>
-**2.2.2. Notes for iOS users** [Back to menu](#menu)  
+<a id="2_2_3"></a>
+**2.2.3. Notes for iOS users** [Back to menu](#menu)  
 ___
 On an unlocked grid, to drag or to resize a widget,
  first click once or twice in the center of the widget
@@ -209,13 +230,14 @@ Using the vertical scrollbar on the right side,
 **2.3. Settings** [Back to menu](#menu)  
 ___
 Use the ![settings](./help/settings-icon.png) button to switch to settings.  
-In settings mode, you will find 2 tabs:  
+In settings mode, you will find 3 tabs:  
 >
->![settings-tabs](./help/settings-tabs.png#maxwidth)  
+>![settings-3tabs](./help/settings-3tabs.png#maxwidth)  
 >
 - The ["By Display Widget"](#2_3_1) tab will change the display to a grid that shows all widgets,
  including ones you have previously hidden, with their individual settings.  
 - The ["Preferred Units"](#2_3_6) tab allows you to set the unit values applied to widgets when they are created.  
+- The ["Reset settings"](#2_3_7) tab allows you to clear settings stored in local storage browser.  
   
 In setting mode, use the ![view](./help/view-icon.png) button to return to the main view.  
   
@@ -245,8 +267,6 @@ Unselect/Select checkbox to hide/show the widget on the page.
 By default, all new widgets are visible.  
 - ![button-hideAll](./help/button-hideAll.png) button: Hides all widgets on the current page in one operation.  
 - ![button-ShowAll](./help/button-ShowAll.png) button: Shows all widgets on the current page in one operation.  
-- ![button-resetAll.png](./help/button-resetAll.png) button: Be careful with this button. It will completely erase the entire layout of all pages.  
-You will have to answer "Yes" in the dialog box.  
   
 <a id="2_3_3"></a>
 **2.3.3. Unit selection** [Back to menu](#menu)  
@@ -334,6 +354,19 @@ Use the ![button-reset-preferred-units](./help/button-reset-preferred-units.png)
  at the top right to reset the default units to their initial values.  
 >
 >![tab-preferred-settings](./help/tab-preferred-settings.png#maxwidth)  
+>
+  
+<a id="2_3_7"></a>
+**2.3.7. Reset settings Tab** [Back to menu](#menu)  
+___
+In this tab, you can clear settings stored in local storage browser.  
+This settings are :  
+- Layouts: Delete all layouts.
+- Start connected: Reset the automatic connection at startup.
+- Preferred units: Delete all preferred units.
+- Previous layout: Clean previous layouts, if a layout existed in version 0.12.0 and earlier, it is used as a template to build the default layout.
+>
+>![reset-settings](./help/reset-settings.png#maxwidth)  
 >
   
 <a id="3"></a>
