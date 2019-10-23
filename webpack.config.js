@@ -4,9 +4,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
   entry: {
-    ui: [
-      './lib/ui/main.js'
-    ]
+    ui: './lib/ui/main.js'
   },
   output: {
     path: path.join(__dirname, 'public'),
@@ -68,7 +66,10 @@ module.exports = {
     stats: {
       children: false,
       maxModules: 0
-    }
+    },
+    watchOptions: {
+      aggregateTimeout: 5000
+    },
   },
   resolve: {
     alias: {
