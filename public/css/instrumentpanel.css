@@ -9,6 +9,8 @@
   background-color: whitesmoke;
   border-radius: 8px;
   border: 1px solid silver;
+  fill: black;
+  stroke: black;
 }
 
 .react-grid-item.cssTransforms {
