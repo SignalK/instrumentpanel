@@ -9,12 +9,12 @@
     padding: 5px;
     border-width: 1px;
     border-radius: 5px;
-    border-color: black;
+    border-color: var(--border-color);
     border-style: solid;
     max-width: 600px
   }
   .help hr {
-    border-color: black;
+    border-color: var(--border-color);
     margin-top: 0px;
   }
   .help blockquote {
