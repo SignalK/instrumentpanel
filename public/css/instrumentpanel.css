@@ -182,7 +182,7 @@ div.widget svg {
 .items .item {
  flex: 1 0 220px;
  box-sizing: border-box;
- background-color: var(--background-widget-color);
+ background-color: var(--background-settings-item-color);
  padding: 10px;
  margin-left: 6px;
  margin-top: 6px;
@@ -201,7 +201,7 @@ input,
 select,
 textarea,
 label {
- background-color: var(--background-widget-color);
+ background-color: var(--background-settings-item-color);
  border-color: var(--border-color);
 }
 
@@ -321,6 +321,7 @@ label {
   --background-btn-color: #101010;
   --background-btn-active-color: #337933;
   --background-widget-color: black;
+  --background-settings-item-color: black;
   --background-settings-widget-color: #7a5c1f;
   --text-color: tomato;
   --text-settings-color: #535378;
@@ -335,6 +336,7 @@ label {
   --background-btn-color: #ececec;
   --background-btn-active-color: #8c8c8c;
   --background-widget-color: whitesmoke;
+  --background-settings-item-color: #e0ddd5;
   --background-settings-widget-color: cornsilk;
   --text-color: #000;
   --text-settings-color: #3c4b8c;

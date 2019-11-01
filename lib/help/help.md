@@ -50,8 +50,9 @@ ___
             - [2.3.4.3. Windmeter Widget:](#2_3_4_3)  
             - [2.3.4.4. Digital DateTime Widget:](#2_3_4_4)  
         - [2.3.5. Alarms Settings](#2_3_5)  
-        - [2.3.6. Preferred Units Tab](#2_3_6)  
-        - [2.3.7. Reset settings Tab](#2_3_7)  
+        - [2.3.6. Preferred Units Screen](#2_3_6)  
+        - [2.3.7. Dark Mode Screen](#2_3_7)  
+        - [2.3.8. Reset settings Screen](#2_3_8)  
 + [3. Options Available on the Widgets](#3)  
     - [3.1. Changing Display Mode](#3_1)  
     - [3.2. Wind Widget Modes](#3_2)  
@@ -74,7 +75,7 @@ The cells are grouped into three columns:
 - everything else (electrical, propulsion etc)
   
 >
->![demo](./help/main-page-2.png#maxwidth)  
+>![demo](./help/main-page.png#maxwidth)  
 >
 <a id="0_help"></a>
 When the help page is displayed all buttons are disabled.  
@@ -108,7 +109,7 @@ Signal K data items are displayed in different cells with dedicated widgets depe
 Widgets are arranged on a virtual grid with vertical compaction.  
 **Units** on widgets are set to default and fetched from the server metadata.  
 >
->![main-page](./help/main-page-default-2.png#maxwidth)  
+>![main-page](./help/main-page-default.png#maxwidth)  
 >
   
 - ![lock](./help/button-lock.png) button: Click to unlock your layout  
@@ -125,6 +126,8 @@ Click on it to see a list of your current alarms.
 (See:[Alarm Page](#2_1_1))  
 - ![help](./help/help-icon.png) button: Cick to display the help page.  
 (See: [notes](#0_help))  
+- ![dark mode day](./help/darkmode-day-icon.png) ![dark mode night](./help/darkmode-night-icon.png) button: Cick to activate /desactivate dark mode.  
+(See: [dark mode](#2_3_7))  
 - ![heart](./help/heartbeat-icon.png) icon: It's data indicator icon.  
 When data is received it blinks every second.
  If the indicator is not blinking, either your connection is broken
@@ -179,7 +182,7 @@ e.g. if you open InstrumentPanel embedded in freeboard-sk, the layout name will 
   
 You can view the name of the layout by switching to [Settings](#2_3) mode 
 ![settings](./help/settings-icon.png)  
-in the **By Display Widget** tab.  
+in the **Widget** settings screen.  
   
 >
 >![layout-name](./help/layout-name.png#maxwidth)  
@@ -230,14 +233,15 @@ Using the vertical scrollbar on the right side,
 **2.3. Settings** [Back to menu](#menu)  
 ___
 Use the ![settings](./help/settings-icon.png) button to switch to settings.  
-In settings mode, you will find 3 tabs:  
+In settings mode, at the top left, you will find a dropdown-list, click on the arrow to list the choices :
 >
->![settings-3tabs](./help/settings-3tabs.png#maxwidth)  
+>![settings-dropdown-list](./help/settings-dropdown-list.png#maxwidth)  
 >
-- The ["By Display Widget"](#2_3_1) tab will change the display to a grid that shows all widgets,
+- The ["Widget"](#2_3_1) entry will change the display to a grid that shows all widgets,
  including ones you have previously hidden, with their individual settings.  
-- The ["Preferred Units"](#2_3_6) tab allows you to set the unit values applied to widgets when they are created.  
-- The ["Reset settings"](#2_3_7) tab allows you to clear settings stored in local storage browser.  
+- The ["Preferred Units"](#2_3_6) entry allows you to set the unit values applied to widgets when they are created.  
+- The ["Dark Mode"](#2_3_7) entry allows you to change how the dark mode will be activated.  
+- The ["Reset"](#2_3_8) entry allows you to clear settings stored in local storage browser.  
   
 In setting mode, use the ![view](./help/view-icon.png) button to return to the main view.  
   
@@ -276,7 +280,7 @@ Select your preferred unit from the listbox.
 >
 >![unit](./help/widget-settingUnit.png#maxwidth)  
 >
-To make the unit change active, InstrumentPanel must be reloaded. This will be done automatically when you leave settings tab.  
+To make the unit change active, InstrumentPanel must be reloaded. This will be done automatically when you leave settings screens.  
 You will be informed by a message at the top of the screen.  
   
 <a id="2_3_4"></a>
@@ -339,12 +343,12 @@ The color code for dotted lines is the same as for non-hidden alarms.
 The alarm settings are not saved when you exit the GUI.  
   
 <a id="2_3_6"></a>
-**2.3.6. Preferred Units Tab** [Back to menu](#menu)  
+**2.3.6. Preferred Units Screen** [Back to menu](#menu)  
 ___
-In this tab, you choose which default units will be displayed on your widgets.
+In this screen, you choose which default units will be displayed on your widgets.
  In 90% of cases the default values you choose here will correspond to your display habit.  
 For widgets on which the default units are not suitable,
- you can change them individually on each widget in the "By Display Widget" tab.  
+ you can change them individually on each widget in the **Widget** settings screen.  
 The application on widgets of the default units is done at the time of widget creation.
  If your grid is already made up with widgets,
  you can use the button ![button-apply-preferred-units](./help/button-apply-preferred-units.png)
@@ -353,13 +357,30 @@ The application on widgets of the default units is done at the time of widget cr
 Use the ![button-reset-preferred-units](./help/button-reset-preferred-units.png) button
  at the top right to reset the default units to their initial values.  
 >
->![tab-preferred-settings](./help/tab-preferred-settings.png#maxwidth)  
+>![screen-preferred-units](./help/screen-preferred-units.png#maxwidth)  
 >
   
 <a id="2_3_7"></a>
-**2.3.7. Reset settings Tab** [Back to menu](#menu)  
+**2.3.7. Dark Mode Screen** [Back to menu](#menu)  
 ___
-In this tab, you can clear settings stored in local storage browser.  
+In this screen, you can select how the dark mode will be activated:.  
+You have 3 choices available :  
+>
+>![dark-mode-settings](./help/dark-mode-settings.png#maxwidth)  
+>
+- In **By main bar icon**, the dark mode is set by icon in main bar.  
+- In **By OS settings**, the dark mode follows your OS settings. This option need a page reload to be active.  
+- In **By Signal K Mode**, the dark mode follows the value of Signal K path: **/vessels/self/environment/mode**  
+  
+Display in dark mode:  
+>
+>![main-page-dark](./help/main-page-default-dark.png#maxwidth)  
+>
+  
+<a id="2_3_8"></a>
+**2.3.8. Reset settings screen** [Back to menu](#menu)  
+___
+In this screen, you can clear settings stored in local storage browser.  
 This settings are :  
 - Layouts: Delete all layouts.
 - Start connected: Reset the automatic connection at startup.
