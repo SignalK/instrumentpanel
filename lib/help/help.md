@@ -148,9 +148,9 @@ ___
 >
 >![multi-page](./help/multi-page.png#maxwidth)  
 >
-You can have up to 10 pages, each with a separate selection, configuration and layout of  widgets.  
-To switch pages, just click on the page number. To create a new page activate settings
- and add a new one with the plus button (See:[Add or Delete Pages](#2_3_1)).
+You can have up to 10 pages, each with a separate selection, configuration and layout of widgets.  
+To switch pages, just click on the page number or doing a horizontal swipe on the screen.  
+To create a new page, see:[Add or Delete Pages](#2_3_1).  
   
 <a id="2_1_1"></a>
 **2.1.1. Alarms Page** [Back to menu](#menu)  

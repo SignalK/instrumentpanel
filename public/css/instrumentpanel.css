@@ -2,7 +2,7 @@ html, body {
  height: 100%;
  overflow: auto;
  -webkit-overflow-scrolling: touch;
- overscroll-behavior: none;
+ overscroll-behavior-y: none;
 }
 
 body {
