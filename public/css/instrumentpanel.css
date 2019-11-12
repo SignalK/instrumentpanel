@@ -1,3 +1,10 @@
+html, body {
+ height: 100%;
+ overflow: auto;
+ -webkit-overflow-scrolling: touch;
+ overscroll-behavior: none;
+}
+
 body {
  background-color: var(--background-page-color);
  color: var(--text-color);
@@ -117,6 +124,16 @@ body {
  font-size: 24px;
  margin: 10px;
  fill: var(--text-color);
+}
+
+.heartbeatIconOnTop {
+ cursor: default;
+ font-size: 15px;
+ margin: 10px;
+ z-index: +1;
+ fill: var(--text-color);
+ position: -webkit-sticky; /* Safari */
+ position: sticky;
 }
 
 .tooltips-base {

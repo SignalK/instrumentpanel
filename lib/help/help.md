@@ -135,6 +135,13 @@ When data is received it blinks every second.
 - ![disconnect](./help/disconnect-icon.png) buttons: Click to disconnect from your Signal K server
  and to return to the initial state that allows you to specify the server to connect to (See:[Connect to ...](#1)).  
   
+After 15 seconds without user activity, the menu will automatically hide to free up space on the screen.  
+A small heart and a bell (when you have active notifications) are displayed at the top right of the screen.  
+>
+>![menu-hidden](./help/menu-hidden.png)  
+>
+To make the menu reappear click on the center of the Instrumentpanel screen.  
+  
 <a id="2_1"></a>
 **2.1. Change Page** [Back to menu](#menu)  
 ___
