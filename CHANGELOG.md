@@ -1,5 +1,20 @@
 ## Change Log
 
+### v0.13.0 (2019/11/14 06:01 +00:00)
+- [#123](https://github.com/SignalK/instrumentpanel/pull/123) feature: swipe to change pages (@cmotelet)
+- [#121](https://github.com/SignalK/instrumentpanel/pull/121) feature: auto hide main bar after 15 seconds (@cmotelet)
+- [#120](https://github.com/SignalK/instrumentpanel/pull/120) feature: add additional paths to the digitaldatetime widget (@cmotelet)
+- [#122](https://github.com/SignalK/instrumentpanel/pull/122) chore: update dev dependencies to the latest version (@cmotelet)
+- [#118](https://github.com/SignalK/instrumentpanel/pull/118) feature: ability to handle dark mode (@cmotelet)
+- [#117](https://github.com/SignalK/instrumentpanel/pull/117) chore: windmeter flat needle shadow-free & prepare dark mode (@cmotelet)
+- [#116](https://github.com/SignalK/instrumentpanel/pull/116) chore: thinner analog gauge & prepare dark mode (@cmotelet)
+- [#115](https://github.com/SignalK/instrumentpanel/pull/115) feature: multi-layout base on ?layout=myLayout | referrer | default (@cmotelet)
+- [#112](https://github.com/SignalK/instrumentpanel/pull/112) chore: Update webpack4 / babel7 to the latest version (@cmotelet)
+- [#114](https://github.com/SignalK/instrumentpanel/pull/114) chore: darker analog hand (@cmotelet)
+- [#113](https://github.com/SignalK/instrumentpanel/pull/113) fix: wrong declaration in setPreferredUnit (@cmotelet)
+- [#111](https://github.com/SignalK/instrumentpanel/pull/111) chore: migrating dist folder to public (@cmotelet)
+- [#110](https://github.com/SignalK/instrumentpanel/pull/110) fix: protect rendering against bad value content (@cmotelet)
+
 ### v0.12.0 (2019/08/28 05:25 +00:00)
 - [#108](https://github.com/SignalK/instrumentpanel/pull/108) fix: fetch meta in TLS when host is in https (@cmotelet)
 - [#105](https://github.com/SignalK/instrumentpanel/pull/105) feature: extending display capabilities of digitalposition widget (@cmotelet)
