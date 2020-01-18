@@ -41,18 +41,21 @@ ___
         - [2.2.2. Moving and Resizing Widgets](#2_2_2)  
         - [2.2.3. Notes for iOS users](#2_2_3)  
     - [2.3. Settings](#2_3)  
-        - [2.3.1. Add or Delete Pages](#2_3_1)  
-        - [2.3.2. Hide or Show widget:](#2_3_2)  
-        - [2.3.3. Unit selection](#2_3_3)  
-        - [2.3.4. Widget Specific Settings](#2_3_4)  
-            - [2.3.4.1. Universal Widget](#2_3_4_1)  
-            - [2.3.4.2. Compass Widget](#2_3_4_2)  
-            - [2.3.4.3. Windmeter Widget:](#2_3_4_3)  
-            - [2.3.4.4. Digital DateTime Widget:](#2_3_4_4)  
-        - [2.3.5. Alarms Settings](#2_3_5)  
-        - [2.3.6. Preferred Units Screen](#2_3_6)  
-        - [2.3.7. Dark Mode Screen](#2_3_7)  
-        - [2.3.8. Reset settings Screen](#2_3_8)  
+        - [2.3.1. Display Value screen](#2_3_1)  
+            - [2.3.1.1 Rule for displaying new widget](#2_3_1_1)  
+            - [2.3.1.2 Hide or Show widget](#2_3_1_2)  
+            - [2.3.1.3 Unit selection](#2_3_1_3)  
+            - [2.3.1.4 Widget Specific Settings](#2_3_1_4)  
+                - [2.3.1.4.1 Universal Widget](#2_3_1_4_1)  
+                - [2.3.1.4.2 Compass Widget](#2_3_1_4_2)  
+                - [2.3.1.4.3 Windmeter Widget](#2_3_1_4_3)  
+                - [2.3.1.4.4 Digital DateTime Widget](#2_3_1_4_4)  
+            - [2.3.1.5 Widget managed paths](#2_3_1_5)  
+            - [2.3.1.6 Alarms Settings](#2_3_1_6)  
+            - [2.3.1.7 Add or Delete Pages](#2_3_1_7)  
+        - [2.3.2. Preferred Units screen](#2_3_2)  
+        - [2.3.3. Dark Mode Screen](#2_3_3)  
+        - [2.3.4. Reset settings screen](#2_3_4)  
 + [3. Options Available on the Widgets](#3)  
     - [3.1. Changing Display Mode](#3_1)  
     - [3.2. Wind Widget Modes](#3_2)  
@@ -64,11 +67,10 @@ ___
 <a id="0"></a>
 **0. Introduction** [Back to menu](#menu)  
 ___
-**Signal K InstrumentPanel** is implemented as a grid with draggable &amp; resizable widgets.  
-Widgets are added dynamically:
- when the panel receives data it hasn't seen before a new cell is added to the at the bottom of the column.
-For some data, like wind, there is a composite gauge that displays several items at the same time. Most
-individual data items are added as separate cells.  
+**Signal K InstrumentPanel** is implemented as a grid with draggable &amp; resizable cells.  
+Each cell also called widget is in charge of displaying the value(s) of a Signal K path.  
+When a new path is discovered, a new dedicated widget is created and attached to this path. It automatically becomes visible or not on the grid according to a configurable rule.  
+For some data, like wind, there is a composite gauge that displays several items in the same time widget.  
 The cells are grouped into three columns:
 - navigation
 - environment
@@ -143,7 +145,7 @@ A small heart and a bell (when you have active notifications) are displayed at t
 To make the menu reappear click on the center of the Instrumentpanel screen.  
   
 <a id="2_1"></a>
-**2.1. Change Page** [Back to menu](#menu)  
+**2.1. Change Page** [Back to menu](#2)  
 ___
 >
 >![multi-page](./help/multi-page.png#maxwidth)  
@@ -153,7 +155,7 @@ To switch pages, just click on the page number or doing a horizontal swipe on th
 To create a new page, see:[Add or Delete Pages](#2_3_1).  
   
 <a id="2_1_1"></a>
-**2.1.1. Alarms Page** [Back to menu](#menu)  
+**2.1.1. Alarms Page** [Back to menu](#2_1)  
 ___
 By clicking on the ![button-notif-warn](./help/button-notif-warn.png) button,
  you display the list of current alarms. They are sorted by alarm level and
@@ -179,7 +181,7 @@ You can hide some alarms in the settings page.
 (See: [Alarms Settings](#2_3_5))  
   
 <a id="2_2"></a>
-**2.2. Layout** [Back to menu](#menu)  
+**2.2. Layout** [Back to menu](#2)  
 ___
 InstrumentPanel supports several layouts. The choice of layout is selected according to 3 criteria in the following order:  
 - By adding the following query parameter **?layout=myLayoutName** to the url.  
@@ -198,7 +200,7 @@ in the **Widget** settings screen.
 In the example above an layout dedicated to freeboard-sk has been automatically selected.  
   
 <a id="2_2_1"></a>
-**2.2.1. Modify Layout** [Back to menu](#menu)  
+**2.2.1. Modify Layout** [Back to menu](#2_2)  
 ___
 Use the ![lock](./help/button-lock.png) button on the main bar to unlock the layout. 
 When the layout is unlocked, widget background changes to yellow and features are hidden.  
@@ -209,7 +211,7 @@ To return to normal mode and to lock & save the layout,
  click on the ![unlock](./help/button-unlock.png) button.  
   
 <a id="2_2_2"></a>
-**2.2.2. Moving and Resizing Widgets** [Back to menu](#menu)  
+**2.2.2. Moving and Resizing Widgets** [Back to menu](#2_2)  
 ___
 On a unlocked layout:  
 - **resize** a widget by dragging the anchor located at the bottom right.  
@@ -224,7 +226,7 @@ On a unlocked layout:
 The layout adjusts automatically to changes, compacting the widgets vertically.
   
 <a id="2_2_3"></a>
-**2.2.3. Notes for iOS users** [Back to menu](#menu)  
+**2.2.3. Notes for iOS users** [Back to menu](#2_2)  
 ___
 On an unlocked grid, to drag or to resize a widget,
  first click once or twice in the center of the widget
@@ -237,15 +239,14 @@ Using the vertical scrollbar on the right side,
  you risk resizing a widget instead of scrolling the page.  
   
 <a id="2_3"></a>
-**2.3. Settings** [Back to menu](#menu)  
+**2.3. Settings** [Back to menu](#2)  
 ___
 Use the ![settings](./help/settings-icon.png) button to switch to settings.  
 In settings mode, at the top left, you will find a dropdown-list, click on the arrow to list the choices :
 >
 >![settings-dropdown-list](./help/settings-dropdown-list.png#maxwidth)  
 >
-- The ["Widget"](#2_3_1) entry will change the display to a grid that shows all widgets,
- including ones you have previously hidden, with their individual settings.  
+- The ["Display Value"](#2_3_1) entry allows you to change how the values will be displayed on the grid and tunning their individual settings. This page display all widgets, hidden or shown.  
 - The ["Preferred Units"](#2_3_6) entry allows you to set the unit values applied to widgets when they are created.  
 - The ["Dark Mode"](#2_3_7) entry allows you to change how the dark mode will be activated.  
 - The ["Reset"](#2_3_8) entry allows you to clear settings stored in local storage browser.  
@@ -253,7 +254,138 @@ In settings mode, at the top left, you will find a dropdown-list, click on the a
 In setting mode, use the ![view](./help/view-icon.png) button to return to the main view.  
   
 <a id="2_3_1"></a>
-**2.3.1. Add or Delete Pages** [Back to menu](#menu)  
+**2.3.1. Display Value screen** [Back to menu](#2_3)  
+___
+In this settings page, you can set:
+- ["Rules for new widgets"](#2_3_1_1) who validating the display on your grid of new the widgets created when a new path is discovered.  
+- ["Hide or show"](#2_3_1_2) parameter individually or all your widgets on your grid.  
+- ["Unit selection"](#2_3_1_3) of the displayed value.  
+- ["Widget Specific Settings"](#2_3_1_4) some widgets have specific parameters.  
+- ["Widget managed paths"](#2_3_1_5) to discover the list of paths managed by this widget type.  
+- ["Alarms Settings"](#2_3_1_6) to hide or show discovered alarms / notifications.  
+- ["Add or Delete Pages"](#2_3_1_7) To manage multiple grid pages.  
+  
+<a id="2_3_1_1"></a>
+**2.3.1.1. Rule for displaying new widget** [Back to menu](#2_3_1)  
+___
+![newPaths](./help/settings-newPaths.png)  
+With this setting you can select if a new widget created will be shown or not on your grid.  
+three choices are available:  
+- **Base paths shown**, automatically shows on the grid a limited list of paths, this is the default value and help to not overhead your first grid with a lot of unusefull widgets.  
+  The list of paths is :  
+  environment.wind.angleApparent  
+  environment.wind.angleTrueGround  
+  environment.wind.angleTrueWater  
+  environment.wind.speedApparent  
+  environment.wind.speedOverGround  
+  environment.wind.speedTrue  
+  navigation.position  
+  navigation.courseOverGroundTrue  
+  navigation.courseOverGroundMagnetic  
+  navigation.headingMagnetic  
+  navigation.headingTrue  
+  environment.depth  
+  navigation.datetime  
+- **Shown**, all new widget are shown on the grid.  
+- **Hidden**, all new widget are hidden on the grid.  
+  
+<a id="2_3_1_2"></a>
+**2.3.1.2. Hide or Show widget:** [Back to menu](#2_3_1)  
+___
+A common option for all widgets is the **Shown on grid** option  
+>
+>![visible](./help/widget-settings-visible.png#maxwidth)  
+>
+Unselect/Select checkbox to hide/show the widget on the page.  
+- ![button-hideAll](./help/button-hideAll.png) button: Hides all widgets on the current page in one operation.  
+- ![button-ShowAll](./help/button-ShowAll.png) button: Shows all widgets on the current page in one operation.  
+  
+<a id="2_3_1_3"></a>
+**2.3.1.3. Unit selection** [Back to menu](#2_3_1)  
+___
+Most widgets have a unit selection.  
+Select your preferred unit from the listbox.  
+>
+>![unit](./help/widget-settingUnit.png#maxwidth)  
+>
+To make the unit change active, InstrumentPanel must be reloaded. This will be done automatically when you leave settings screens.  
+You will be informed by a message at the top of the screen.  
+  
+<a id="2_3_1_4"></a>
+**2.3.1.4. Widget Specific Settings** [Back to menu](#2_3_1)  
+___
+Each widget type has specific settings.  
+  
+<a id="2_3_1_4_1"></a>
+**2.3.1.4.1. Universal Widget** [Back to menu](#2_3_1_4)  
+___
+This widget has 2 display views possible (digital/analog).  
+Choose your preferred view by selecting the radio button.  
+- **digital view**  
+![universal-digital](./help/widget-settings-digital.png#maxwidth)  
+- **analog view** has more settings.  
+You can set the minimal and maximal values displayed.  
+And also set the red line value.  
+![universal-analog](./help/widget-settings-analog.png#maxwidth)  
+  
+<a id="2_3_1_4_2"></a>
+**2.3.1.4.2. Compass Widget** [Back to menu](#2_3_1_4)  
+___
+This widget has 3 displays view possible (rose/reading/digital).  
+Choose your preferred view by selecting the radio button.  
+- **Rose view**  
+![compass-rose](./help/widget-settings-compass-rose.png#maxwidth)  
+- **Reading view**  
+![compass-reading](./help/widget-settings-compass-reading.png#maxwidth)  
+- **Digital view**  
+![compass-digital](./help/widget-settings-compass-digital.png#maxwidth)  
+  
+<a id="2_3_1_4_3"></a>
+**2.3.1.4.3. Windmeter Widget:** [Back to menu](#2_3_1_4)  
+___
+This widget has only the unit selection.  
+Apparent Wind, True Wind over Ground and True Wind through Water values are automatically bound on widget.  
+>
+>![settings-windmeter](./help/widget-settings-windmeter.png#maxwidth)  
+>
+  
+<a id="2_3_1_4_4"></a>
+**2.3.1.4.4. Digital DateTime Widget:** [Back to menu](#2_3_1_4)  
+___
+This widget has only a timezone selection.  
+In timezone list, **DST** means Daylight Saving Time and displays time automatically in the timezone
+ set on the device running your browser.  
+>
+>![settings-digitaldatetime](./help/widget-settings-digitaldatetime.png#maxwidth)  
+>
+  
+<a id="2_3_1_5"></a>
+**2.3.1.5. Widget managed paths:** [Back to menu](#2_3_1)  
+___
+A widget type (compass in screenshot) can handle multiple paths.  
+![widget-settings-pathsList](./help/widget-settings-pathsList.png)
+  
+You can discover the list of these paths by clicking on the **[+]** sign.
+  
+![widget-settings-pathsList-expand](./help/widget-settings-pathsList-expand.png)
+  
+In bold, are displayed the paths that are managed by this cell.  
+For each path listed, a new cell will be created with this widget type only if the path exists on your Signal K server.  
+Clic on the list to return to the default vue.  
+  
+<a id="2_3_1_6"></a>
+**2.3.1.5. Alarms Settings:** [Back to menu](#2_3_1)  
+___
+In setting mode, on the ![button-notif-warn](./help/button-notif-warn.png) page
+ you can hide alarms from the main view by unchecking the **Show on grid** option.
+ The ![button-notif-nominal-mixed](./help/button-notif-nominal-mixed.png) button
+ reminds you that alarms are hidden by a dotted border around the bell.  
+The color code for dotted lines is the same as for non-hidden alarms.
+ The color indicates the highest value of hidden alarms.  
+The alarm settings are not saved when you exit the GUI.  
+  
+<a id="2_3_1_7"></a>
+**2.3.1.6. Add or Delete Pages** [Back to menu](#2_3_1)  
 ___
 You can have up to 10 pages with a specific widget organization.  
 >
@@ -268,89 +400,7 @@ To delete a page, activate the page by clicking on the page number and
  then on the ![button-delCurrent](./help/button-delCurrent.png) button.  
   
 <a id="2_3_2"></a>
-**2.3.2. Hide or Show widget:** [Back to menu](#menu)  
-___
-A common option for all widgets is the **visible** option  
->
->![visible](./help/widget-settings-visible.png#maxwidth)  
->
-Unselect/Select checkbox to hide/show the widget on the page.  
-By default, all new widgets are visible.  
-- ![button-hideAll](./help/button-hideAll.png) button: Hides all widgets on the current page in one operation.  
-- ![button-ShowAll](./help/button-ShowAll.png) button: Shows all widgets on the current page in one operation.  
-  
-<a id="2_3_3"></a>
-**2.3.3. Unit selection** [Back to menu](#menu)  
-___
-Most widgets have a unit selection.  
-Select your preferred unit from the listbox.  
->
->![unit](./help/widget-settingUnit.png#maxwidth)  
->
-To make the unit change active, InstrumentPanel must be reloaded. This will be done automatically when you leave settings screens.  
-You will be informed by a message at the top of the screen.  
-  
-<a id="2_3_4"></a>
-**2.3.4. Widget Specific Settings** [Back to menu](#menu)  
-___
-Each widget type has specific settings.  
-  
-<a id="2_3_4_1"></a>
-**2.3.4.1. Universal Widget** [Back to menu](#menu)  
-___
-This widget has 2 display views possible (digital/analog).  
-Choose your preferred view by selecting the radio button.  
-- **digital view**  
-![universal-digital](./help/widget-settings-digital.png#maxwidth)  
-- **analog view** has more settings.  
-You can set the minimal and maximal values displayed.  
-And also set the red line value.  
-![universal-analog](./help/widget-settings-analog.png#maxwidth)  
-  
-<a id="2_3_4_2"></a>
-**2.3.4.2. Compass Widget** [Back to menu](#menu)  
-___
-This widget has 3 displays view possible (rose/reading/digital).  
-Choose your preferred view by selecting the radio button.  
-- **Rose view**  
-![compass-rose](./help/widget-settings-compass-rose.png#maxwidth)  
-- **Reading view**  
-![compass-reading](./help/widget-settings-compass-reading.png#maxwidth)  
-- **Digital view**  
-![compass-digital](./help/widget-settings-compass-digital.png#maxwidth)  
-  
-<a id="2_3_4_3"></a>
-**2.3.4.3. Windmeter Widget:** [Back to menu](#menu)  
-___
-This widget has only the unit selection.  
-Apparent Wind, True Wind over Ground and True Wind through Water values are automatically bound on widget.  
->
->![settings-windmeter](./help/widget-settings-windmeter.png#maxwidth)  
->
-  
-<a id="2_3_4_4"></a>
-**2.3.4.4. Digital DateTime Widget:** [Back to menu](#menu)  
-___
-This widget has only a timezone selection.  
-In timezone list, **DST** means Daylight Saving Time and displays time automatically in the timezone
- set on the device running your browser.  
->
->![settings-digitaldatetime](./help/widget-settings-digitaldatetime.png#maxwidth)  
->
-  
-<a id="2_3_5"></a>
-**2.3.5. Alarms Settings:** [Back to menu](#menu)  
-___
-In setting mode, on the ![button-notif-warn](./help/button-notif-warn.png) page
- you can hide alarms from the main view by unchecking the **visible** option.
- The ![button-notif-nominal-mixed](./help/button-notif-nominal-mixed.png) button
- reminds you that alarms are hidden by a dotted border around the bell.  
-The color code for dotted lines is the same as for non-hidden alarms.
- The color indicates the highest value of hidden alarms.  
-The alarm settings are not saved when you exit the GUI.  
-  
-<a id="2_3_6"></a>
-**2.3.6. Preferred Units Screen** [Back to menu](#menu)  
+**2.3.2. Preferred Units screen** [Back to menu](#2_3)  
 ___
 In this screen, you choose which default units will be displayed on your widgets.
  In 90% of cases the default values you choose here will correspond to your display habit.  
@@ -367,8 +417,8 @@ Use the ![button-reset-preferred-units](./help/button-reset-preferred-units.png)
 >![screen-preferred-units](./help/screen-preferred-units.png#maxwidth)  
 >
   
-<a id="2_3_7"></a>
-**2.3.7. Dark Mode Screen** [Back to menu](#menu)  
+<a id="2_3_4"></a>
+**2.3.4. Dark Mode Screen** [Back to menu](#2_3)  
 ___
 In this screen, you can select how the dark mode will be activated:.  
 You have 3 choices available :  
@@ -384,8 +434,8 @@ Display in dark mode:
 >![main-page-dark](./help/main-page-default-dark.png#maxwidth)  
 >
   
-<a id="2_3_8"></a>
-**2.3.8. Reset settings screen** [Back to menu](#menu)  
+<a id="2_3_5"></a>
+**2.3.5. Reset settings screen** [Back to menu](#2_3)  
 ___
 In this screen, you can clear settings stored in local storage browser.  
 This settings are :  
@@ -402,7 +452,7 @@ This settings are :
 ___
   
 <a id="3_1"></a>
-**3.1. Changing Display Mode** [Back to menu](#menu)  
+**3.1. Changing Display Mode** [Back to menu](#3)  
 ___
 Some widgets have the ability to change their display mode directly.  
 They are identified by a ![clickme-icon](./help/clickme-icon.png) icon in the top left corner.  
@@ -410,7 +460,7 @@ Click on this icon to change the display mode.
 New display mode is automatically saved.  
   
 <a id="3_2"></a>
-**3.2. Wind Widget Modes** [Back to menu](#menu)  
+**3.2. Wind Widget Modes** [Back to menu](#3)  
 ___
 The wind widget displays by default apparent wind.  
 >
@@ -443,7 +493,7 @@ Enable the options for True Wind over Ground and True Wind through Water:
 And then click on the ![DerivedData-submit](./help/plugin-DerivedData-submit.png) button to save and activate these options.  
   
 <a id="3_3"></a>
-**3.3. Digital Position Modes** [Back to menu](#menu)  
+**3.3. Digital Position Modes** [Back to menu](#3)  
 ___
 The Digital Position Widget can display your position in different formats:  
 - Dir D.ddddd° (N 38.99177°)  
@@ -456,7 +506,7 @@ The first click, displays the display format then the others clicks change the d
 You have 5 seconds to repeat your clicks, after that the widget automatically displays its original label.  
   
 <a id="3_4"></a>
-**3.4. Display SourceID** [Back to menu](#menu)  
+**3.4. Display SourceID** [Back to menu](#3)  
 ___
 To display the source Id of a widget's data stream,
  click on to the top right corner of widget.  
