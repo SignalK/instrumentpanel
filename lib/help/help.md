@@ -65,7 +65,7 @@ ___
 + [5. Trouble?](#5)  
   
 <a id="0"></a>
-**0. Introduction** [Back to menu](#menu)  
+**0. Introduction** [Back to main menu](#content)  
 ___
 **Signal K InstrumentPanel** is implemented as a grid with draggable &amp; resizable cells.  
 Each cell also called widget is in charge of displaying the value(s) of a Signal K path.  
@@ -85,7 +85,7 @@ You must close the help page by clicking on the ![help-on](./help/help-on-icon.p
  button to reactivate them.  
   
 <a id="1"></a>
-**1. Connect to your Signal K Server** [Back to menu](#menu)  
+**1. Connect to your Signal K Server** [Back to main menu](#content)  
 ___
 >
 >![connect](./help/connect-new.png#maxwidth)  
@@ -104,7 +104,7 @@ For advanced users, you can manually specify the address and
  (See: [Advanced options](#4)).  
   
 <a id="2"></a>
-**2. Top Bar Buttons** [Back to menu](#menu)  
+**2. Top Bar Buttons** [Back to main menu](#content)  
 ___
 After connecting an initial first page is auto generated with all paths known in your SignalK Server.
 Signal K data items are displayed in different cells with dedicated widgets depending on their types.
@@ -129,7 +129,7 @@ Click on it to see a list of your current alarms.
 - ![help](./help/help-icon.png) button: Cick to display the help page.  
 (See: [notes](#0_help))  
 - ![dark mode day](./help/darkmode-day-icon.png) ![dark mode night](./help/darkmode-night-icon.png) button: Cick to activate /desactivate dark mode.  
-(See: [dark mode](#2_3_7))  
+(See: [dark mode](#2_3_3))  
 - ![heart](./help/heartbeat-icon.png) icon: It's data indicator icon.  
 When data is received it blinks every second.
  If the indicator is not blinking, either your connection is broken
@@ -145,17 +145,17 @@ A small heart and a bell (when you have active notifications) are displayed at t
 To make the menu reappear click on the center of the Instrumentpanel screen.  
   
 <a id="2_1"></a>
-**2.1. Change Page** [Back to menu](#2)  
+**2.1. Change Page** [Back to up menu](#2)  
 ___
 >
 >![multi-page](./help/multi-page.png#maxwidth)  
 >
 You can have up to 10 pages, each with a separate selection, configuration and layout of widgets.  
 To switch pages, just click on the page number or doing a horizontal swipe on the screen.  
-To create a new page, see:[Add or Delete Pages](#2_3_1).  
+To create a new page, see:[Add or Delete Pages](#2_3_1_7).  
   
 <a id="2_1_1"></a>
-**2.1.1. Alarms Page** [Back to menu](#2_1)  
+**2.1.1. Alarms Page** [Back to up menu](#2_1)  
 ___
 By clicking on the ![button-notif-warn](./help/button-notif-warn.png) button,
  you display the list of current alarms. They are sorted by alarm level and
@@ -178,10 +178,10 @@ You can hide some alarms in the settings page.
  In this case, the alarm button can also display a second information.
  The color of the dotted border of the ![button-notif-nominal-mixed](./help/button-notif-nominal-mixed.png) indicates that there are hidden alarms
  and the maximum level of hidden alarms.  
-(See: [Alarms Settings](#2_3_5))  
+(See: [Alarms Settings](#2_3_1_6))  
   
 <a id="2_2"></a>
-**2.2. Layout** [Back to menu](#2)  
+**2.2. Layout** [Back to up menu](#2)  
 ___
 InstrumentPanel supports several layouts. The choice of layout is selected according to 3 criteria in the following order:  
 - By adding the following query parameter **?layout=myLayoutName** to the url.  
@@ -200,7 +200,7 @@ in the **Widget** settings screen.
 In the example above an layout dedicated to freeboard-sk has been automatically selected.  
   
 <a id="2_2_1"></a>
-**2.2.1. Modify Layout** [Back to menu](#2_2)  
+**2.2.1. Modify Layout** [Back to up menu](#2_2)  
 ___
 Use the ![lock](./help/button-lock.png) button on the main bar to unlock the layout. 
 When the layout is unlocked, widget background changes to yellow and features are hidden.  
@@ -211,7 +211,7 @@ To return to normal mode and to lock & save the layout,
  click on the ![unlock](./help/button-unlock.png) button.  
   
 <a id="2_2_2"></a>
-**2.2.2. Moving and Resizing Widgets** [Back to menu](#2_2)  
+**2.2.2. Moving and Resizing Widgets** [Back to up menu](#2_2)  
 ___
 On a unlocked layout:  
 - **resize** a widget by dragging the anchor located at the bottom right.  
@@ -226,7 +226,7 @@ On a unlocked layout:
 The layout adjusts automatically to changes, compacting the widgets vertically.
   
 <a id="2_2_3"></a>
-**2.2.3. Notes for iOS users** [Back to menu](#2_2)  
+**2.2.3. Notes for iOS users** [Back to up menu](#2_2)  
 ___
 On an unlocked grid, to drag or to resize a widget,
  first click once or twice in the center of the widget
@@ -239,7 +239,7 @@ Using the vertical scrollbar on the right side,
  you risk resizing a widget instead of scrolling the page.  
   
 <a id="2_3"></a>
-**2.3. Settings** [Back to menu](#2)  
+**2.3. Settings** [Back to up menu](#2)  
 ___
 Use the ![settings](./help/settings-icon.png) button to switch to settings.  
 In settings mode, at the top left, you will find a dropdown-list, click on the arrow to list the choices :
@@ -247,14 +247,14 @@ In settings mode, at the top left, you will find a dropdown-list, click on the a
 >![settings-dropdown-list](./help/settings-dropdown-list.png#maxwidth)  
 >
 - The ["Display Value"](#2_3_1) entry allows you to change how the values will be displayed on the grid and tunning their individual settings. This page display all widgets, hidden or shown.  
-- The ["Preferred Units"](#2_3_6) entry allows you to set the unit values applied to widgets when they are created.  
-- The ["Dark Mode"](#2_3_7) entry allows you to change how the dark mode will be activated.  
-- The ["Reset"](#2_3_8) entry allows you to clear settings stored in local storage browser.  
+- The ["Preferred Units"](#2_3_2) entry allows you to set the unit values applied to widgets when they are created.  
+- The ["Dark Mode"](#2_3_3) entry allows you to change how the dark mode will be activated.  
+- The ["Reset settings screen"](#2_3_4) entry allows you to clear settings stored in local storage browser.  
   
 In setting mode, use the ![view](./help/view-icon.png) button to return to the main view.  
   
 <a id="2_3_1"></a>
-**2.3.1. Display Value screen** [Back to menu](#2_3)  
+**2.3.1. Display Value screen** [Back to up menu](#2_3)  
 ___
 In this settings page, you can set:
 - ["Rules for new widgets"](#2_3_1_1) who validating the display on your grid of new the widgets created when a new path is discovered.  
@@ -266,7 +266,7 @@ In this settings page, you can set:
 - ["Add or Delete Pages"](#2_3_1_7) To manage multiple grid pages.  
   
 <a id="2_3_1_1"></a>
-**2.3.1.1. Rule for displaying new widget** [Back to menu](#2_3_1)  
+**2.3.1.1. Rule for displaying new widget** [Back to up menu](#2_3_1)  
 ___
 ![newPaths](./help/settings-newPaths.png)  
 With this setting you can select if a new widget created will be shown or not on your grid.  
@@ -290,7 +290,7 @@ three choices are available:
 - **Hidden**, all new widget are hidden on the grid.  
   
 <a id="2_3_1_2"></a>
-**2.3.1.2. Hide or Show widget:** [Back to menu](#2_3_1)  
+**2.3.1.2. Hide or Show widget:** [Back to up menu](#2_3_1)  
 ___
 A common option for all widgets is the **Shown on grid** option  
 >
@@ -301,7 +301,7 @@ Unselect/Select checkbox to hide/show the widget on the page.
 - ![button-ShowAll](./help/button-ShowAll.png) button: Shows all widgets on the current page in one operation.  
   
 <a id="2_3_1_3"></a>
-**2.3.1.3. Unit selection** [Back to menu](#2_3_1)  
+**2.3.1.3. Unit selection** [Back to up menu](#2_3_1)  
 ___
 Most widgets have a unit selection.  
 Select your preferred unit from the listbox.  
@@ -312,12 +312,12 @@ To make the unit change active, InstrumentPanel must be reloaded. This will be d
 You will be informed by a message at the top of the screen.  
   
 <a id="2_3_1_4"></a>
-**2.3.1.4. Widget Specific Settings** [Back to menu](#2_3_1)  
+**2.3.1.4. Widget Specific Settings** [Back to up menu](#2_3_1)  
 ___
 Each widget type has specific settings.  
   
 <a id="2_3_1_4_1"></a>
-**2.3.1.4.1. Universal Widget** [Back to menu](#2_3_1_4)  
+**2.3.1.4.1. Universal Widget** [Back to up menu](#2_3_1_4)  
 ___
 This widget has 2 display views possible (digital/analog).  
 Choose your preferred view by selecting the radio button.  
@@ -329,7 +329,7 @@ And also set the red line value.
 ![universal-analog](./help/widget-settings-analog.png#maxwidth)  
   
 <a id="2_3_1_4_2"></a>
-**2.3.1.4.2. Compass Widget** [Back to menu](#2_3_1_4)  
+**2.3.1.4.2. Compass Widget** [Back to up menu](#2_3_1_4)  
 ___
 This widget has 3 displays view possible (rose/reading/digital).  
 Choose your preferred view by selecting the radio button.  
@@ -341,7 +341,7 @@ Choose your preferred view by selecting the radio button.
 ![compass-digital](./help/widget-settings-compass-digital.png#maxwidth)  
   
 <a id="2_3_1_4_3"></a>
-**2.3.1.4.3. Windmeter Widget:** [Back to menu](#2_3_1_4)  
+**2.3.1.4.3. Windmeter Widget:** [Back to up menu](#2_3_1_4)  
 ___
 This widget has only the unit selection.  
 Apparent Wind, True Wind over Ground and True Wind through Water values are automatically bound on widget.  
@@ -350,7 +350,7 @@ Apparent Wind, True Wind over Ground and True Wind through Water values are auto
 >
   
 <a id="2_3_1_4_4"></a>
-**2.3.1.4.4. Digital DateTime Widget:** [Back to menu](#2_3_1_4)  
+**2.3.1.4.4. Digital DateTime Widget:** [Back to up menu](#2_3_1_4)  
 ___
 This widget has only a timezone selection.  
 In timezone list, **DST** means Daylight Saving Time and displays time automatically in the timezone
@@ -360,7 +360,7 @@ In timezone list, **DST** means Daylight Saving Time and displays time automatic
 >
   
 <a id="2_3_1_5"></a>
-**2.3.1.5. Widget managed paths:** [Back to menu](#2_3_1)  
+**2.3.1.5. Widget managed paths:** [Back to up menu](#2_3_1)  
 ___
 A widget type (compass in screenshot) can handle multiple paths.  
 ![widget-settings-pathsList](./help/widget-settings-pathsList.png)
@@ -374,7 +374,7 @@ For each path listed, a new cell will be created with this widget type only if t
 Clic on the list to return to the default vue.  
   
 <a id="2_3_1_6"></a>
-**2.3.1.5. Alarms Settings:** [Back to menu](#2_3_1)  
+**2.3.1.6. Alarms Settings:** [Back to up menu](#2_3_1)  
 ___
 In setting mode, on the ![button-notif-warn](./help/button-notif-warn.png) page
  you can hide alarms from the main view by unchecking the **Show on grid** option.
@@ -385,7 +385,7 @@ The color code for dotted lines is the same as for non-hidden alarms.
 The alarm settings are not saved when you exit the GUI.  
   
 <a id="2_3_1_7"></a>
-**2.3.1.6. Add or Delete Pages** [Back to menu](#2_3_1)  
+**2.3.1.7. Add or Delete Pages** [Back to up menu](#2_3_1)  
 ___
 You can have up to 10 pages with a specific widget organization.  
 >
@@ -400,7 +400,7 @@ To delete a page, activate the page by clicking on the page number and
  then on the ![button-delCurrent](./help/button-delCurrent.png) button.  
   
 <a id="2_3_2"></a>
-**2.3.2. Preferred Units screen** [Back to menu](#2_3)  
+**2.3.2. Preferred Units screen** [Back to up menu](#2_3)  
 ___
 In this screen, you choose which default units will be displayed on your widgets.
  In 90% of cases the default values you choose here will correspond to your display habit.  
@@ -417,8 +417,8 @@ Use the ![button-reset-preferred-units](./help/button-reset-preferred-units.png)
 >![screen-preferred-units](./help/screen-preferred-units.png#maxwidth)  
 >
   
-<a id="2_3_4"></a>
-**2.3.4. Dark Mode Screen** [Back to menu](#2_3)  
+<a id="2_3_3"></a>
+**2.3.3. Dark Mode Screen** [Back to up menu](#2_3)  
 ___
 In this screen, you can select how the dark mode will be activated:.  
 You have 3 choices available :  
@@ -434,25 +434,35 @@ Display in dark mode:
 >![main-page-dark](./help/main-page-default-dark.png#maxwidth)  
 >
   
-<a id="2_3_5"></a>
-**2.3.5. Reset settings screen** [Back to menu](#2_3)  
+<a id="2_3_4"></a>
+**2.3.4. Reset settings screen** [Back to up menu](#2_3)  
 ___
 In this screen, you can clear settings stored in local storage browser.  
 This settings are :  
 - Layouts: Delete all layouts.
+- Layouts cache (units & labels).  
+Delete all units & cells name (path or shortname) stored in layouts.  
+On reload, the units & cells name will be retrieve from your Signal K server and stored in your layouts.  
+This is useful if you have changed unit names in paths or the default.json file on your server.  
+This operation is risk-free for your configuration.  
 - Start connected: Reset the automatic connection at startup.
 - Preferred units: Delete all preferred units.
 - Previous layout: Clean previous layouts, if a layout existed in version 0.12.0 and earlier, it is used as a template to build the default layout.
 >
 >![reset-settings](./help/reset-settings.png#maxwidth)  
 >
+Select at least one checkbox and click on reset button.  
+Confirm your choice in the dialog box  
+To activate the changes, a **Reload is required**  
+You will be informed by a message at the top of the screen.  
+This will be done automatically when you leave settings screens.  
   
 <a id="3"></a>
-**3. Options Available on the Widgets** [Back to menu](#menu)  
+**3. Options Available on the Widgets** [Back to main menu](#content)  
 ___
   
 <a id="3_1"></a>
-**3.1. Changing Display Mode** [Back to menu](#3)  
+**3.1. Changing Display Mode** [Back to up menu](#3)  
 ___
 Some widgets have the ability to change their display mode directly.  
 They are identified by a ![clickme-icon](./help/clickme-icon.png) icon in the top left corner.  
@@ -460,7 +470,7 @@ Click on this icon to change the display mode.
 New display mode is automatically saved.  
   
 <a id="3_2"></a>
-**3.2. Wind Widget Modes** [Back to menu](#3)  
+**3.2. Wind Widget Modes** [Back to up menu](#3)  
 ___
 The wind widget displays by default apparent wind.  
 >
@@ -493,7 +503,7 @@ Enable the options for True Wind over Ground and True Wind through Water:
 And then click on the ![DerivedData-submit](./help/plugin-DerivedData-submit.png) button to save and activate these options.  
   
 <a id="3_3"></a>
-**3.3. Digital Position Modes** [Back to menu](#3)  
+**3.3. Digital Position Modes** [Back to up menu](#3)  
 ___
 The Digital Position Widget can display your position in different formats:  
 - Dir D.ddddd° (N 38.99177°)  
@@ -506,7 +516,7 @@ The first click, displays the display format then the others clicks change the d
 You have 5 seconds to repeat your clicks, after that the widget automatically displays its original label.  
   
 <a id="3_4"></a>
-**3.4. Display SourceID** [Back to menu](#3)  
+**3.4. Display SourceID** [Back to up menu](#3)  
 ___
 To display the source Id of a widget's data stream,
  click on to the top right corner of widget.  
@@ -519,7 +529,7 @@ To hide the source Id, just click in the displayed source Id field.
 >
   
 <a id="4"></a>
-**4. Advanced options** [Back to menu](#menu)  
+**4. Advanced options** [Back to main menu](#content)  
 ___
 For advanced users, you can manually specify the address and the protocol to connect to your Signal K server.
 Be careful if you mix secure and unsecured protocols, your browser may refuse the connection.  
@@ -528,18 +538,25 @@ To manually specify the address and the protocol of the Signal K server,
 Use **wss://** for secure websocket or **ws://** for unsecure websocket.  
   
 <a id="5"></a>
-**5. Trouble?** [Back to menu](#menu)  
+**5. Trouble?** [Back to main menu](#content)  
 ___
 InstrumentPanel stores some of its settings in the browser's local storage.  
 In case you have invalid stuff displayed, you can reset it
  by adding the following query parameter **?reset=true** to the url.  
+If you only want to reset a few parameters, use the GUI instead:  
+ See [Reset settings screen](#2_3_4)  
   
 Units and labels are also stored in the browser's local storage and
  are fetched from the Signal K server only during startup.  
 If you change a unit or a display label on the server,
  you can clear the cache without destroying your layout
  by modifying the url with the following query parameter  
- **?flushCache=true**.  
+ **?flushCache=true**  
+ you can also use a dedicated menu in GUI:  
+ Click on ![settings](./help/settings-icon.png) button  
+ Then select settings for:**Reset Instrument Panel**  
+ Check the box **Layouts cache (units & labels)**  
+ See [Reset settings screen](#2_3_4)  
   
 If you see **ERROR in unit retrieval** on the upper of a widget, there is a problem to contact your Signal K server.  
 Be careful, the values displayed may be wrong.  
