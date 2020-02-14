@@ -207,6 +207,17 @@ div.widget svg {
 
 .items .item .copy >h3 {
  color: var(--text-settings-color);
+ margin: 0 0 4px;
+}
+
+.items .item .copy >p {
+ margin: 0 0 4px;
+ cursor: pointer;
+}
+
+.items .item .copy .checkbox {
+ margin-top: 0px;
+ margin-bottom: 0px;
 }
 
 .items .item .widgetSettings {
