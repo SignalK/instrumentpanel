@@ -49,36 +49,4 @@ Changelog
 
 To Do
 =====
-- [ ] import/export grid configuration on Signal K server
-- [ ] multiple look & feel by css choice
-- [ ] remote control of tabs
-- [ ] history graph widget (simple)
-- [ ] subscription support: fetch items list from server, only subscribe when widget activated
-- [ ] sailgauge widget like http://navgauge.herokuapp.com/
-- [ ] possibility to delete obsolete data items
-- [ ] manual addition of widgets, multiple alternative widgets
-- [ ] temporary full screen mode for one widget
-- [ ] history graph widget (maybe https://github.com/mapbox/react-tangle for scaling)
-- [ ] ais tracker widget
-- [ ] map widget
-- [ ] bootstrapping from server for history graph
-- [ ] Being able to delete a useless widget
-- [x] 'discovery mode' manual activation/deactivation
-- [x] dark mode support
-- [x] dedicated notifications tab
-- [x] activate/deactivate individual widgets
-- [x] connect to multiple servers
-- [x] minify
-- [x] react-grid-styles: bower packaging
-- [x] 'Receiving indicator' (circle/circle-o)
-- [x] visible grid cell background
-- [x] per server layout persisted in localstorage
-- [x] last known servers & connection status in localstorage
-- [x] good widgets for 'normal' data set (position, current, date & time)
-- [x] true/both values in windmeter, change by click
-- [x] alternative/configurable units (knots/mps/mph)
-- [x] configurable display format (position: deg+min.dec, deg.min.sec / precision)
-- [x] online help in GUI
-- [x] configuration mode for widgets
-- [x] multiple alternate layouts called by query parameter ?layout=myLayoutName
-- [x] ui cleanup...
+Please open a github issue if you want a new feature.
