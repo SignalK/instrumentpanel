@@ -233,10 +233,6 @@ On an unlocked grid, to drag or to resize a widget,
  to bring focus to it and then you can drag or resize the widget with the screen's scroll locked.  
 If you don't click first in the center of the widget,
  the page starts scrolling before you can drag or resize the widget.  
-To scroll the grid, it's easiest to do it from the left side even
- if the vertical scroll bar is to the right side.  
-Using the vertical scrollbar on the right side,
- you risk resizing a widget instead of scrolling the page.  
   
 <a id="2_3"></a>
 **2.3. Settings** [Back to up menu](#2)  

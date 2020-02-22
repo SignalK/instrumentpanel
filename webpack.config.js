@@ -35,7 +35,12 @@ module.exports = {
                     useBuiltIns: 'usage',
                     corejs: 3,
                   }
-                ]
+                ],
+                '@babel/preset-flow'
+              ],
+              plugins: [
+                "@babel/plugin-transform-flow-comments",
+                "@babel/plugin-proposal-class-properties"
               ]
             }
           }
@@ -74,7 +79,8 @@ module.exports = {
   resolve: {
     alias: {
       bacon: "baconjs"
-    }
+    },
+    extensions: [".js", ".jsx"]
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
