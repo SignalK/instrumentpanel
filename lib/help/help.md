@@ -140,9 +140,13 @@ When data is received it blinks every second.
 After 15 seconds without user activity, the menu will automatically hide to free up space on the screen.  
 A small heart and a bell (when you have active notifications) are displayed at the top right of the screen.  
 >
->![menu-hidden](./help/menu-hidden.png)  
+>![menu-hidden](./help/menu-hidden.png#maxwidth)  
 >
 To make the menu reappear click on the center of the Instrumentpanel screen.  
+  
+If you want the menu to disappear before the 15 seconds, depending on the size of your screen, click in the green zone:  
+>![hide-menu-zone_1](./help/hide-menu-zone_1.png#maxwidth)  
+>![hide-menu-zone_2](./help/hide-menu-zone_2.png#maxwidth)  
   
 <a id="2_1"></a>
 **2.1. Change Page** [Back to up menu](#2)  
@@ -264,7 +268,7 @@ In this settings page, you can set:
 <a id="2_3_1_1"></a>
 **2.3.1.1. Rule for displaying new widget** [Back to up menu](#2_3_1)  
 ___
-![newPaths](./help/settings-newPaths.png)  
+![newPaths](./help/settings-newPaths.png#maxwidth)  
 With this setting you can select if a new widget created will be shown or not on your grid.  
 three choices are available:  
 - **Base paths shown**, automatically shows on the grid a limited list of paths, this is the default value and help to not overhead your first grid with a lot of unusefull widgets.  
