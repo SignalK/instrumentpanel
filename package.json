@@ -1,6 +1,6 @@
 {
   "name": "@signalk/instrumentpanel",
-  "version": "0.13.0",
+  "version": "0.14.0",
   "description": "Signal K instrument panel implemented as an HTML5 grid with draggable & resizable widgets",
   "keywords": [
     "signalk-webapp",
@@ -59,7 +59,9 @@
     "webpack-dev-server": "^3.10.3",
     "marked": "^0.7.0",
     "css-prefers-color-scheme": "^4.0.0",
-    "on-swipe": "^1.0.8"
+    "on-swipe": "^1.0.8",
+    "json-beautify": "^1.1.1",
+    "file-saver": "^2.0.2"
   },
   "dependencies": {}
 }

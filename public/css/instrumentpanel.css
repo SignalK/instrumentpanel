@@ -233,6 +233,14 @@ label {
  border-color: var(--border-color);
 }
 
+input[type="file"] {
+ display: none;
+}
+
+.file-preview {
+ margin: 0 10px;
+}
+
 .dropdown-toggle,
 .dropdown-toggle:hover,
 .dropdown-toggle:active,
@@ -276,14 +284,30 @@ label {
  display: flow-root;
 }
 
+.panel-heading::after { /* Safari & Chrome on iPad mini 2 IOS 12.4.5 */
+  content: "";
+  display: block;
+  clear: both;
+}
+
 .panel-default >.panel-body {
  padding: 0px;
 }
 
+.well {
+ background-color: var(--background-color);
+ color: var(--text-color);
+ padding: 5px;
+ margin-top: 2px;
+ margin-bottom: 0px;
+}
+
 .resetSettings,
-.colorSchemeSettings {
- padding-left: 10px;
- padding-bottom: 10px;
+.colorSchemeSettings,
+.exportimport {
+ padding-left: 2px;
+ padding-right: 2px;
+ padding-bottom: 2px;
 }
 
 .resetSettings >.checkbox >label {
@@ -304,6 +328,15 @@ label {
 
 .center-text {
  text-align: center;
+}
+
+.alert {
+ padding: 5px;
+ margin-bottom: 0px;
+}
+
+.alert >div {
+ padding-top: 5px;
 }
 
 @media (min-width: 620px) {
