@@ -56,6 +56,8 @@ ___
         - [2.3.2. Preferred Units screen](#2_3_2)  
         - [2.3.3. Dark Mode Screen](#2_3_3)  
         - [2.3.4. Reset settings screen](#2_3_4)  
+        - [2.3.5. Export / Import settings screen](#2_3_5)  
+            - [2.3.5.1 Import settings](#2_3_5_1)  
 + [3. Options Available on the Widgets](#3)  
     - [3.1. Changing Display Mode](#3_1)  
     - [3.2. Wind Widget Modes](#3_2)  
@@ -249,7 +251,8 @@ In settings mode, at the top left, you will find a dropdown-list, click on the a
 - The ["Display Value"](#2_3_1) entry allows you to change how the values will be displayed on the grid and tunning their individual settings. This page display all widgets, hidden or shown.  
 - The ["Preferred Units"](#2_3_2) entry allows you to set the unit values applied to widgets when they are created.  
 - The ["Dark Mode"](#2_3_3) entry allows you to change how the dark mode will be activated.  
-- The ["Reset settings screen"](#2_3_4) entry allows you to clear settings stored in local storage browser.  
+- The ["Reset"](#2_3_4) entry allows you to clear settings stored in local storage browser.  
+- The ["Export / Import"](#2_3_5) entry allows you export and import your settings in a json file.  
   
 In setting mode, use the ![view](./help/view-icon.png) button to return to the main view.  
   
@@ -445,17 +448,46 @@ Delete all units & cells name (path or shortname) stored in layouts.
 On reload, the units & cells name will be retrieve from your Signal K server and stored in your layouts.  
 This is useful if you have changed unit names in paths or the default.json file on your server.  
 This operation is risk-free for your configuration.  
+- Previous layout: Clean previous layouts, if a layout existed in version 0.12.0 and earlier, it is used as a template to build the default layout.
 - Start connected: Reset the automatic connection at startup.
 - Preferred units: Delete all preferred units.
-- Previous layout: Clean previous layouts, if a layout existed in version 0.12.0 and earlier, it is used as a template to build the default layout.
+- Dark Mode: Delete dark mode settings.
+- Backup settings: Delete the settings backup and remove top message about imported configuration.
 >
 >![reset-settings](./help/reset-settings.png#maxwidth)  
 >
 Select at least one checkbox and click on reset button.  
-Confirm your choice in the dialog box  
-To activate the changes, a **Reload is required**  
-You will be informed by a message at the top of the screen.  
-This will be done automatically when you leave settings screens.  
+The page will reload and the selected parameters will be erased.  
+  
+<a id="2_3_5"></a>
+**2.3.5. Export / Import settings screen** [Back to up menu](#2_3)  
+___
+In this screen, you can export and import your configuration settings to a json file.  
+>
+>![settings-export_import](./help/settings-export_import.png#maxwidth)  
+>
+Use the **export** function to make a backup of your Instrumentpanel configuration.
+The result is a json file that you can edit to change parameters,  
+e.g. fill in the value of the "unit" keys that would not be present in the original schema of your Signal K server or fill in the "label" key to name the title of your widget.  
+Be very careful to respect the json format or your file will no longer be valid.  
+>
+>![unit_label-json](./help/unit_label-json.png#maxwidth)  
+>
+  
+<a id="2_3_5_1"></a>
+**2.3.5.1 Import settings** [Back to up menu](#2_3)  
+___
+After importing a configuration, Instrumentpanel restarts with a warning screen at the top of the page  
+>
+>![warning-imported-config](./help/warning-imported-config.png#maxwidth)  
+>
+Click on ![button-enable-green](./help/button-enable-green.png) button to definitively validate your imported configuration.  
+This action will remove the warning message at the top of the page.  
+Make sure everything is working properly before **enable**  
+  
+Click on ![button-restore-orange](./help/button-restore-orange.png) button if something doesn't work, you can reload your old configuration  
+  
+Click on ![button-reset-red.png](./help/button-reset-red.png) to load the [reset screen](#2_3_4), it will allow you to erase parameters and return to a healthy configuration.  
   
 <a id="3"></a>
 **3. Options Available on the Widgets** [Back to main menu](#content)  
