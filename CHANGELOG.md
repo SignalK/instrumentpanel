@@ -1,5 +1,23 @@
 ## Change Log
 
+### v0.14.0 (2020/03/21 12:35 +00:00)
+- [#148](https://github.com/SignalK/instrumentpanel/pull/148) feature: hide menu bar by click (@cmotelet)
+- [#149](https://github.com/SignalK/instrumentpanel/pull/149) fix: protect against undefined values (@cmotelet)
+- [#150](https://github.com/SignalK/instrumentpanel/pull/150) chore: optimize notification management (@cmotelet)
+- [#147](https://github.com/SignalK/instrumentpanel/pull/147) chore(deps): bump acorn from 6.4.0 to 6.4.1 (@dependabot[bot])
+- [#145](https://github.com/SignalK/instrumentpanel/pull/145) chore: reduce pushGridChanges calls and optimize localstorage writes (@cmotelet)
+- [#146](https://github.com/SignalK/instrumentpanel/pull/146) chore: keep menu hidden when swipe (@cmotelet)
+- [#144](https://github.com/SignalK/instrumentpanel/pull/144) chore: add space on right for small screen scrolling (@cmotelet)
+- [#143](https://github.com/SignalK/instrumentpanel/pull/143) feature: RPM conversion & auto resizing units's font (@cmotelet)
+- [#132](https://github.com/SignalK/instrumentpanel/pull/132) chore: long name reduction in localstorage unit (@cmotelet)
+- [#133](https://github.com/SignalK/instrumentpanel/pull/133) chore: readme.md update (@cmotelet)
+- [#131](https://github.com/SignalK/instrumentpanel/pull/131) chore: reduce length of displayed notification path (@cmotelet)
+- [#130](https://github.com/SignalK/instrumentpanel/pull/130) fix: bell border color when notification hidden (@cmotelet)
+- [#129](https://github.com/SignalK/instrumentpanel/pull/129) feature: add flush option in GUI (@cmotelet)
+- [#128](https://github.com/SignalK/instrumentpanel/pull/128) fix: avoid slide to next page when grid is in design mode (@cmotelet)
+- [#126](https://github.com/SignalK/instrumentpanel/pull/126) feature: settings how to add new widget on grid (@cmotelet)
+- [#125](https://github.com/SignalK/instrumentpanel/pull/125) feature: add conversions for kg, m3 (@tkurki)
+
 ### v0.13.0 (2019/11/14 06:01 +00:00)
 - [#123](https://github.com/SignalK/instrumentpanel/pull/123) feature: swipe to change pages (@cmotelet)
 - [#121](https://github.com/SignalK/instrumentpanel/pull/121) feature: auto hide main bar after 15 seconds (@cmotelet)
