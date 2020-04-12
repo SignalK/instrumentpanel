@@ -41,7 +41,7 @@ ___
         - [2.2.2. Moving and Resizing Widgets](#2_2_2)  
         - [2.2.3. Notes for iOS users](#2_2_3)  
     - [2.3. Settings](#2_3)  
-        - [2.3.1. Display Value screen](#2_3_1)  
+        - [2.3.1. Customise Display screen](#2_3_1)  
             - [2.3.1.1 Rule for displaying new widget](#2_3_1_1)  
             - [2.3.1.2 Hide or Show widget](#2_3_1_2)  
             - [2.3.1.3 Unit selection](#2_3_1_3)  
@@ -56,8 +56,8 @@ ___
         - [2.3.2. Preferred Units screen](#2_3_2)  
         - [2.3.3. Dark Mode Screen](#2_3_3)  
         - [2.3.4. Reset settings screen](#2_3_4)  
-        - [2.3.5. Export / Import settings screen](#2_3_5)  
-            - [2.3.5.1 Import settings](#2_3_5_1)  
+        - [2.3.5. Save settings screen](#2_3_5)  
+        - [2.3.6. Load settings screen](#2_3_6)  
 + [3. Options Available on the Widgets](#3)  
     - [3.1. Changing Display Mode](#3_1)  
     - [3.2. Wind Widget Modes](#3_2)  
@@ -248,16 +248,17 @@ In settings mode, at the top left, you will find a dropdown-list, click on the a
 >
 >![settings-dropdown-list](./help/settings-dropdown-list.png#maxwidth)  
 >
-- The ["Display Value"](#2_3_1) entry allows you to change how the values will be displayed on the grid and tunning their individual settings. This page display all widgets, hidden or shown.  
+- The ["Customise Display"](#2_3_1) entry allows you to change how the values will be displayed on the grid and tunning their individual settings. This page display all widgets, hidden or shown.  
 - The ["Preferred Units"](#2_3_2) entry allows you to set the unit values applied to widgets when they are created.  
 - The ["Dark Mode"](#2_3_3) entry allows you to change how the dark mode will be activated.  
-- The ["Reset"](#2_3_4) entry allows you to clear settings stored in local storage browser.  
-- The ["Export / Import"](#2_3_5) entry allows you export and import your settings in a json file.  
+- The ["Save settings"](#2_3_5) entry allows you to save your settings on the server or in a json file.  
+- The ["Load settings"](#2_3_6) entry allows you to load saved settings from the server or a json file.  
+- The ["Reset settings"](#2_3_4) entry allows you to clear settings stored in local storage browser.  
   
 In setting mode, use the ![view](./help/view-icon.png) button to return to the main view.  
   
 <a id="2_3_1"></a>
-**2.3.1. Display Value screen** [Back to up menu](#2_3)  
+**2.3.1. Customise Display screen** [Back to up menu](#2_3)  
 ___
 In this settings page, you can set:
 - ["Rules for new widgets"](#2_3_1_1) who validating the display on your grid of new the widgets created when a new path is discovered.  
@@ -460,13 +461,23 @@ Select at least one checkbox and click on reset button.
 The page will reload and the selected parameters will be erased.  
   
 <a id="2_3_5"></a>
-**2.3.5. Export / Import settings screen** [Back to up menu](#2_3)  
+**2.3.5. Save settings screen** [Back to up menu](#2_3)  
 ___
-In this screen, you can export and import your configuration settings to a json file.  
+In this screen, you can save your settings on the server or in a json file.  
 >
->![settings-export_import](./help/settings-export_import.png#maxwidth)  
+>![settings-save](./help/settings-save.png#maxwidth)  
 >
-Use the **export** function to make a backup of your Instrumentpanel configuration.
+Save on the server is only available on the Signal K server version > **1.27.0**  
+The content of this screen follows the access level of the user who is logged in:  
+- Everyone (logged in or not): You can save to a json file.
+- User not logged in or with **Read Only** access: You can save only to json file. A message prompts you to connect in order to be able to save on the server.
+- User logged in with **Read Write** access: You can save to the server but the save only readable by your account.
+- User logged in with **Admin** access: You can save to the server for global settings readable for all users or by only your account.
+  
+The ![button-settings-savelayout](./help/button-settings-savelayout.png) button save all your page layouts on the server.  
+The ![button-settings-saveprefunit](./help/button-settings-saveprefunit.png) button save your preferred units on the server.
+If you are logged in with **Admin** access and you select **save for global settings** these preferred units will be loaded on new devices by default.  
+The ![button-settings-saveptofile](./help/button-settings-savetofile.png) button make a backup of all your Instrumentpanel configuration.
 The result is a json file that you can edit to change parameters,  
 e.g. fill in the value of the "unit" keys that would not be present in the original schema of your Signal K server or fill in the "label" key to name the title of your widget.  
 Be very careful to respect the json format or your file will no longer be valid.  
@@ -474,10 +485,21 @@ Be very careful to respect the json format or your file will no longer be valid.
 >![unit_label-json](./help/unit_label-json.png#maxwidth)  
 >
   
-<a id="2_3_5_1"></a>
-**2.3.5.1 Import settings** [Back to up menu](#2_3)  
+<a id="2_3_6"></a>
+**2.3.6 Load settings screen** [Back to up menu](#2_3)  
 ___
-After importing a configuration, Instrumentpanel restarts with a warning screen at the top of the page  
+In this screen, you can load your previously saved settings from the server or from a json file.  
+>
+>![settings-load](./help/settings-load.png#maxwidth)  
+>
+Load from the server is only available on the Signal K server version > **1.27.0**  
+As in the previous save screen, the screen content follows the access level of the user who is logged in:  
+- Everyone (logged in or not): You can load a json file.
+- User not logged in or with **Read Only** access: You can load a json file, load layouts and preferred units.
+- User logged in with **Read Write** access: Same as **Read Only** access with the addition that you can delete your personal layouts.
+- User logged in with **Admin** access: Same as **Read Write** access with the addition that you can delete global layouts.
+  
+After loading a layout, Instrumentpanel restarts with a warning screen at the top of the page  
 >
 >![warning-imported-config](./help/warning-imported-config.png#maxwidth)  
 >

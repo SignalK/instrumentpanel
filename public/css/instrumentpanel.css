@@ -233,6 +233,32 @@ label {
  border-color: var(--border-color);
 }
 
+.noItem >button,
+input,
+select,
+textarea,
+label {
+ background-color: var(--background-color);
+ color: var(--text-color);
+ font-weight: normal;
+}
+
+.layoutLoad {
+ display: flex;
+ flex-wrap: wrap;
+}
+
+.layoutList {
+ padding-right: 10px;
+}
+
+.layoutDetail {
+ background-color: var(--background-settings-item-color);
+ padding: 5px;
+ border: 1px solid #e3e3e3;
+ border-radius: 4px;
+}
+
 input[type="file"] {
  display: none;
 }
@@ -304,7 +330,7 @@ input[type="file"] {
 
 .resetSettings,
 .colorSchemeSettings,
-.exportimport {
+.saveload {
  padding-left: 2px;
  padding-right: 2px;
  padding-bottom: 2px;
@@ -337,6 +363,10 @@ input[type="file"] {
 
 .alert >div {
  padding-top: 5px;
+}
+
+.alert >a {
+ text-decoration: underline;
 }
 
 @media (min-width: 620px) {
