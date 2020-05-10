@@ -22,6 +22,7 @@
   "repository": "github:SignalK/instrumentpanel.git",
   "scripts": {
     "start": "webpack-dev-server --mode development",
+    "startp": "webpack-dev-server --mode production",
     "prepublishOnly": "npm run build-help; npm run build",
     "build": "webpack -p --progress",
     "build-help": "marked -i ./lib/help/help.md -o ./public/help/help.html",
@@ -37,6 +38,7 @@
     "@babel/preset-flow": "^7.8.3",
     "@babel/plugin-transform-flow-comments": "^7.8.3",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
     "babel-loader": "^8.0.6",
     "core-js": "^3.6.4",
     "bacon.model": "^0.1.12",
@@ -56,6 +58,7 @@
     "webpack": "^4.41.6",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3",
+    "webpack-bundle-analyzer": "^3.7.0",
     "marked": "^0.7.0",
     "css-prefers-color-scheme": "^4.0.0",
     "on-swipe": "^1.0.8",

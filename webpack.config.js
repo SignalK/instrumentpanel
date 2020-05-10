@@ -1,6 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 const TerserPlugin = require('terser-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
   entry: {
@@ -9,7 +10,9 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'public'),
     filename: '[name].js',
-    publicPath: '/public/'
+//    chunkFilename: '[name].js',
+    publicPath: './',
+    pathinfo: false
   },
   module: {
     rules: [
@@ -40,7 +43,8 @@ module.exports = {
               ],
               plugins: [
                 "@babel/plugin-transform-flow-comments",
-                "@babel/plugin-proposal-class-properties"
+                "@babel/plugin-proposal-class-properties",
+                "@babel/plugin-syntax-dynamic-import"
               ]
             }
           }
@@ -55,10 +59,38 @@ module.exports = {
         sourceMap: true
       }),
     ],
+    splitChunks: {
+      cacheGroups: {
+        default: false,
+        vendors: false,
+/*
+        react: {
+          name: 'react',
+          chunks: 'all',
+          test: /[\\/]node_modules[\\/](react.*)[\\/]/,
+          priority: 10
+        },
+        vendor: {
+          name: 'vendor',
+          chunks: 'all',
+//          test: /node_modules/,
+          priority: 20
+        },
+*/
+        common: {
+          name: 'common',
+          minChunks: 2,
+          chunks: 'all',
+          priority: 5,
+          reuseExistingChunk: true,
+          enforce: true
+        }
+      }
+    }
   },
   devtool: 'source-map',
   devServer: {
-    contentBase: './public',
+    contentBase: path.resolve(__dirname, 'public'),
     publicPath: '/',
     watchContentBase: true,
     hot: true,
@@ -86,7 +118,8 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
       VERSION: JSON.stringify(require("./package.json").version)
-    })
+    }),
+    new BundleAnalyzerPlugin({analyzerHost: '0.0.0.0'})
   ],
   stats: {
     children: false,
