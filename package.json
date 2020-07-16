@@ -30,7 +30,6 @@
     "release": "git tag -d v$npm_package_version ; npm run changelog && git add CHANGELOG.md && git commit -m 'chore: update changelog' && git tag v$npm_package_version && git push && git tag -d latest && git push origin :refs/tags/latest && git tag latest && git push --tags"
   },
   "devDependencies": {
-    "@signalk/client": "^2.0.4",
     "@babel/core": "^7.8.4",
     "@babel/preset-env": "^7.8.4",
     "@babel/register": "^7.8.3",
@@ -61,7 +60,10 @@
     "css-prefers-color-scheme": "^4.0.0",
     "on-swipe": "^1.0.8",
     "json-beautify": "^1.1.1",
-    "file-saver": "^2.0.2"
+    "file-saver": "^2.0.2",
+    "eventemitter3": "^4.0.0",
+    "debug": "^4.1.1",
+    "compare-versions": "^3.6.0"
   },
   "dependencies": {}
 }
