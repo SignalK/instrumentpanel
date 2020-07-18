@@ -1,5 +1,10 @@
 ## Change Log
 
+### v0.15.0 (2020/07/18 10:55 +00:00)
+- [#153](https://github.com/SignalK/instrumentpanel/pull/153) chore(deps): bump websocket-extensions from 0.1.3 to 0.1.4 (@dependabot[bot])
+- [#152](https://github.com/SignalK/instrumentpanel/pull/152) feature: Save and load settings on the server (@cmotelet)
+- [#151](https://github.com/SignalK/instrumentpanel/pull/151) feature: menu to import & export configuration (@cmotelet)
+
 ### v0.14.0 (2020/03/21 12:35 +00:00)
 - [#148](https://github.com/SignalK/instrumentpanel/pull/148) feature: hide menu bar by click (@cmotelet)
 - [#149](https://github.com/SignalK/instrumentpanel/pull/149) fix: protect against undefined values (@cmotelet)
