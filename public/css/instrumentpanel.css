@@ -166,13 +166,12 @@ body {
 }
 
 .widget-clickme {
- z-index: -1;
- width: 18px;
- height: 18px;
+ width: 40px;
+ height: 40px;
  top: 0px;
  left: 0px;
  display: inline;
- position: fixed;
+ position: absolute;
  background-color: initial;
 }
 
