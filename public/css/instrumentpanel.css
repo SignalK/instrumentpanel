@@ -21,6 +21,10 @@ body {
  height: 100px;
 }
 
+.widget-full-screen {
+ position: absolute;
+}
+
 .react-grid-layout {
  position: relative;
  transition: height 200ms ease;
