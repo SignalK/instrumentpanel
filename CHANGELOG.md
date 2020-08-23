@@ -1,5 +1,14 @@
 ## Change Log
 
+### v0.16.0 (2020/08/23 20:58 +00:00)
+- [#161](https://github.com/SignalK/instrumentpanel/pull/161) chore: updating help with new features (@cmotelet)
+- [#160](https://github.com/SignalK/instrumentpanel/pull/160) feature: click in widget center to put it in full screen (@cmotelet)
+- [#159](https://github.com/SignalK/instrumentpanel/pull/159) feature: Add to home screen like a mobile app (Android/Chrome & IOS/Safari) (@cmotelet)
+- [#158](https://github.com/SignalK/instrumentpanel/pull/158) feature: button to switch in fullscreen on Android/MacOS/Windows (@cmotelet)
+- [#157](https://github.com/SignalK/instrumentpanel/pull/157) chore: factorise code for widget's changeDisplayMode function (@cmotelet)
+- [#156](https://github.com/SignalK/instrumentpanel/pull/156) feature: autoConnect (remove connect & disconnect button) (@cmotelet)
+- [#155](https://github.com/SignalK/instrumentpanel/pull/155) chore(deps): bump elliptic from 6.5.2 to 6.5.3 (@dependabot[bot])
+
 ### v0.15.0 (2020/07/18 10:55 +00:00)
 - [#153](https://github.com/SignalK/instrumentpanel/pull/153) chore(deps): bump websocket-extensions from 0.1.3 to 0.1.4 (@dependabot[bot])
 - [#152](https://github.com/SignalK/instrumentpanel/pull/152) feature: Save and load settings on the server (@cmotelet)
