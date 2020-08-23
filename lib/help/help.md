@@ -59,12 +59,18 @@ ___
         - [2.3.5. Save settings screen](#2_3_5)  
         - [2.3.6. Load settings screen](#2_3_6)  
 + [3. Options Available on the Widgets](#3)  
-    - [3.1. Changing Display Mode](#3_1)  
-    - [3.2. Wind Widget Modes](#3_2)  
-    - [3.3. Digital Position Modes](#3_3)  
-    - [3.4. Display SourceID](#3_4)  
-+ [4. Advanced options](#4)  
-+ [5. Trouble?](#5)  
+    - [3.1. Widget in full screen](#3_1)  
+    - [3.2. Changing Display Mode](#3_2)  
+    - [3.3. Wind Widget Modes](#3_3)  
+    - [3.4. Digital Position Modes](#3_4)  
+    - [3.5. Display SourceID](#3_5)  
++ [4. Full Screen mode & App mode](#4)  
+    - [4.1. Full Screen mode](#4_1)  
+    - [4.2. App mode](#4_2)  
+        - [4.2.1. On iPad or iPhone](#4_2_1)  
+        - [4.2.2. On Android](#4_2_2)  
++ [5. Advanced options](#5)  
++ [6. Trouble?](#6)  
   
 <a id="0"></a>
 **0. Introduction** [Back to main menu](#content)  
@@ -89,21 +95,18 @@ You must close the help page by clicking on the ![help-on](./help/help-on-icon.p
 <a id="1"></a>
 **1. Connect to your Signal K Server** [Back to main menu](#content)  
 ___
+The Signal K server address is directly derived from your web page and InstrumentPanel automatically connects to the server.  
 >
->![connect](./help/connect-new.png#maxwidth)  
+>![connect](./help/connecting.png#maxwidth)  
 >
-The address of the Signal K server is directly derived from your web page.  
-Click on the button to connect to the server.  
-The button's text changes to _Connecting_ indicate the connection status
- and once connected disappears. In most cases you won't see the _Connecting_ text at all.  
   
-If the _Connecting_ button reappears, it means that the connection
+If the _Reconnecting_ reappears, it means that the connection
  to the Signal K server is broken and that InstrumentPanel
  is trying to reconnect automatically.  
   
 For advanced users, you can manually specify the address and
  the protocol to connect to your Signal K server
- (See: [Advanced options](#4)).  
+ (See: [Advanced options](#5)).  
   
 <a id="2"></a>
 **2. Top Bar Buttons** [Back to main menu](#content)  
@@ -136,8 +139,8 @@ Click on it to see a list of your current alarms.
 When data is received it blinks every second.
  If the indicator is not blinking, either your connection is broken
  or the server is not sending any data and values displayed in your widgets may be obsolete.  
-- ![disconnect](./help/disconnect-icon.png) buttons: Click to disconnect from your Signal K server
- and to return to the initial state that allows you to specify the server to connect to (See:[Connect to ...](#1)).  
+- ![fullscreen](./help/fullscreen-icon.png) buttons: Click to switch to full screen mode.
+ This feature is not available on all devices.(See:[Full Screen mode ...](#4)).  
   
 After 15 seconds without user activity, the menu will automatically hide to free up space on the screen.  
 A small heart and a bell (when you have active notifications) are displayed at the top right of the screen.  
@@ -516,15 +519,21 @@ Click on ![button-reset-red.png](./help/button-reset-red.png) to load the [reset
 ___
   
 <a id="3_1"></a>
-**3.1. Changing Display Mode** [Back to up menu](#3)  
+**3.1. Widget in full screen** [Back to up menu](#3)  
+___
+- you can display a widget in full screen by clicking in the center of the widget.  
+- To return to normal view, click anywhere on the widget.  
+  
+<a id="3_2"></a>
+**3.2. Changing Display Mode** [Back to up menu](#3)  
 ___
 Some widgets have the ability to change their display mode directly.  
 They are identified by a ![clickme-icon](./help/clickme-icon.png) icon in the top left corner.  
 Click on this icon to change the display mode.  
 New display mode is automatically saved.  
   
-<a id="3_2"></a>
-**3.2. Wind Widget Modes** [Back to up menu](#3)  
+<a id="3_3"></a>
+**3.3. Wind Widget Modes** [Back to up menu](#3)  
 ___
 The wind widget displays by default apparent wind.  
 >
@@ -556,8 +565,8 @@ Enable the options for True Wind over Ground and True Wind through Water:
 >
 And then click on the ![DerivedData-submit](./help/plugin-DerivedData-submit.png) button to save and activate these options.  
   
-<a id="3_3"></a>
-**3.3. Digital Position Modes** [Back to up menu](#3)  
+<a id="3_4"></a>
+**3.4. Digital Position Modes** [Back to up menu](#3)  
 ___
 The Digital Position Widget can display your position in different formats:  
 - Dir D.ddddd° (N 38.99177°)  
@@ -569,8 +578,8 @@ You can change the display format by clicking on the ![clickme-icon](./help/clic
 The first click, displays the display format then the others clicks change the display format.  
 You have 5 seconds to repeat your clicks, after that the widget automatically displays its original label.  
   
-<a id="3_4"></a>
-**3.4. Display SourceID** [Back to up menu](#3)  
+<a id="3_5"></a>
+**3.5. Display SourceID** [Back to up menu](#3)  
 ___
 To display the source Id of a widget's data stream,
  click on to the top right corner of widget.  
@@ -583,7 +592,40 @@ To hide the source Id, just click in the displayed source Id field.
 >
   
 <a id="4"></a>
-**4. Advanced options** [Back to main menu](#content)  
+**4. Full Screen mode & App mode** [Back to main menu](#content)  
+___
+You can switch to full screen mode to make the URL bar disappear and save display space.  
+  
+<a id="4_1"></a>
+**4.1 Full Screen mode** [Back to up menu](#4)  
+___
+Click on the ![fullscreen](./help/fullscreen-icon.png) buttons in the main bar to switch to full screen mode.
+ This feature is not available on all devices (not works on all IOS devices, see:[App mode ...](#4_2)).  
+  
+<a id="4_2"></a>
+**4.2 App mode** [Back to up menu](#4)  
+___
+You can **add to Home Screen** InstrumentPanel on most mobile devices to use it as a mobile app.  
+  
+<a id="4_2_1"></a>
+**4.2.1 On iPad or iPhone** [Back to up menu](#4)  
+___
+1) Launch **Safari** app.  This does not work from the **Chrome** app.  
+2) Open **InstrumentPanel** URL in **Safari**.  
+3) Tap the icon featuring a right-pointing arrow coming out of a box along the top of the Safari window to open a drop-down menu.  
+4) Tap **Add to Home Screen** The Add to Home dialog box will appear, with the icon that will be used for this website on the left side of the dialog box.  
+5) Enter the name for the shortcut using the on-screen keyboard and tap **Add.** Safari will close automatically and you will be taken to where the icon is located on your iPad’s desktop.  
+  
+<a id="4_2_2"></a>
+**4.2.2 On Android** [Back to up menu](#4)  
+___
+1) Launch **Chrome** app.  
+2) Open **InstrumentPanel** URL in Chrome.  
+3) Tap the menu icon (3 dots in upper right-hand corner) and tap **Add to homescreen** .  
+4) You’ll be able to enter a name for the shortcut and then Chrome will add it to your home screen.  
+  
+<a id="5"></a>
+**5. Advanced options** [Back to main menu](#content)  
 ___
 For advanced users, you can manually specify the address and the protocol to connect to your Signal K server.
 Be careful if you mix secure and unsecured protocols, your browser may refuse the connection.  
@@ -591,8 +633,8 @@ To manually specify the address and the protocol of the Signal K server,
  add the following query parameter **?signalkServer=wss://mysignalk.local:3443** to the url.  
 Use **wss://** for secure websocket or **ws://** for unsecure websocket.  
   
-<a id="5"></a>
-**5. Trouble?** [Back to main menu](#content)  
+<a id="6"></a>
+**6. Trouble?** [Back to main menu](#content)  
 ___
 InstrumentPanel stores some of its settings in the browser's local storage.  
 In case you have invalid stuff displayed, you can reset it
