@@ -1,5 +1,8 @@
 ## Change Log
 
+### v0.16.1 (2020/09/25 08:17 +00:00)
+- [#164](https://github.com/SignalK/instrumentpanel/pull/164) fix: avoid widget goes to fullscreen in design mode (@cmotelet)
+
 ### v0.16.0 (2020/08/23 20:58 +00:00)
 - [#161](https://github.com/SignalK/instrumentpanel/pull/161) chore: updating help with new features (@cmotelet)
 - [#160](https://github.com/SignalK/instrumentpanel/pull/160) feature: click in widget center to put it in full screen (@cmotelet)
