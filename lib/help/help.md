@@ -331,9 +331,59 @@ Choose your preferred view by selecting the radio button.
 - **digital view**  
 ![universal-digital](./help/widget-settings-digital.png#maxwidth)  
 - **analog view** has more settings.  
+The colored zones can be generated in 2 ways:  
+  - From a **local** setting with limited capabilities (only on red zone from redline value to maximum value).  
 You can set the minimal and maximal values displayed.  
 And also set the red line value.  
-![universal-analog](./help/widget-settings-analog.png#maxwidth)  
+  
+  ![universal-analog-local](./help/widget-settings-analog-local.png#maxwidth)  
+  
+  - From the **server**, where all the data are filled in the server meta zone.  
+In this mode, you can map your prefered color for each zone state (nominal, warn, alarm,...) registered in the server using the 2 list boxes.  
+Select in the first list box the state level and map the color in the second list box.  
+As zone state cannot be yet configured directly in serveur GUI, you have to edit manually your **default.json** file on the server.  
+Each time you modify the **default.json** file, you have to reload the server.  
+And when server reloaded, check **Zone relaod** in widget to fetch the new values from the server.  
+See sample below for **batteries 1**  
+  
+  ![universal-analog-server](./help/widget-settings-analog-server.png#maxwidth)  
+  
+**batteries 1** sample **default.json**:  
+  
+Locate json entry **vessels/self/electrical/batteries/1/voltage** in your **default.json** file.  
+If it does not exist **creates** or **insert** the appropriate keys/values at the right place.  
+**Be very careful to respect the json syntax**.  
+```
+"vessels": { //<= this key already exist do not insert
+ "self": { //<= this key already exist do not insert
+  "electrical": { //<= if this key exists, insert the following key below it
+   "batteries": { //<= if this key exists, insert the following key below it
+    "1": { //<= if this key exists, insert the following key below it
+     "voltage": { //<= if this key exists, insert the following key below it
+      "meta": {
+       "displayName": "battery 1",
+       "zones": [
+        {"upper": 11.8, "state": "alarm"},
+        {"upper": 12, "lower": 11.8, "state": "warn"},
+        {"upper": 14.6, "lower": 12, "state": "nominal"},
+        {"lower": 14.6, "state": "alarm"}
+       ],
+       "displayScale": {
+        "lower": 11.5,
+        "upper": 15.5
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+```
+  
+For more help about zone and meta value, please refer to links below:  
+http://signalk.org/specification/1.0.4/doc/data_model_metadata.html#metadata-for-a-data-value  
+https://github.com/SignalK/signalk-server/wiki/FAQ:-Frequently-Asked-Questions#how-to-add-missing-units-in-instrumentpanel  
   
 <a id="2_3_1_4_2"></a>
 **2.3.1.4.2. Compass Widget** [Back to up menu](#2_3_1_4)  
