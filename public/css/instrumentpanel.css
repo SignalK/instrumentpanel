@@ -388,6 +388,40 @@ input[type="file"] {
  text-decoration: underline;
 }
 
+.colorBox {
+ width: 20px;
+ height: 10px;
+ display: inline-flex;
+ border-color: black;
+ border-width: 1px;
+ border-style: ridge;
+}
+
+.zoneLevelColor {
+ width: 120px;
+}
+
+.zoneLevel {
+ display: inline-block;
+ width: 60px;
+}
+
+.zoneLowerUpperTitle {
+ display: flex;
+ text-align: center;
+}
+
+.zoneLowerUpper {
+ display: flex;
+ text-align: center;
+ margin-top: 10px;
+}
+
+.zoneValueLowerUpper {
+ margin: auto;
+ width: 50px;
+}
+
 @media (min-width: 620px) {
  .items .item {
   max-width: calc(50% - 10px);
