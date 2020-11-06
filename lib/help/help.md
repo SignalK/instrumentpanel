@@ -326,33 +326,24 @@ Each widget type has specific settings.
 <a id="2_3_1_4_1"></a>
 **2.3.1.4.1. Universal Widget** [Back to up menu](#2_3_1_4)  
 ___
-This widget has 2 display views possible (digital/analog).  
-Choose your preferred view by selecting the radio button.  
-- **digital view**  
+This widget has alternative digital and analog views.
+
 ![universal-digital](./help/widget-settings-digital.png#maxwidth)  
-- **analog view** has more settings.  
-The colored zones can be generated in 2 ways:  
-  - From a **local** setting with limited capabilities (only on red zone from redline value to maximum value).  
-You can set the minimal and maximal values displayed.  
-And also set the red line value.  
+
+The analog view can display colored zones for value ranges. The ranges can be based on local settings in or zones fetched from the server.
+
+Local settings are configured in InstrumentPanel settings and stored in the browser. The configuration is limited: a single red zone from redline value to maximum value and you can set the minimum value for the gauge.
   
   ![universal-analog-local](./help/widget-settings-analog-local.png#maxwidth)  
-  
-  - From the **server**, where all the data are filled in the server meta zone.  
-In this mode, you can map your prefered color for each zone state (nominal, warn, alarm,...) registered in the server using the 2 list boxes.  
-Select in the first list box the state level and map the color in the second list box.  
-As zone state cannot be yet configured directly in serveur GUI, you have to edit manually your **default.json** file on the server.  
-Each time you modify the **default.json** file, you have to reload the server.  
-And when server reloaded, check **Zone relaod** in widget to fetch the new values from the server.  
-See sample below for **batteries 1**  
+
+On the server the zones are configured by modifying the **defaults.json** file in you the server settings directory. You can configure multiple zones, each associated with a state that has its own color. Only colors are configured in InstrumentPanel.
+
+Changes there take effect after server restart.
   
   ![universal-analog-server](./help/widget-settings-analog-server.png#maxwidth)  
   
-**batteries 1** sample **default.json**:  
-  
-Locate json entry **vessels/self/electrical/batteries/1/voltage** in your **default.json** file.  
-If it does not exist **creates** or **insert** the appropriate keys/values at the right place.  
-**Be very careful to respect the json syntax**.  
+**batteries 1** sample **defaults.json**:
+
 ```
 "vessels": { //<= this key already exist do not insert
  "self": { //<= this key already exist do not insert
@@ -380,11 +371,12 @@ If it does not exist **creates** or **insert** the appropriate keys/values at th
  }
 }
 ```
-  
-For more help about zone and meta value, please refer to links below:  
-http://signalk.org/specification/1.0.4/doc/data_model_metadata.html#metadata-for-a-data-value  
-https://github.com/SignalK/signalk-server/wiki/FAQ:-Frequently-Asked-Questions#how-to-add-missing-units-in-instrumentpanel  
-  
+**Make sure the content is valid JSON**. Using an editor that validates the format is a great help!
+
+For more information on zones see [the Signal K Specification](http://signalk.org/specification/1.0.4/doc/data_model_metadata.html#metadata-for-a-data-value  
+) and [Server FAQ](https://github.com/SignalK/signalk-server/wiki/FAQ:-Frequently-Asked-Questions#how-to-add-missing-units-in-instrumentpanel  
+)
+
 <a id="2_3_1_4_2"></a>
 **2.3.1.4.2. Compass Widget** [Back to up menu](#2_3_1_4)  
 ___
