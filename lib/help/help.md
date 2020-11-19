@@ -492,11 +492,6 @@ ___
 In this screen, you can clear settings stored in local storage browser.  
 This settings are :  
 - Layouts: Delete all layouts.
-- Layouts cache (units & labels).  
-Delete all units & cells name (path or shortname) stored in layouts.  
-On reload, the units & cells name will be retrieve from your Signal K server and stored in your layouts.  
-This is useful if you have changed unit names in paths or the default.json file on your server.  
-This operation is risk-free for your configuration.  
 - Previous layout: Clean previous layouts, if a layout existed in version 0.12.0 and earlier, it is used as a template to build the default layout.
 - Start connected: Reset the automatic connection at startup.
 - Preferred units: Delete all preferred units.
@@ -685,18 +680,6 @@ InstrumentPanel stores some of its settings in the browser's local storage.
 In case you have invalid stuff displayed, you can reset it
  by adding the following query parameter **?reset=true** to the url.  
 If you only want to reset a few parameters, use the GUI instead:  
- See [Reset settings screen](#2_3_4)  
-  
-Units and labels are also stored in the browser's local storage and
- are fetched from the Signal K server only during startup.  
-If you change a unit or a display label on the server,
- you can clear the cache without destroying your layout
- by modifying the url with the following query parameter  
- **?flushCache=true**  
- you can also use a dedicated menu in GUI:  
- Click on ![settings](./help/settings-icon.png) button  
- Then select settings for:**Reset Instrument Panel**  
- Check the box **Layouts cache (units & labels)**  
  See [Reset settings screen](#2_3_4)  
   
 If you see **ERROR in unit retrieval** on the upper of a widget, there is a problem to contact your Signal K server.  

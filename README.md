@@ -13,9 +13,6 @@ Trouble?
 First consult the online help, link above or click on **?** icon inside the GUI.  
 InstrumentPanel stores some of the settings in the browser's localstorage. In case there is some garbage there you can
 get it cleared by using a url with query parameter `?reset=true`.  
-The units and labels are also stored in the browser's localstorage and fetched from the signalK's server only the first time.
-If you change a unit or a display label on the server, you can clear the cache without destroying your layout by using a url with query parameter  `?flushCache=true`.  
-You can also clear the cache using the dedicated menu in the GUI
 
 For iOS user:
 =============
