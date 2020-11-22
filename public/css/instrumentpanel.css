@@ -219,24 +219,48 @@ div.widget svg {
  flex: 1 0 220px;
  box-sizing: border-box;
  background-color: var(--background-settings-item-color);
- padding: 10px;
- margin-left: 6px;
- margin-top: 6px;
+ padding: 5px;
+ margin-left: 4px;
+ margin-top: 4px;
 }
 
-.items .item .copy >h3 {
+.items .item .header {
+ display: flex;
+ height: 22px;
+ margin-bottom: 2px;
+ margin-top: -2px;
+}
+
+.items .item .header >h3 {
  color: var(--text-settings-color);
  margin: 0 0 4px;
 }
 
-.items .item .copy >p {
- margin: 0 0 4px;
- cursor: pointer;
+.items .item .headerCbShow {
+ margin-top: 0px;
 }
 
-.items .item .copy .checkbox {
- margin-top: 0px;
- margin-bottom: 0px;
+.items .item .headerEdit,
+.items .item .headerEdit:hover,
+.items .item .headerEdit:active,
+.items .item .headerEdit:focus {
+ margin-left: auto;
+ margin-bottom: 4px;
+ background-color: var(--background-btn-color);
+ border-color: var(--border-color);
+ color: var(--text-color);
+ fill: var(--text-color);
+ outline: none;
+}
+
+.items .item .headerPath >h3 {
+ color: var(--text-settings-color);
+ margin: 0 0 4px;
+}
+
+.items .item .headerPath >p {
+ margin: 0 0 4px;
+ cursor: pointer;
 }
 
 .items .item .widgetSettings {

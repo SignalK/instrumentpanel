@@ -263,7 +263,8 @@ In setting mode, use the ![view](./help/view-icon.png) button to return to the m
 <a id="2_3_1"></a>
 **2.3.1. Customise Display screen** [Back to up menu](#2_3)  
 ___
-In this settings page, you can set:
+In this settings page, to access widget's parameters, click on 'edit'.  
+You can set:
 - ["Rules for new widgets"](#2_3_1_1) who validating the display on your grid of new the widgets created when a new path is discovered.  
 - ["Hide or show"](#2_3_1_2) parameter individually or all your widgets on your grid.  
 - ["Unit selection"](#2_3_1_3) of the displayed value.  
