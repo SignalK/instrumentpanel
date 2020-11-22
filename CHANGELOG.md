@@ -1,5 +1,11 @@
 ## Change Log
 
+### v0.17.0 (2020/11/22 15:00 +00:00)
+- [#170](https://github.com/SignalK/instrumentpanel/pull/170) chore: optimized display of widget settings (@cmotelet)
+- [#168](https://github.com/SignalK/instrumentpanel/pull/168) chore: remove meta cache feature (@cmotelet)
+- [#169](https://github.com/SignalK/instrumentpanel/pull/169) chore: promote the colorful analog widget on github's main page (@cmotelet)
+- [#166](https://github.com/SignalK/instrumentpanel/pull/166) feature: universal analog widget with several color zones (@cmotelet)
+
 ### v0.16.1 (2020/09/25 08:17 +00:00)
 - [#164](https://github.com/SignalK/instrumentpanel/pull/164) fix: avoid widget goes to fullscreen in design mode (@cmotelet)
 
