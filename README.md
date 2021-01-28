@@ -12,7 +12,10 @@ Trouble?
 ========
 First consult the online help, link above or click on **?** icon inside the GUI.  
 InstrumentPanel stores some of the settings in the browser's localstorage. In case there is some garbage there you can
-get it cleared by using a url with query parameter `?reset=true`.  
+get it cleared by using a url with query parameter `?reset=true`.
+
+Newer browsers like Firefox suppress CORS (Cross Origin Resource Sharing) requests. No instruments will then be displayed in the browser. In the web server, CORS must be explicitly activated for the panel instrument. Details see here:
+https://developer.mozilla.org/de/docs/Web/HTTP/CORS 
 
 For iOS user:
 =============
