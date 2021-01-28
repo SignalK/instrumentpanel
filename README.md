@@ -17,8 +17,8 @@ get it cleared by using a url with query parameter `?reset=true`.
 Newer browsers like Firefox suppress CORS (Cross Origin Resource Sharing) requests. No instruments will then be displayed in the browser. In the web server, CORS must be explicitly activated for the panel instrument. Details see here:
 
 https://developer.mozilla.org/en/docs/Web/HTTP/CORS
-
 https://enable-cors.org/server_apache.html
+https://alfilatov.com/posts/run-chrome-without-cors/
 
 For iOS user:
 =============
