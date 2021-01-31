@@ -27,7 +27,8 @@
     "build-help": "marked -i ./lib/help/help.md -o ./public/help/help.html",
     "watch": "webpack -d --watch",
     "changelog": "github-changes -o signalk -r instrumentpanel -a --only-pulls --use-commit-body --data=pulls --tag-name=v$npm_package_version",
-    "release": "git tag -d v$npm_package_version ; npm run changelog && git add CHANGELOG.md && git commit -m 'chore: update changelog' && git tag v$npm_package_version && git push && git tag -d latest && git push origin :refs/tags/latest && git tag latest && git push --tags"
+    "create-release": "github-create-release --owner signalk --repository instrumentpanel",
+    "release": "git tag -d v$npm_package_version ; npm run changelog && git add CHANGELOG.md && git commit -m 'chore: update changelog' && git tag v$npm_package_version && git push && npm run create-release"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
@@ -63,7 +64,8 @@
     "file-saver": "^2.0.2",
     "eventemitter3": "^4.0.0",
     "debug": "^4.1.1",
-    "compare-versions": "^3.6.0"
+    "compare-versions": "^3.6.0",
+    "@signalk/github-create-release": "^1.2.0"
   },
   "dependencies": {}
 }
