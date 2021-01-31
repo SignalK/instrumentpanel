@@ -1,5 +1,9 @@
 ## Change Log
 
+### v0.17.2 (2021/01/31 10:24 +00:00)
+- [#172](https://github.com/SignalK/instrumentpanel/pull/172) chore(deps): bump ini from 1.3.5 to 1.3.8 (@dependabot[bot])
+- [#178](https://github.com/SignalK/instrumentpanel/pull/178) fix: load settings from file (@cmotelet)
+
 ### v0.17.1 (2020/11/22 19:20 +00:00)
 - [#162](https://github.com/SignalK/instrumentpanel/pull/162) chore(deps): bump http-proxy from 1.18.0 to 1.18.1 (@dependabot[bot])
 - [#171](https://github.com/SignalK/instrumentpanel/pull/171) fix: filtering delta's update with no value (@cmotelet)
