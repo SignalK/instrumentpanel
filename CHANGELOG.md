@@ -1,5 +1,8 @@
 ## Change Log
 
+### v0.17.3 (2021/02/01 18:19 +00:00)
+- [#179](https://github.com/SignalK/instrumentpanel/pull/179) chore: add npm publish workflow (@cmotelet)
+
 ### v0.17.2 (2021/01/31 10:24 +00:00)
 - [#172](https://github.com/SignalK/instrumentpanel/pull/172) chore(deps): bump ini from 1.3.5 to 1.3.8 (@dependabot[bot])
 - [#178](https://github.com/SignalK/instrumentpanel/pull/178) fix: load settings from file (@cmotelet)
@@ -12,12 +15,10 @@
 - [#170](https://github.com/SignalK/instrumentpanel/pull/170) chore: optimized display of widget settings (@cmotelet)
 - [#168](https://github.com/SignalK/instrumentpanel/pull/168) chore: remove meta cache feature (@cmotelet)
 - [#169](https://github.com/SignalK/instrumentpanel/pull/169) chore: promote the colorful analog widget on github's main page (@cmotelet)
+
+### v0.16.1 (2020/11/13 19:19 +00:00)
 - [#166](https://github.com/SignalK/instrumentpanel/pull/166) feature: universal analog widget with several color zones (@cmotelet)
-
-### v0.16.1 (2020/09/25 08:17 +00:00)
 - [#164](https://github.com/SignalK/instrumentpanel/pull/164) fix: avoid widget goes to fullscreen in design mode (@cmotelet)
-
-### v0.16.0 (2020/08/23 20:58 +00:00)
 - [#161](https://github.com/SignalK/instrumentpanel/pull/161) chore: updating help with new features (@cmotelet)
 - [#160](https://github.com/SignalK/instrumentpanel/pull/160) feature: click in widget center to put it in full screen (@cmotelet)
 - [#159](https://github.com/SignalK/instrumentpanel/pull/159) feature: Add to home screen like a mobile app (Android/Chrome & IOS/Safari) (@cmotelet)
@@ -25,13 +26,11 @@
 - [#157](https://github.com/SignalK/instrumentpanel/pull/157) chore: factorise code for widget's changeDisplayMode function (@cmotelet)
 - [#156](https://github.com/SignalK/instrumentpanel/pull/156) feature: autoConnect (remove connect & disconnect button) (@cmotelet)
 - [#155](https://github.com/SignalK/instrumentpanel/pull/155) chore(deps): bump elliptic from 6.5.2 to 6.5.3 (@dependabot[bot])
-
-### v0.15.0 (2020/07/18 10:55 +00:00)
 - [#153](https://github.com/SignalK/instrumentpanel/pull/153) chore(deps): bump websocket-extensions from 0.1.3 to 0.1.4 (@dependabot[bot])
 - [#152](https://github.com/SignalK/instrumentpanel/pull/152) feature: Save and load settings on the server (@cmotelet)
 - [#151](https://github.com/SignalK/instrumentpanel/pull/151) feature: menu to import & export configuration (@cmotelet)
 
-### v0.14.0 (2020/03/21 12:35 +00:00)
+### v (2020/03/21 12:35 +00:00)
 - [#148](https://github.com/SignalK/instrumentpanel/pull/148) feature: hide menu bar by click (@cmotelet)
 - [#149](https://github.com/SignalK/instrumentpanel/pull/149) fix: protect against undefined values (@cmotelet)
 - [#150](https://github.com/SignalK/instrumentpanel/pull/150) chore: optimize notification management (@cmotelet)
