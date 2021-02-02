@@ -38,7 +38,7 @@ Use **wss://** for secure websocket or **ws://** for unsecure websocket.
 
 Changelog
 =====
-[CHANGELOG](CHANGELOG.md)
+Please see [Releases](https://github.com/SignalK/instrumentpanel/releases) for the release notes.
 
 To Do
 =====
