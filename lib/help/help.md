@@ -522,12 +522,6 @@ The ![button-settings-savelayout](./help/button-settings-savelayout.png) button 
 The ![button-settings-saveprefunit](./help/button-settings-saveprefunit.png) button save your preferred units on the server.
 If you are logged in with **Admin** access and you select **save for global settings** these preferred units will be loaded on new devices by default.  
 The ![button-settings-saveptofile](./help/button-settings-savetofile.png) button make a backup of all your Instrumentpanel configuration.
-The result is a json file that you can edit to change parameters,  
-e.g. fill in the value of the "unit" keys that would not be present in the original schema of your Signal K server or fill in the "label" key to name the title of your widget.  
-Be very careful to respect the json format or your file will no longer be valid.  
->
->![unit_label-json](./help/unit_label-json.png#maxwidth)  
->
   
 <a id="2_3_6"></a>
 **2.3.6 Load settings screen** [Back to up menu](#2_3)  
