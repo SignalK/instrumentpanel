@@ -44,15 +44,16 @@ ___
         - [2.3.1. Customise Display screen](#2_3_1)  
             - [2.3.1.1 Rule for displaying new widget](#2_3_1_1)  
             - [2.3.1.2 Hide or Show widget](#2_3_1_2)  
-            - [2.3.1.3 Unit selection](#2_3_1_3)  
-            - [2.3.1.4 Widget Specific Settings](#2_3_1_4)  
-                - [2.3.1.4.1 Universal Widget](#2_3_1_4_1)  
-                - [2.3.1.4.2 Compass Widget](#2_3_1_4_2)  
-                - [2.3.1.4.3 Windmeter Widget](#2_3_1_4_3)  
-                - [2.3.1.4.4 Digital DateTime Widget](#2_3_1_4_4)  
-            - [2.3.1.5 Widget managed paths](#2_3_1_5)  
-            - [2.3.1.6 Alarms Settings](#2_3_1_6)  
-            - [2.3.1.7 Add or Delete Pages](#2_3_1_7)  
+            - [2.3.1.3 Delete widget](#2_3_1_3)  
+            - [2.3.1.4 Unit selection](#2_3_1_4)  
+            - [2.3.1.5 Widget Specific Settings](#2_3_1_5)  
+                - [2.3.1.5.1 Universal Widget](#2_3_1_5_1)  
+                - [2.3.1.5.2 Compass Widget](#2_3_1_5_2)  
+                - [2.3.1.5.3 Windmeter Widget](#2_3_1_5_3)  
+                - [2.3.1.5.4 Digital DateTime Widget](#2_3_1_5_4)  
+            - [2.3.1.6 Widget managed paths](#2_3_1_6)  
+            - [2.3.1.7 Alarms Settings](#2_3_1_7)  
+            - [2.3.1.8 Add or Delete Pages](#2_3_1_8)  
         - [2.3.2. Preferred Units screen](#2_3_2)  
         - [2.3.3. Dark Mode Screen](#2_3_3)  
         - [2.3.4. Reset settings screen](#2_3_4)  
@@ -161,7 +162,7 @@ ___
 >
 You can have up to 10 pages, each with a separate selection, configuration and layout of widgets.  
 To switch pages, just click on the page number or doing a horizontal swipe on the screen.  
-To create a new page, see:[Add or Delete Pages](#2_3_1_7).  
+To create a new page, see:[Add or Delete Pages](#2_3_1_8).  
   
 <a id="2_1_1"></a>
 **2.1.1. Alarms Page** [Back to up menu](#2_1)  
@@ -187,7 +188,7 @@ You can hide some alarms in the settings page.
  In this case, the alarm button can also display a second information.
  The color of the dotted border of the ![button-notif-nominal-mixed](./help/button-notif-nominal-mixed.png) indicates that there are hidden alarms
  and the maximum level of hidden alarms.  
-(See: [Alarms Settings](#2_3_1_6))  
+(See: [Alarms Settings](#2_3_1_7)  
   
 <a id="2_2"></a>
 **2.2. Layout** [Back to up menu](#2)  
@@ -267,11 +268,12 @@ In this settings page, to access widget's parameters, click on 'edit'.
 You can set:
 - ["Rules for new widgets"](#2_3_1_1) who validating the display on your grid of new the widgets created when a new path is discovered.  
 - ["Hide or show"](#2_3_1_2) parameter individually or all your widgets on your grid.  
-- ["Unit selection"](#2_3_1_3) of the displayed value.  
-- ["Widget Specific Settings"](#2_3_1_4) some widgets have specific parameters.  
-- ["Widget managed paths"](#2_3_1_5) to discover the list of paths managed by this widget type.  
-- ["Alarms Settings"](#2_3_1_6) to hide or show discovered alarms / notifications.  
-- ["Add or Delete Pages"](#2_3_1_7) To manage multiple grid pages.  
+- ["Delete widget"](#2_3_1_3) linked to a Signal K path that no longer exists.  
+- ["Unit selection"](#2_3_1_4) of the displayed value.  
+- ["Widget Specific Settings"](#2_3_1_5) some widgets have specific parameters.  
+- ["Widget managed paths"](#2_3_1_6) to discover the list of paths managed by this widget type.  
+- ["Alarms Settings"](#2_3_1_7) to hide or show discovered alarms / notifications.  
+- ["Add or Delete Pages"](#2_3_1_8) To manage multiple grid pages.  
   
 <a id="2_3_1_1"></a>
 **2.3.1.1. Rule for displaying new widget** [Back to up menu](#2_3_1)  
@@ -309,7 +311,18 @@ Unselect/Select checkbox to hide/show the widget on the page.
 - ![button-ShowAll](./help/button-ShowAll.png) button: Shows all widgets on the current page in one operation.  
   
 <a id="2_3_1_3"></a>
-**2.3.1.3. Unit selection** [Back to up menu](#2_3_1)  
+**2.3.1.3. Delete widget** [Back to up menu](#2_3_1)  
+___
+By checking **Delete** you delete an existing widget associated with a Signal K path and source.  
+In order to delete a widget, it must first not be **Displayed on the grid**.  
+If you delete a widget that is associated to a Signal K path still present in your server, it will be automatically recreated when reloading Instrumentpanel. 
+>
+>![delete](./help/widget-delete.png#maxwidth)  
+>
+- ![button-deleteAll](./help/button-deleteAll.png) button: Deletes all widgets whose "show on grid" checkbox is not checked.  
+  
+<a id="2_3_1_4"></a>
+**2.3.1.4. Unit selection** [Back to up menu](#2_3_1)  
 ___
 Most widgets have a unit selection.  
 Select your preferred unit from the listbox.  
@@ -319,13 +332,13 @@ Select your preferred unit from the listbox.
 To make the unit change active, InstrumentPanel must be reloaded. This will be done automatically when you leave settings screens.  
 You will be informed by a message at the top of the screen.  
   
-<a id="2_3_1_4"></a>
-**2.3.1.4. Widget Specific Settings** [Back to up menu](#2_3_1)  
+<a id="2_3_1_5"></a>
+**2.3.1.5. Widget Specific Settings** [Back to up menu](#2_3_1)  
 ___
 Each widget type has specific settings.  
   
-<a id="2_3_1_4_1"></a>
-**2.3.1.4.1. Universal Widget** [Back to up menu](#2_3_1_4)  
+<a id="2_3_1_5_1"></a>
+**2.3.1.5.1. Universal Widget** [Back to up menu](#2_3_1_5)  
 ___
 This widget has alternative digital and analog views.  
 >
@@ -381,8 +394,8 @@ Using an editor that validates the format is a great help !
 For more information on zones see [the Signal K Specification](https://signalk.org/specification/1.5.0/doc/data_model_metadata.html#metadata-for-a-data-value)  
 and [Server FAQ](https://github.com/SignalK/signalk-server/wiki/FAQ:-Frequently-Asked-Questions#how-to-add-missing-units-in-instrumentpanel)  
   
-<a id="2_3_1_4_2"></a>
-**2.3.1.4.2. Compass Widget** [Back to up menu](#2_3_1_4)  
+<a id="2_3_1_5_2"></a>
+**2.3.1.5.2. Compass Widget** [Back to up menu](#2_3_1_5)  
 ___
 This widget has 3 displays view possible (rose/reading/digital).  
 Choose your preferred view by selecting the radio button.  
@@ -393,8 +406,8 @@ Choose your preferred view by selecting the radio button.
 - **Digital view**  
 ![compass-digital](./help/widget-settings-compass-digital.png#maxwidth)  
   
-<a id="2_3_1_4_3"></a>
-**2.3.1.4.3. Windmeter Widget:** [Back to up menu](#2_3_1_4)  
+<a id="2_3_1_5_3"></a>
+**2.3.1.5.3. Windmeter Widget:** [Back to up menu](#2_3_1_5)  
 ___
 This widget has only the unit selection.  
 Apparent Wind, True Wind over Ground and True Wind through Water values are automatically bound on widget.  
@@ -402,8 +415,8 @@ Apparent Wind, True Wind over Ground and True Wind through Water values are auto
 >![settings-windmeter](./help/widget-settings-windmeter.png#maxwidth)  
 >
   
-<a id="2_3_1_4_4"></a>
-**2.3.1.4.4. Digital DateTime Widget:** [Back to up menu](#2_3_1_4)  
+<a id="2_3_1_5_4"></a>
+**2.3.1.5.4. Digital DateTime Widget:** [Back to up menu](#2_3_1_5)  
 ___
 This widget has only a timezone selection.  
 In timezone list, **DST** means Daylight Saving Time and displays time automatically in the timezone
@@ -412,8 +425,8 @@ In timezone list, **DST** means Daylight Saving Time and displays time automatic
 >![settings-digitaldatetime](./help/widget-settings-digitaldatetime.png#maxwidth)  
 >
   
-<a id="2_3_1_5"></a>
-**2.3.1.5. Widget managed paths:** [Back to up menu](#2_3_1)  
+<a id="2_3_1_6"></a>
+**2.3.1.6. Widget managed paths:** [Back to up menu](#2_3_1)  
 ___
 A widget type (compass in screenshot) can handle multiple paths.  
 ![widget-settings-pathsList](./help/widget-settings-pathsList.png)
@@ -426,8 +439,8 @@ In bold, are displayed the paths that are managed by this cell.
 For each path listed, a new cell will be created with this widget type only if the path exists on your Signal K server.  
 Clic on the list to return to the default vue.  
   
-<a id="2_3_1_6"></a>
-**2.3.1.6. Alarms Settings:** [Back to up menu](#2_3_1)  
+<a id="2_3_1_7"></a>
+**2.3.1.7. Alarms Settings:** [Back to up menu](#2_3_1)  
 ___
 In setting mode, on the ![button-notif-warn](./help/button-notif-warn.png) page
  you can hide alarms from the main view by unchecking the **Show on grid** option.
@@ -437,8 +450,8 @@ The color code for dotted lines is the same as for non-hidden alarms.
  The color indicates the highest value of hidden alarms.  
 The alarm settings are not saved when you exit the GUI.  
   
-<a id="2_3_1_7"></a>
-**2.3.1.7. Add or Delete Pages** [Back to up menu](#2_3_1)  
+<a id="2_3_1_8"></a>
+**2.3.1.8. Add or Delete Pages** [Back to up menu](#2_3_1)  
 ___
 You can have up to 10 pages with a specific widget organization.  
 >
