@@ -224,6 +224,12 @@ div.widget svg {
  margin-top: 4px;
 }
 
+.itemOutdated {
+ border-color: var(--border-item-outdated);
+ border-style: dashed;
+ border-width: 2px;
+}
+
 .items .item .header {
  display: flex;
  height: 22px;
@@ -494,6 +500,7 @@ input[type="file"] {
   --text-color: tomato;
   --text-settings-color: #535378;
   --border-color: #8a8a8a;
+  --border-item-outdated: red;
  }
 }
 
@@ -509,5 +516,6 @@ input[type="file"] {
   --text-color: #000;
   --text-settings-color: #3c4b8c;
   --border-color: silver;
+  --border-item-outdated: red;
  }
 }
