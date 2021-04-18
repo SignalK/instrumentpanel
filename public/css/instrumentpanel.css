@@ -452,6 +452,11 @@ input[type="file"] {
  width: 50px;
 }
 
+.led {
+ top: -24px;
+ position: relative;
+}
+
 @media (min-width: 620px) {
  .items .item {
   max-width: calc(50% - 10px);
