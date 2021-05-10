@@ -65,6 +65,7 @@ ___
     - [3.3. Wind Widget Modes](#3_3)  
     - [3.4. Digital Position Modes](#3_4)  
     - [3.5. Display SourceID](#3_5)  
+    - [3.6. Timeout indicator on path](#3_6)  
 + [4. Full Screen mode & App mode](#4)  
     - [4.1. Full Screen mode](#4_1)  
     - [4.2. App mode](#4_2)  
@@ -153,6 +154,9 @@ To make the menu reappear click on the center of the Instrumentpanel screen.
 If you want the menu to disappear before the 15 seconds, depending on the size of your screen, click in the green zone:  
 >![hide-menu-zone_1](./help/hide-menu-zone_1.png#maxwidth)  
 >![hide-menu-zone_2](./help/hide-menu-zone_2.png#maxwidth)  
+  
+The colored dot at the top right indicates the timeout status on the path handle by the widget (See:[Timeout indicator on path ...](#3_6)) .  
+>![widget-timeout](./help/widget-timeout.png#maxwidth)  
   
 <a id="2_1"></a>
 **2.1. Change Page** [Back to up menu](#2)  
@@ -638,6 +642,27 @@ To hide the source Id, just click in the displayed source Id field.
 >
 >![sourceID-visible](./help/widget-sourceID-visible.png#maxwidth)  
 >
+  
+<a id="3_6"></a>
+**3.6. Timeout indicator on path** [Back to up menu](#3)  
+___
+The colored dot at the top right indicates the timeout status on the path handle by the widget.  
+>
+>![widget-timeout](./help/widget-timeout.png#maxwidth)  
+>
+The timeout value is retrieved in the metadata of the path.  
+If your server does not provide this timeout key, you can set it in its configuration file **~/.signalk/baseDeltas.json** .  
+Some help on the **baseDeltas.json** file can be found here: [how-to-add-missing-units-and-static-data](https://github.com/SignalK/signalk-server/wiki/FAQ:-Frequently-Asked-Questions#how-to-add-missing-units-and-static-data)  
+Every **10 seconds**, InstrumentPanel checks if the received data conform to this timeout value.  
+When launching InstrumentPanel, you have to wait at least these 10 seconds to get a correct state.  
+After these 10 seconds, the icon indicating the timeout status can take one of the values below:  
+  
+- ![widget-timeout](./help/LedEmpty.png) This widget has never received any data, it is probably a widget registered in your layout but whose path is no longer available in your server  
+- ![widget-timeout](./help/LedBlue.png) This widget does not handle timeout, this indicates that the timeout key is not available in the metadata of this path  
+- ![widget-timeout](./help/LedGreen.png) This widget handles timeout, a timeout key is available in the path meta data and the last value received is more recent than the specified timeout  
+- ![widget-timeout](./help/LedRed.png) This widget manages the timeout, a timeout key is present in the path meta data and the last value received is at least less recent than the specified timeout. You can consider the displayed values as outdated or wrong  
+  
+When the navigation bar disappears, only the useful information remains in the widget: ![widget-timeout](./help/LedEmpty.png) & ![widget-timeout](./help/LedRed.png).  
   
 <a id="4"></a>
 **4. Full Screen mode & App mode** [Back to main menu](#content)  
