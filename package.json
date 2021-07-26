@@ -22,9 +22,10 @@
   "repository": "github:SignalK/instrumentpanel.git",
   "scripts": {
     "start": "webpack-dev-server --mode development",
-    "prepublishOnly": "npm run build-help; npm run build",
+    "prepublishOnly": "npm run build-changelog; npm run build-help; npm run build",
     "build": "webpack -p --progress",
-    "build-help": "marked -i ./lib/help/help.md -o ./public/help/help.html",
+    "build-help": "marked -i ./lib/help/help.md -o ./public/help/help.html; cat ./public/CHANGELOG.html >> ./public/help/help.html",
+    "build-changelog": "auto-changelog -p --template changelog-nolink-template.hbs --stdout | marked -o ./public/CHANGELOG.html",
     "watch": "webpack -d --watch",
     "create-release": "github-create-release --owner signalk --repository instrumentpanel",
     "release": "git tag -d v$npm_package_version && git tag v$npm_package_version && git push --tags && git push && npm run create-release"
@@ -38,6 +39,7 @@
     "@babel/preset-react": "^7.8.3",
     "@babel/register": "^7.8.3",
     "@signalk/github-create-release": "^1.2.0",
+    "auto-changelog": "^2.3.0",
     "babel-loader": "^8.0.6",
     "bacon.model": "^0.1.12",
     "baconjs": "^3.0.17",

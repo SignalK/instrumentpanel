@@ -29,7 +29,7 @@
     padding-left: 0;
   }
 </style>
-#### Help and Instructions
+#### Help, Instructions and Change Log
 ___
 + [0. Introduction](#0)  
 + [1. Connect to your Signal K Server](#1)  
@@ -72,6 +72,7 @@ ___
         - [4.2.2. On Android](#4_2_2)  
 + [5. Advanced options](#5)  
 + [6. Trouble?](#6)  
++ [7. Change Log](#7)  
   
 <a id="0"></a>
 **0. Introduction** [Back to main menu](#content)  
@@ -698,4 +699,7 @@ Maybe you discovered a bug.
 
 If you see **NaN** inside a widget, it means that the value returned by your Signal K server is incorrect
  and that InstrumentPanel cannot interpret it
- 
+  
+<a id="7"></a>
+**7. Change Log** [Back to main menu](#content)  
+___
