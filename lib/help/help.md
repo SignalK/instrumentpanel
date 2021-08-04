@@ -51,6 +51,7 @@ ___
                 - [2.3.1.5.2 Compass Widget](#2_3_1_5_2)  
                 - [2.3.1.5.3 Windmeter Widget](#2_3_1_5_3)  
                 - [2.3.1.5.4 Digital DateTime Widget](#2_3_1_5_4)  
+                - [2.3.1.5.5 Iframe Widget](#2_3_1_5_5)  
             - [2.3.1.6 Widget managed paths](#2_3_1_6)  
             - [2.3.1.7 Alarms Settings](#2_3_1_7)  
             - [2.3.1.8 Add or Delete Pages](#2_3_1_8)  
@@ -87,7 +88,7 @@ The cells are grouped into three columns:
 - everything else (electrical, propulsion etc)
   
 >
->![demo](./help/main-page.png#maxwidth)  
+>![main-page](./help/main-page2.png#maxwidth)  
 >
 <a id="0_help"></a>
 When the help page is displayed all buttons are disabled.  
@@ -393,7 +394,7 @@ Changes there take effect after server restart.
 Using an editor that validates the format is a great help !  
   
 For more information on zones see [the Signal K Specification](https://signalk.org/specification/1.5.0/doc/data_model_metadata.html#metadata-for-a-data-value)  
-and [Server FAQ](https://github.com/SignalK/signalk-server/wiki/FAQ:-Frequently-Asked-Questions#how-to-add-missing-units-in-instrumentpanel)  
+and [Server FAQ](https://github.com/SignalK/signalk-server/wiki/FAQ:-Frequently-Asked-Questions#how-to-add-missing-units-and-static-data)  
   
 <a id="2_3_1_5_2"></a>
 **2.3.1.5.2. Compass Widget** [Back to up menu](#2_3_1_5)  
@@ -425,6 +426,123 @@ In timezone list, **DST** means Daylight Saving Time and displays time automatic
 >
 >![settings-digitaldatetime](./help/widget-settings-digitaldatetime.png#maxwidth)  
 >
+  
+<a id="2_3_1_5_5"></a>
+**2.3.1.5.5. Iframe Widget:** [Back to up menu](#2_3_1_5)  
+___
+This widget can embed an external HTML page like Grafana, Signal K Auto-pilot,...  
+>
+>![widget-iframe-double](./help/widget-iframe-double.png#maxwidth)  
+>
+The configuration is manual and must be done only once on the Signal K server.  
+- Edit the `~/.signalk/baseDeltas.json` file on your Signal K server.  
+You can also look at this 
+[Server FAQ](https://github.com/SignalK/signalk-server/wiki/FAQ:-Frequently-Asked-Questions#if-you-have-a-signalkbasedeltasjson-file) 
+ on the format of this file.  
+- Locate the `updates/value` section:  
+```
+[
+  {
+    "context": "vessels.self",
+    "updates": [
+      {
+        "values": [
+```
+- Insert the bloc below to set the URL parameters  
+```
+{
+  "path": "external.iframe.XXXXX",
+  "value": {
+    "src": "",
+    "themeKey": "", // optional
+    "darkValue": "", // optional
+    "lightValue": "" // optional
+  }
+}
+```
+- Fill the value with the data of the HTML page you want to expose in the widget.  
+See the "Grafana example" below for details of the optional parameters and check the help
+ of the software that produces the URL you want to embed in the widget
+ to see if it supports dark mode via the URL parameters.  
+- Locate the `updates/meta` section  
+```
+  {
+    "context": "vessels.self",
+    "updates": [
+      {
+        "meta": [
+```
+- Insert the block below to set the display name  
+```
+{
+  "path": "external.iframe.XXXXX",
+  "value": {
+    "displayName": "my external page"
+  }
+}
+```
+- Fill the path value with the same value as in the `updates/value` section used above  
+- Fill the displayName key with a value of your choice  
+- Double check your json file with a json validator (if something wrong in your json file, your server will exclude the entire file)
+- Restart your Signal K server  
+- Launch InstrumentPanel  
+- Go in settings mode ![settings](./help/settings-icon.png)  
+- Locate the new widget and select `Show on grid`  
+>
+>![settings-iframe](./help/widget-settings-iframe.png#maxwidth)  
+>
+- Return in main view ![view](./help/view-icon.png)  
+- Unlock the grid ![lock](./help/button-lock.png) to adjust the widget size and position  
+  
+**Grafana example:**  
+- Edit you **grafana.ini**  
+- Enable embedding query by `allow_embedding = true`  
+- Optionally enable anonymous mode in section `[auth.anonymous]` to avoid authentication in the widget  
+- Restart your Grafana server  
+- Generate in Grafana GUI the iframe URL to embed in widget  
+>
+>![grafana-share](./help/grafana-share.png#maxwidth)  
+>
+>
+>![grafana-embed](./help/grafana-embed.png#maxwidth)  
+>
+- Fill the src key with value generated in Grafana GUI, keep only src value **without** iframe, width, height, frameborder.  
+- To follow the dark mode fill the key themeKey, darkValue and lightValue to inform Grafana when InstrumentPanel switch in dark mode.  
+Like this, the URL will be updated by adding at the end `&theme=dark` for dark mode and `&theme=light` for light mode.  
+```
+{
+  "path": "external.iframe.grafana",
+  "value": {
+    "src": "http://barco.local:4000/d-solo/7v5TG3Wnk/demo-dashboard?orgId=1&refresh=10s&panelId=2",
+    "themeKey": "theme",
+    "darkValue": "dark",
+    "lightValue": "light"
+  }
+}
+```
+- The result in the Iframe widget
+>
+>![widget-iframe](./help/widget-iframe.png#maxwidth)  
+>
+  
+**Signal K auto-pilot example:**  
+```
+updates/value section
+{
+  "path": "external.iframe.autopilot",
+  "value": {
+    "src": "http://my-signalk.local:3000/@signalk/signalk-autopilot"
+  }
+}
+...
+updates/meta section
+{
+  "path": "external.iframe.autopilot",
+  "value": {
+    "displayName": "autopilot"
+  }
+}
+```
   
 <a id="2_3_1_6"></a>
 **2.3.1.6. Widget managed paths:** [Back to up menu](#2_3_1)  
