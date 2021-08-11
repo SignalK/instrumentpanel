@@ -3,7 +3,7 @@ Signal K Instrument Panel
 Instrument panel implemented as a grid with draggable &amp; resizable components. Components are added dynamically eg.
 when the panel receives data it hasn't seen before a new cell is added to the grid.
 
-![main-page](public/help/main-page.png)
+![instrumentpanel-demo](instrumentpanel-demo.gif)
 
 Online demo: [http://demo.signalk.org/@signalk/instrumentpanel](http://demo.signalk.org/@signalk/instrumentpanel)  
 InstrumentPanel help: [http://demo.signalk.org/@signalk/instrumentpanel#help](http://demo.signalk.org/@signalk/instrumentpanel#help)  

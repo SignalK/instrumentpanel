@@ -41,6 +41,14 @@ body {
  margin: -2px;
 }
 
+.react-grid-item iframe {
+ padding: 2px;
+ overflow: hidden;
+ position: relative;
+ width: 100%;
+ height: 100%;
+}
+
 .react-grid-item.cssTransforms {
  transition-property: transform;
 }
