@@ -39,6 +39,12 @@ body {
  border-radius: 8px;
  border: 1px solid silver;
  margin: -2px;
+ -khtml-user-select : none;
+ -webkit-user-select : none;
+ -moz-user-select : -moz-none;
+ -ms-user-select : none;
+ user-select : none;
+ -o-user-select: none;
 }
 
 .react-grid-item iframe {
@@ -68,15 +74,6 @@ body {
 }
 
 .react-grid-item.react-grid-placeholder {
- background-color: red;
- opacity: 0.2;
- transition-duration: 100ms;
- z-index: 2;
- -webkit-user-select: none;
- -moz-user-select: none;
- -ms-user-select: none;
- -o-user-select: none;
- user-select: none;
 }
 
 .react-grid-item > .react-resizable-handle {
