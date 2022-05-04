@@ -47,7 +47,7 @@ ___
             - [2.3.1.3 Delete widget](#2_3_1_3)  
             - [2.3.1.4 Unit selection](#2_3_1_4)  
             - [2.3.1.5 Widget Specific Settings](#2_3_1_5)  
-                - [2.3.1.5.1 Universal Widget](#2_3_1_5_1)  
+                - [2.3.1.5.1 Universal Widget (with colored zones)](#2_3_1_5_1)  
                 - [2.3.1.5.2 Compass Widget](#2_3_1_5_2)  
                 - [2.3.1.5.3 Windmeter Widget](#2_3_1_5_3)  
                 - [2.3.1.5.4 Digital DateTime Widget](#2_3_1_5_4)  
@@ -340,7 +340,7 @@ ___
 Each widget type has specific settings.  
   
 <a id="2_3_1_5_1"></a>
-**2.3.1.5.1. Universal Widget** [Back to up menu](#2_3_1_5)  
+**2.3.1.5.1. Universal Widget (with colored zones)** [Back to up menu](#2_3_1_5)  
 ___
 This widget has alternative digital and analog views.  
 >
@@ -349,52 +349,67 @@ This widget has alternative digital and analog views.
 The analog view can display colored zones for value ranges.  
 The ranges can be based on local settings in or zones fetched from the server.  
   
-Local settings are configured in InstrumentPanel settings and stored in the browser.  
+In `Local` mode, the zones are configured in InstrumentPanel settings panel and stored in the browser.  
 The configuration is limited: a single red zone from redline value to maximum value and you can set the minimum value for the gauge.  
 > 
 >![universal-analog-local](./help/widget-settings-analog-local.png#maxwidth)  
 >
-On the server the zones are configured by modifying the **defaults.json** file in you the server settings directory.  
+In `server` mode, the zones are configured by modifying the `~/.signalk/baseDeltas.json` file on your Signal K server.  
 You can configure multiple zones, each associated with a state that has its own color.  
-Only colors are configured in InstrumentPanel.  
+In this case, only colors are configured in InstrumentPanel settings panel.  
 Changes there take effect after server restart.  
 >
 >![universal-analog-server](./help/widget-settings-analog-server.png#maxwidth)  
 > 
-**batteries 1** sample **defaults.json**:
-  
+**batteries 1** sample **baseDeltas.json**:  
+Locate `updates/meta` section in your `baseDeltas.json`  
 ```
-"vessels": { //<= this key already exist do not insert
- "self": { //<= this key already exist do not insert
-  "electrical": { //<= if this key exists, insert the following key below it
-   "batteries": { //<= if this key exists, insert the following key below it
-    "1": { //<= if this key exists, insert the following key below it
-     "voltage": { //<= if this key exists, insert the following key below it
-      "meta": {
-       "displayName": "battery 1",
-       "zones": [
-        {"upper": 11.8, "state": "alarm"},
-        {"upper": 12, "lower": 11.8, "state": "warn"},
-        {"upper": 14.6, "lower": 12, "state": "nominal"},
-        {"lower": 14.6, "state": "alarm"}
-       ],
-       "displayScale": {
-        "lower": 11.5,
-        "upper": 15.5
-       }
+  {
+    "context": "vessels.self",
+    "updates": [
+      {
+        "meta": [
+```
+Insert content like below  
+```
+{
+  "path": "electrical.batteries.1.voltage",
+  "value": {
+    "displayName": "battery 1",
+    "zones": [
+      {
+        "upper": 11.8,
+        "state": "alarm"
+      },
+      {
+        "upper": 12,
+        "lower": 11.8,
+        "state": "warn"
+      },
+      {
+        "upper": 14.6,
+        "lower": 12,
+        "state": "nominal"
+      },
+      {
+        "lower": 14.6,
+        "state": "alarm"
       }
-     }
+    ],
+    "displayScale": {
+      "lower": 11.5,
+      "upper": 15.5
     }
-   }
   }
- }
 }
 ```
+Add `,` after the last `}` if your section is followed by another one. 
+  
 **Make sure the content is valid JSON**.  
 Using an editor that validates the format is a great help !  
   
 For more information on zones see [the Signal K Specification](https://signalk.org/specification/1.5.0/doc/data_model_metadata.html#metadata-for-a-data-value)  
-and [Server FAQ](https://github.com/SignalK/signalk-server/wiki/FAQ:-Frequently-Asked-Questions#how-to-add-missing-units-and-static-data)  
+and [Server FAQ](https://github.com/SignalK/signalk-server/wiki/FAQ:-Frequently-Asked-Questions#if-you-have-a-signalkbasedeltasjson-file) 
   
 <a id="2_3_1_5_2"></a>
 **2.3.1.5.2. Compass Widget** [Back to up menu](#2_3_1_5)  
@@ -438,7 +453,7 @@ The configuration is manual and must be done only once on the Signal K server.
 - Edit the `~/.signalk/baseDeltas.json` file on your Signal K server.  
 You can also look at this 
 [Server FAQ](https://github.com/SignalK/signalk-server/wiki/FAQ:-Frequently-Asked-Questions#if-you-have-a-signalkbasedeltasjson-file) 
- on the format of this file.  
+ on the file format.  
 - Locate the `updates/value` section:  
 ```
 [
