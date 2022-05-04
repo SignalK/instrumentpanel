@@ -55,7 +55,7 @@
     "js-quantities": "^1.7.4",
     "json-beautify": "^1.1.1",
     "json-loader": "^0.5.7",
-    "marked": "^0.7.0",
+    "marked": "^4.0.10",
     "on-swipe": "^1.0.8",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
