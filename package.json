@@ -16,7 +16,8 @@
   "license": "Apache-2.0",
   "author": "Teppo Kurki <teppo.kurki@iki.fi>",
   "contributors": [
-    "Tim Mathews <tim@signalk.org>"
+    "Tim Mathews <tim@signalk.org>",
+    "Christian Motelet <signalk@motelet.com>"
   ],
   "main": "lib/ui/main.js",
   "repository": "github:SignalK/instrumentpanel.git",
@@ -66,5 +67,9 @@
     "webpack": "^4.41.6",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3"
+  },
+  "signalk": {
+    "appIcon": "./icons/android-chrome-72x72.png",
+    "displayName": "Instrument Panel"
   }
 }
