@@ -69,7 +69,7 @@
     "webpack-dev-server": "^3.10.3"
   },
   "signalk": {
-    "appIcon": "./icons/android-chrome-72x72.png",
-    "displayName": "Instrument Panel"
+    "appIcon": "./icons/instrumentpanel-72x72.png",
+    "displayName": "Instrumentpanel"
   }
 }
