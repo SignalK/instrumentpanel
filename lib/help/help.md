@@ -55,6 +55,7 @@ ___
             - [2.3.1.6 Widget managed paths](#2_3_1_6)  
             - [2.3.1.7 Alarms Settings](#2_3_1_7)  
             - [2.3.1.8 Add or Delete Pages](#2_3_1_8)  
+            - [2.3.1.9 Hide Widget label](#2_3_1_9)  
         - [2.3.2. Preferred Units screen](#2_3_2)  
         - [2.3.3. Dark Mode Screen](#2_3_3)  
         - [2.3.4. Reset settings screen](#2_3_4)  
@@ -276,6 +277,7 @@ You can set:
 - ["Widget managed paths"](#2_3_1_6) to discover the list of paths managed by this widget type.  
 - ["Alarms Settings"](#2_3_1_7) to hide or show discovered alarms / notifications.  
 - ["Add or Delete Pages"](#2_3_1_8) To manage multiple grid pages.  
+- ["Hide Widget label"](#2_3_1_9) To show or hide the widget label.  
   
 <a id="2_3_1_1"></a>
 **2.3.1.1. Rule for displaying new widget** [Back to up menu](#2_3_1)  
@@ -598,6 +600,20 @@ The new page is automatically selected.
 >
 To delete a page, activate the page by clicking on the page number and
  then on the ![button-delCurrent](./help/button-delCurrent.png) button.  
+  
+<a id="2_3_1_9"></a>
+**2.3.1.9. Hide Widget label** [Back to up menu](#2_3_1)  
+___
+On some widgets you can hide the label to save space on the screen and have a bigger display font.  
+When the `Hide label when...` box is checked, the label disappears automatically along with the menu bar.  
+>
+>![hide-label](./help/settings-universal-hideLabel.png#maxwidth)  
+>
+Widget with visible label:  
+&nbsp;![labelVisible](./help/widget-universal-labelVisible.png#maxwidth)  
+
+Same Widget with `Hide label when...` checked:  
+&nbsp;![labelHidden](./help/widget-universal-labelHidden.png#maxwidth)  
   
 <a id="2_3_2"></a>
 **2.3.2. Preferred Units screen** [Back to up menu](#2_3)  
