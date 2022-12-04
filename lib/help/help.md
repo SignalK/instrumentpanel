@@ -55,6 +55,7 @@ ___
             - [2.3.1.6 Widget managed paths](#2_3_1_6)  
             - [2.3.1.7 Alarms Settings](#2_3_1_7)  
             - [2.3.1.8 Add or Delete Pages](#2_3_1_8)  
+            - [2.3.1.9 Hide Widget label](#2_3_1_9)  
         - [2.3.2. Preferred Units screen](#2_3_2)  
         - [2.3.3. Dark Mode Screen](#2_3_3)  
         - [2.3.4. Reset settings screen](#2_3_4)  
@@ -157,7 +158,7 @@ If you want the menu to disappear before the 15 seconds, depending on the size o
 >![hide-menu-zone_2](./help/hide-menu-zone_2.png#maxwidth)  
   
 <a id="2_1"></a>
-**2.1. Change Page** [Back to up menu](#2)  
+**2.1. Change Page** Back to [up menu](#2) / [main menu](#content)  
 ___
 >
 >![multi-page](./help/multi-page.png#maxwidth)  
@@ -167,7 +168,7 @@ To switch pages, just click on the page number or doing a horizontal swipe on th
 To create a new page, see:[Add or Delete Pages](#2_3_1_8).  
   
 <a id="2_1_1"></a>
-**2.1.1. Alarms Page** [Back to up menu](#2_1)  
+**2.1.1. Alarms Page** Back to [up menu](#2_1) / [main menu](#content)  
 ___
 By clicking on the ![button-notif-warn](./help/button-notif-warn.png) button,
  you display the list of current alarms. They are sorted by alarm level and
@@ -193,7 +194,7 @@ You can hide some alarms in the settings page.
 (See: [Alarms Settings](#2_3_1_7)  
   
 <a id="2_2"></a>
-**2.2. Layout** [Back to up menu](#2)  
+**2.2. Layout** Back to [up menu](#2) / [main menu](#content)  
 ___
 InstrumentPanel supports several layouts. The choice of layout is selected according to 3 criteria in the following order:  
 - By adding the following query parameter **?layout=myLayoutName** to the url.  
@@ -212,7 +213,7 @@ in the **Widget** settings screen.
 In the example above an layout dedicated to freeboard-sk has been automatically selected.  
   
 <a id="2_2_1"></a>
-**2.2.1. Modify Layout** [Back to up menu](#2_2)  
+**2.2.1. Modify Layout** Back to [up menu](#2_2) / [main menu](#content)  
 ___
 Use the ![lock](./help/button-lock.png) button on the main bar to unlock the layout. 
 When the layout is unlocked, widget background changes to yellow and features are hidden.  
@@ -223,7 +224,7 @@ To return to normal mode and to lock & save the layout,
  click on the ![unlock](./help/button-unlock.png) button.  
   
 <a id="2_2_2"></a>
-**2.2.2. Moving and Resizing Widgets** [Back to up menu](#2_2)  
+**2.2.2. Moving and Resizing Widgets** Back to [up menu](#2_2) / [main menu](#content)  
 ___
 On a unlocked layout:  
 - **resize** a widget by dragging the anchor located at the bottom right.  
@@ -238,7 +239,7 @@ On a unlocked layout:
 The layout adjusts automatically to changes, compacting the widgets vertically.
   
 <a id="2_2_3"></a>
-**2.2.3. Notes for iOS users** [Back to up menu](#2_2)  
+**2.2.3. Notes for iOS users** Back to [up menu](#2_2) / [main menu](#content)  
 ___
 On an unlocked grid, to drag or to resize a widget,
  first click once or twice in the center of the widget
@@ -247,7 +248,7 @@ If you don't click first in the center of the widget,
  the page starts scrolling before you can drag or resize the widget.  
   
 <a id="2_3"></a>
-**2.3. Settings** [Back to up menu](#2)  
+**2.3. Settings** Back to [up menu](#2) / [main menu](#content)  
 ___
 Use the ![settings](./help/settings-icon.png) button to switch to settings.  
 In settings mode, at the top left, you will find a dropdown-list, click on the arrow to list the choices :
@@ -264,7 +265,7 @@ In settings mode, at the top left, you will find a dropdown-list, click on the a
 In setting mode, use the ![view](./help/view-icon.png) button to return to the main view.  
   
 <a id="2_3_1"></a>
-**2.3.1. Customise Display screen** [Back to up menu](#2_3)  
+**2.3.1. Customise Display screen** Back to [up menu](#2_3) / [main menu](#content)  
 ___
 In this settings page, to access widget's parameters, click on 'edit'.  
 You can set:
@@ -276,9 +277,10 @@ You can set:
 - ["Widget managed paths"](#2_3_1_6) to discover the list of paths managed by this widget type.  
 - ["Alarms Settings"](#2_3_1_7) to hide or show discovered alarms / notifications.  
 - ["Add or Delete Pages"](#2_3_1_8) To manage multiple grid pages.  
+- ["Hide Widget label"](#2_3_1_9) To show or hide the widget label.  
   
 <a id="2_3_1_1"></a>
-**2.3.1.1. Rule for displaying new widget** [Back to up menu](#2_3_1)  
+**2.3.1.1. Rule for displaying new widget** Back to [up menu](#2_3_1) / [main menu](#content)  
 ___
 ![newPaths](./help/settings-newPaths.png#maxwidth)  
 With this setting you can select if a new widget created will be shown or not on your grid.  
@@ -302,7 +304,7 @@ three choices are available:
 - **Hidden**, all new widget are hidden on the grid.  
   
 <a id="2_3_1_2"></a>
-**2.3.1.2. Hide or Show widget:** [Back to up menu](#2_3_1)  
+**2.3.1.2. Hide or Show widget:** Back to [up menu](#2_3_1) / [main menu](#content)  
 ___
 A common option for all widgets is the **Shown on grid** option  
 >
@@ -313,7 +315,7 @@ Unselect/Select checkbox to hide/show the widget on the page.
 - ![button-ShowAll](./help/button-ShowAll.png) button: Shows all widgets on the current page in one operation.  
   
 <a id="2_3_1_3"></a>
-**2.3.1.3. Delete widget** [Back to up menu](#2_3_1)  
+**2.3.1.3. Delete widget** Back to [up menu](#2_3_1) / [main menu](#content)  
 ___
 By checking **Delete** you delete an existing widget associated with a Signal K path and source.  
 In order to delete a widget, it must first not be **Displayed on the grid**.  
@@ -324,7 +326,7 @@ If you delete a widget that is associated to a Signal K path still present in yo
 - ![button-deleteAll](./help/button-deleteAll.png) button: Deletes all widgets whose "show on grid" checkbox is not checked.  
   
 <a id="2_3_1_4"></a>
-**2.3.1.4. Unit selection** [Back to up menu](#2_3_1)  
+**2.3.1.4. Unit selection** Back to [up menu](#2_3_1) / [main menu](#content)  
 ___
 Most widgets have a unit selection.  
 Select your preferred unit from the listbox.  
@@ -335,12 +337,12 @@ To make the unit change active, InstrumentPanel must be reloaded. This will be d
 You will be informed by a message at the top of the screen.  
   
 <a id="2_3_1_5"></a>
-**2.3.1.5. Widget Specific Settings** [Back to up menu](#2_3_1)  
+**2.3.1.5. Widget Specific Settings** Back to [up menu](#2_3_1) / [main menu](#content)  
 ___
 Each widget type has specific settings.  
   
 <a id="2_3_1_5_1"></a>
-**2.3.1.5.1. Universal Widget (with colored zones)** [Back to up menu](#2_3_1_5)  
+**2.3.1.5.1. Universal Widget (with colored zones)** Back to [up menu](#2_3_1_5) / [main menu](#content)  
 ___
 This widget has alternative digital and analog views.  
 >
@@ -412,7 +414,7 @@ For more information on zones see [the Signal K Specification](https://signalk.o
 and [Server FAQ](https://github.com/SignalK/signalk-server/wiki/FAQ:-Frequently-Asked-Questions#if-you-have-a-signalkbasedeltasjson-file) 
   
 <a id="2_3_1_5_2"></a>
-**2.3.1.5.2. Compass Widget** [Back to up menu](#2_3_1_5)  
+**2.3.1.5.2. Compass Widget** Back to [up menu](#2_3_1_5) / [main menu](#content)  
 ___
 This widget has 3 displays view possible (rose/reading/digital).  
 Choose your preferred view by selecting the radio button.  
@@ -424,7 +426,7 @@ Choose your preferred view by selecting the radio button.
 ![compass-digital](./help/widget-settings-compass-digital.png#maxwidth)  
   
 <a id="2_3_1_5_3"></a>
-**2.3.1.5.3. Windmeter Widget:** [Back to up menu](#2_3_1_5)  
+**2.3.1.5.3. Windmeter Widget:** Back to [up menu](#2_3_1_5) / [main menu](#content)  
 ___
 This widget has only the unit selection.  
 Apparent Wind, True Wind over Ground and True Wind through Water values are automatically bound on widget.  
@@ -433,7 +435,7 @@ Apparent Wind, True Wind over Ground and True Wind through Water values are auto
 >
   
 <a id="2_3_1_5_4"></a>
-**2.3.1.5.4. Digital DateTime Widget:** [Back to up menu](#2_3_1_5)  
+**2.3.1.5.4. Digital DateTime Widget:** Back to [up menu](#2_3_1_5) / [main menu](#content)  
 ___
 This widget has only a timezone selection.  
 In timezone list, **DST** means Daylight Saving Time and displays time automatically in the timezone
@@ -443,7 +445,7 @@ In timezone list, **DST** means Daylight Saving Time and displays time automatic
 >
   
 <a id="2_3_1_5_5"></a>
-**2.3.1.5.5. Iframe Widget:** [Back to up menu](#2_3_1_5)  
+**2.3.1.5.5. Iframe Widget:** Back to [up menu](#2_3_1_5) / [main menu](#content)  
 ___
 This widget can embed an external HTML page like Grafana, Signal K Auto-pilot,...  
 >
@@ -560,7 +562,7 @@ updates/meta section
 ```
   
 <a id="2_3_1_6"></a>
-**2.3.1.6. Widget managed paths:** [Back to up menu](#2_3_1)  
+**2.3.1.6. Widget managed paths:** Back to [up menu](#2_3_1) / [main menu](#content)  
 ___
 A widget type (compass in screenshot) can handle multiple paths.  
 ![widget-settings-pathsList](./help/widget-settings-pathsList.png)
@@ -574,7 +576,7 @@ For each path listed, a new cell will be created with this widget type only if t
 Clic on the list to return to the default vue.  
   
 <a id="2_3_1_7"></a>
-**2.3.1.7. Alarms Settings:** [Back to up menu](#2_3_1)  
+**2.3.1.7. Alarms Settings:** Back to [up menu](#2_3_1) / [main menu](#content)  
 ___
 In setting mode, on the ![button-notif-warn](./help/button-notif-warn.png) page
  you can hide alarms from the main view by unchecking the **Show on grid** option.
@@ -585,7 +587,7 @@ The color code for dotted lines is the same as for non-hidden alarms.
 The alarm settings are not saved when you exit the GUI.  
   
 <a id="2_3_1_8"></a>
-**2.3.1.8. Add or Delete Pages** [Back to up menu](#2_3_1)  
+**2.3.1.8. Add or Delete Pages** Back to [up menu](#2_3_1) / [main menu](#content)  
 ___
 You can have up to 10 pages with a specific widget organization.  
 >
@@ -599,8 +601,22 @@ The new page is automatically selected.
 To delete a page, activate the page by clicking on the page number and
  then on the ![button-delCurrent](./help/button-delCurrent.png) button.  
   
+<a id="2_3_1_9"></a>
+**2.3.1.9. Hide Widget label** Back to [up menu](#2_3_1) / [main menu](#content)  
+___
+On some widgets you can hide the label to save space on the screen and have a bigger display font.  
+When the `Hide label when...` box is checked, the label disappears automatically along with the menu bar.  
+>
+>![hide-label](./help/settings-universal-hideLabel.png#maxwidth)  
+>
+Widget with visible label:  
+&nbsp;![labelVisible](./help/widget-universal-labelVisible.png#maxwidth)  
+
+Same Widget with `Hide label when...` checked:  
+&nbsp;![labelHidden](./help/widget-universal-labelHidden.png#maxwidth)  
+  
 <a id="2_3_2"></a>
-**2.3.2. Preferred Units screen** [Back to up menu](#2_3)  
+**2.3.2. Preferred Units screen** Back to [up menu](#2_3) / [main menu](#content)  
 ___
 In this screen, you choose which default units will be displayed on your widgets.
  In 90% of cases the default values you choose here will correspond to your display habit.  
@@ -618,7 +634,7 @@ Use the ![button-reset-preferred-units](./help/button-reset-preferred-units.png)
 >
   
 <a id="2_3_3"></a>
-**2.3.3. Dark Mode Screen** [Back to up menu](#2_3)  
+**2.3.3. Dark Mode Screen** Back to [up menu](#2_3) / [main menu](#content)  
 ___
 In this screen, you can select how the dark mode will be activated:.  
 You have 3 choices available :  
@@ -635,7 +651,7 @@ Display in dark mode:
 >
   
 <a id="2_3_4"></a>
-**2.3.4. Reset settings screen** [Back to up menu](#2_3)  
+**2.3.4. Reset settings screen** Back to [up menu](#2_3) / [main menu](#content)  
 ___
 In this screen, you can clear settings stored in local storage browser.  
 This settings are :  
@@ -652,7 +668,7 @@ Select at least one checkbox and click on reset button.
 The page will reload and the selected parameters will be erased.  
   
 <a id="2_3_5"></a>
-**2.3.5. Save settings screen** [Back to up menu](#2_3)  
+**2.3.5. Save settings screen** Back to [up menu](#2_3) / [main menu](#content)  
 ___
 In this screen, you can save your settings on the server or in a json file.  
 >
@@ -671,7 +687,7 @@ If you are logged in with **Admin** access and you select **save for global sett
 The ![button-settings-saveptofile](./help/button-settings-savetofile.png) button make a backup of all your Instrumentpanel configuration.
   
 <a id="2_3_6"></a>
-**2.3.6 Load settings screen** [Back to up menu](#2_3)  
+**2.3.6 Load settings screen** Back to [up menu](#2_3) / [main menu](#content)  
 ___
 In this screen, you can load your previously saved settings from the server or from a json file.  
 >
@@ -701,13 +717,13 @@ Click on ![button-reset-red.png](./help/button-reset-red.png) to load the [reset
 ___
   
 <a id="3_1"></a>
-**3.1. Widget in full screen** [Back to up menu](#3)  
+**3.1. Widget in full screen** Back to [up menu](#3) / [main menu](#content)  
 ___
 - you can display a widget in full screen by clicking in the center of the widget.  
 - To return to normal view, click anywhere on the widget.  
   
 <a id="3_2"></a>
-**3.2. Changing Display Mode** [Back to up menu](#3)  
+**3.2. Changing Display Mode** Back to [up menu](#3) / [main menu](#content)  
 ___
 Some widgets have the ability to change their display mode directly.  
 They are identified by a ![clickme-icon](./help/clickme-icon.png) icon in the top left corner.  
@@ -715,7 +731,7 @@ Click on this icon to change the display mode.
 New display mode is automatically saved.  
   
 <a id="3_3"></a>
-**3.3. Wind Widget Modes** [Back to up menu](#3)  
+**3.3. Wind Widget Modes** Back to [up menu](#3) / [main menu](#content)  
 ___
 The wind widget displays by default apparent wind.  
 >
@@ -748,7 +764,7 @@ Enable the options for True Wind over Ground and True Wind through Water:
 And then click on the ![DerivedData-submit](./help/plugin-DerivedData-submit.png) button to save and activate these options.  
   
 <a id="3_4"></a>
-**3.4. Digital Position Modes** [Back to up menu](#3)  
+**3.4. Digital Position Modes** Back to [up menu](#3) / [main menu](#content)  
 ___
 The Digital Position Widget can display your position in different formats:  
 - Dir D.ddddd° (N 38.99177°)  
@@ -761,7 +777,7 @@ The first click, displays the display format then the others clicks change the d
 You have 5 seconds to repeat your clicks, after that the widget automatically displays its original label.  
   
 <a id="3_5"></a>
-**3.5. Display SourceID** [Back to up menu](#3)  
+**3.5. Display SourceID** Back to [up menu](#3) / [main menu](#content)  
 ___
 To display the source Id of a widget's data stream,
  click on to the top right corner of widget.  
@@ -779,18 +795,18 @@ ___
 You can switch to full screen mode to make the URL bar disappear and save display space.  
   
 <a id="4_1"></a>
-**4.1 Full Screen mode** [Back to up menu](#4)  
+**4.1 Full Screen mode** Back to [up menu](#4) / [main menu](#content)  
 ___
 Click on the ![fullscreen](./help/fullscreen-icon.png) buttons in the main bar to switch to full screen mode.
  This feature is not available on all devices (not works on all IOS devices, see:[App mode ...](#4_2)).  
   
 <a id="4_2"></a>
-**4.2 App mode** [Back to up menu](#4)  
+**4.2 App mode** Back to [up menu](#4) / [main menu](#content)  
 ___
 You can **add to Home Screen** InstrumentPanel on most mobile devices to use it as a mobile app.  
   
 <a id="4_2_1"></a>
-**4.2.1 On iPad or iPhone** [Back to up menu](#4)  
+**4.2.1 On iPad or iPhone** Back to [up menu](#4) / [main menu](#content)  
 ___
 1) Launch **Safari** app.  This does not work from the **Chrome** app.  
 2) Open **InstrumentPanel** URL in **Safari**.  
@@ -799,7 +815,7 @@ ___
 5) Enter the name for the shortcut using the on-screen keyboard and tap **Add.** Safari will close automatically and you will be taken to where the icon is located on your iPad’s desktop.  
   
 <a id="4_2_2"></a>
-**4.2.2 On Android** [Back to up menu](#4)  
+**4.2.2 On Android** Back to [up menu](#4) / [main menu](#content)  
 ___
 1) Launch **Chrome** app.  
 2) Open **InstrumentPanel** URL in Chrome.  
