@@ -120,6 +120,13 @@ body {
   border-color: var(--border-color);
 }
 
+.form-select-ip {
+  color: var(--text-color);
+  background-color: var(--background-btn-color);
+  width: auto;
+  display: inline-flex;
+}
+
 /*
 .navbar {
  min-height: 44px;
