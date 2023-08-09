@@ -39,7 +39,6 @@ body {
   stroke: var(--text-color);
   border-radius: 8px;
   border: 1px solid silver;
-  margin: -2px;
   -khtml-user-select: none;
   -webkit-user-select: none;
   -moz-user-select: -moz-none;
