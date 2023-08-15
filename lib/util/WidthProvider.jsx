@@ -2,10 +2,15 @@
 import * as React from "react";
 import PropTypes from "prop-types";
 import clsx from "clsx";
-import type { ReactRef } from "../ReactGridLayoutPropTypes";
+import { Responsive } from "react-grid-layout";
+
+type ReactRef<T: HTMLElement> = {|
+  +current: T | null
+  |};
 
 type WPDefaultProps = {|
-  measureBeforeMount: boolean
+  measureBeforeMount: boolean,
+    onComponentDidMount: (gridWidth: number, breakpoint: string) => void
     |};
 
 // eslint-disable-next-line no-unused-vars
@@ -44,14 +49,16 @@ export default function WidthProvideRGL<Config>(
   > {
     static defaultProps: WPDefaultProps = {
       measureBeforeMount: false,
-      reduceWidth: 0
+      reduceWidth: 0,
+      onComponentDidMount: 0
     };
 
     static propTypes = {
       // If true, will not render children until mounted. Useful for getting the exact width before
       // rendering, to prevent any unsightly resizing.
       measureBeforeMount: PropTypes.bool,
-      reduceWidth: PropTypes.number
+      reduceWidth: PropTypes.number,
+      onComponentDidMount: PropTypes.func
     };
 
     state: WPState = {
@@ -68,6 +75,14 @@ export default function WidthProvideRGL<Config>(
       // Note that if you're doing a full-width element, this can get a little wonky if a scrollbar
       // appears because of the grid. In that case, fire your own resize event, or set `overflow: scroll` on your body.
       this.onWindowResize();
+      const node = this.elementRef.current;
+      if (node instanceof HTMLElement && node.offsetWidth) {
+        if (typeof this.props.onComponentDidMount === 'function') {
+          var breakpoint = Responsive.utils.getBreakpointFromWidth(this.props.breakpoints, node.offsetWidth)
+          var nbCols = this.props.cols[breakpoint]
+          this.props.onComponentDidMount(node.offsetWidth, breakpoint, nbCols)
+        }
+      }
     }
 
     componentWillUnmount() {
