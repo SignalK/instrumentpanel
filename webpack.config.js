@@ -9,88 +9,91 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'public'),
     filename: '[name].js',
-    publicPath: '/public/'
+    publicPath: '/'
   },
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
-          exclude: /node_modules/,
-          use: {
-            loader: 'babel-loader',
-            options: {
-              cacheDirectory: true,
-              presets: [
-                '@babel/preset-react',
-                [
-                  '@babel/preset-env',
-                  {
-// If you want optimize the buid size but reduce compatibility
-// you can uncomment one line below. e.g. to produce a version most efficient but only compatible with chrome version 77
-//                    targets: { browsers: ['chrome 77'] },
-// 'defaults' produce a version for the most common and up-to-date browsers and not dead
-//                    targets: { browsers: ['defaults'] },
-//                    targets: { browsers: ['defaults', 'not ie 11', 'not ie_mob 11'] },
-                    debug: false,
-                    useBuiltIns: 'usage',
-                    corejs: 3,
-                  }
-                ],
-                '@babel/preset-flow'
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            cacheDirectory: true,
+            presets: [
+              '@babel/preset-react',
+              [
+                '@babel/preset-env',
+                {
+                  // If you want optimize the buid size but reduce compatibility
+                  // you can uncomment one line below. e.g. to produce a version most efficient but only compatible with chrome version 77
+                  //                    targets: { browsers: ['chrome 77'] },
+                  // 'defaults' produce a version for the most common and up-to-date browsers and not dead
+                  //                    targets: { browsers: ['defaults'] },
+                  //                    targets: { browsers: ['defaults', 'not ie 11', 'not ie_mob 11'] },
+                  debug: false,
+                  useBuiltIns: 'usage',
+                  corejs: 3,
+                }
               ],
-              plugins: [
-                "@babel/plugin-transform-flow-comments",
-                "@babel/plugin-proposal-class-properties"
-              ]
-            }
+              '@babel/preset-flow'
+            ],
+            plugins: [
+              "@babel/plugin-transform-flow-comments",
+              "@babel/plugin-proposal-class-properties"
+            ]
           }
+        }
       }
     ]
   },
   optimization: {
     minimizer: [
       new TerserPlugin({
-        cache: true,
         parallel: true,
-        sourceMap: true
       }),
     ],
   },
   devtool: 'source-map',
   devServer: {
-    contentBase: './public',
-    publicPath: '/',
-    watchContentBase: true,
-    hot: true,
+    static: path.resolve(__dirname, './public'),
+    allowedHosts: 'all',
+    client: {
+      logging: 'info',
+      overlay: true,
+      progress: true,
+    },
+
     compress: true,
     port: 3001,
     host: '0.0.0.0',
-    index: 'index.html',
-    disableHostCheck: true,
-    progress: true,
-    stats: {
-      children: false,
-      maxModules: 0
-    },
-    watchOptions: {
-      aggregateTimeout: 5000
+    proxy: {
+      '/signalk/v1/stream': {
+        target: 'ws://localhost:3000',
+        ws: true
+      },
     },
   },
   resolve: {
     alias: {
       bacon: "baconjs"
     },
-    extensions: [".js", ".jsx"]
+    extensions: [".js", ".jsx"],
+    fallback: {
+      "util": require.resolve("util/")
+    }
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
       VERSION: JSON.stringify(require("./package.json").version)
+    }),
+    new webpack.ProvidePlugin({
+      process: 'process/browser',
     })
   ],
   stats: {
     children: false,
-    maxModules: 0
   },
   performance: {
     hints: false
