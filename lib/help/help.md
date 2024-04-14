@@ -843,7 +843,7 @@ If you only want to reset a few parameters, use the GUI instead:
 If you see **ERROR in unit retrieval** on the upper of a widget, there is a problem to contact your Signal K server.  
 Be careful, the values displayed may be wrong.  
 Try to add the options to the URL described above.  
-Check your browser logs and ask for help on slack: http://slack-invite.signalk.org/  
+Check your browser logs and ask for help on Discord: https://discord.gg/uuZrwz4dCS  
 Maybe you discovered a bug.  
 
 If you see **NaN** inside a widget, it means that the value returned by your Signal K server is incorrect
