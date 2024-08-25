@@ -72,6 +72,12 @@ module.exports = {
         target: 'ws://localhost:3000',
         ws: true
       },
+      '/loginStatus': {
+        target: 'http://localhost:3000',
+      },
+      '/signalk/': {
+        target: 'http://localhost:3000'
+      }
     },
   },
   resolve: {
