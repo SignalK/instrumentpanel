@@ -72,7 +72,7 @@ module.exports = {
         target: 'ws://localhost:3000',
         ws: true
       },
-      '/loginStatus': {
+      '/skServer/loginStatus': {
         target: 'http://localhost:3000',
       },
       '/signalk/': {
