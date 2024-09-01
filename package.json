@@ -62,7 +62,7 @@
     "react": "^16.12.0",
     "react-bootstrap": "^0.33.1",
     "react-dom": "^16.12.0",
-    "react-grid-layout": "^1.3.4",
+    "react-grid-layout": "1.3.4",
     "react-hot-loader": "^4.13.1",
     "util": "^0.12.5",
     "webpack": "^5.94.0",
