@@ -67,18 +67,17 @@ module.exports = {
     compress: true,
     port: 3001,
     host: '0.0.0.0',
-    proxy: {
-      '/signalk/v1/stream': {
-        target: 'ws://localhost:3000',
-        ws: true
-      },
-      '/skServer/loginStatus': {
+    proxy: [
+      {
+        context: ['/signalk/', '/skServer/loginStatus',],
         target: 'http://localhost:3000',
       },
-      '/signalk/': {
-        target: 'http://localhost:3000'
-      }
-    },
+      {
+        context: ['/signalk/v1/stream',],
+        target: 'http://localhost:3000',
+        ws: true
+      },
+    ],
   },
   resolve: {
     alias: {
