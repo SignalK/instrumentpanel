@@ -3,7 +3,7 @@ import * as React from "react";
 import PropTypes from "prop-types";
 import clsx from "clsx";
 import { Responsive } from "react-grid-layout";
-
+import { gridBreakpoints, gridBreakpointsUnlock } from '../ui/settings/constants';
 type ReactRef<T: HTMLElement> = {|
   +current: T | null
   |};
@@ -62,7 +62,8 @@ export default function WidthProvideRGL<Config>(
     };
 
     state: WPState = {
-      width: 1280
+      width: 1280,
+      breakpoint: "xxxl"
     };
 
     elementRef: ReactRef<HTMLDivElement> = React.createRef();
@@ -78,7 +79,7 @@ export default function WidthProvideRGL<Config>(
       const node = this.elementRef.current;
       if (node instanceof HTMLElement && node.offsetWidth) {
         if (typeof this.props.onComponentDidMount === 'function') {
-          var breakpoint = Responsive.utils.getBreakpointFromWidth(this.props.breakpoints, node.offsetWidth)
+          var breakpoint = Responsive.utils.getBreakpointFromWidth((this.props.reduceWidth > 0) ? gridBreakpointsUnlock : gridBreakpoints, node.offsetWidth)
           var nbCols = this.props.cols[breakpoint]
           this.props.onComponentDidMount(node.offsetWidth, breakpoint, nbCols)
         }
@@ -96,7 +97,11 @@ export default function WidthProvideRGL<Config>(
       // fix: grid position error when node or parentNode display is none by window resize
       // #924 #1084
       if (node instanceof HTMLElement && node.offsetWidth) {
-        this.setState({ width: node.offsetWidth });
+        var breakpoint = Responsive.utils.getBreakpointFromWidth((this.props.reduceWidth > 0) ? gridBreakpointsUnlock : gridBreakpoints, node.offsetWidth)
+        this.setState({
+          width: node.offsetWidth,
+          breakpoint
+        });
       }
     };
 
@@ -113,11 +118,12 @@ export default function WidthProvideRGL<Config>(
           />
         );
       }
+
       return (
         <ComposedComponent
           innerRef={this.elementRef}
           {...rest}
-          {...this.state}
+          {...{ 'breakpoint': this.state.breakpoint }}
           {...{ 'width': newWidth }}
         />
       );
