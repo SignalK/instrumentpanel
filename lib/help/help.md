@@ -61,6 +61,7 @@ ___
         - [2.3.4. Reset settings screen](#2_3_4)  
         - [2.3.5. Save settings screen](#2_3_5)  
         - [2.3.6. Load settings screen](#2_3_6)  
+        - [2.3.7. Widget border settings screen](#2_3_7)  
 + [3. Options Available on the Widgets](#3)  
     - [3.1. Widget in full screen](#3_1)  
     - [3.2. Changing Display Mode](#3_2)  
@@ -258,6 +259,7 @@ In settings mode, at the top left, you will find a dropdown-list, click on the a
 - The ["Customise Display"](#2_3_1) entry allows you to change how the values will be displayed on the grid and tunning their individual settings. This page display all widgets, hidden or shown.  
 - The ["Preferred Units"](#2_3_2) entry allows you to set the unit values applied to widgets when they are created.  
 - The ["Dark Mode"](#2_3_3) entry allows you to change how the dark mode will be activated.  
+- The ["Widget border"](#2_3_7) entry allows you to change border size of the widget displayed on the grid.  
 - The ["Save settings"](#2_3_5) entry allows you to save your settings on the server or in a json file.  
 - The ["Load settings"](#2_3_6) entry allows you to load saved settings from the server or a json file.  
 - The ["Reset settings"](#2_3_4) entry allows you to clear settings stored in local storage browser.  
@@ -711,6 +713,16 @@ Make sure everything is working properly before **enable**
 Click on ![button-restore-orange](./help/button-restore-orange.png) button if something doesn't work, you can reload your old configuration  
   
 Click on ![button-reset-red.png](./help/button-reset-red.png) to load the [reset screen](#2_3_4), it will allow you to erase parameters and return to a healthy configuration.  
+  
+<a id="2_3_7"></a>
+**2.3.7 Widget border screen** Back to [up menu](#2_3) / [main menu](#content)  
+___
+In this screen, you can modify the widget's appearance (border thickness, margin, etc.).  
+>
+>![settings-widget-border](./help/settings-widget-border.png#maxwidth)  
+>
+Changes are automatically saved on the local device.  
+The reset button restores the initial settings.  
   
 <a id="3"></a>
 **3. Options Available on the Widgets** [Back to main menu](#content)  
