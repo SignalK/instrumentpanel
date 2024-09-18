@@ -4,6 +4,7 @@
   "description": "Signal K instrument panel implemented as an HTML5 grid with draggable & resizable widgets",
   "keywords": [
     "signalk-webapp",
+    "signalk-category-instruments",
     "signal k",
     "signalk",
     "instruments",
